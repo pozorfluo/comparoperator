@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "classmap": [
+            "src/"
+        ],
+        "files": ["src/Helpers/AutoLoader.php"],
+        "psr-0": {"" : "src/"}
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9"
+    }
+}

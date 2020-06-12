@@ -1,0 +1,35 @@
+# php_value display_errors On
+# php_value mbstring.http_input auto
+php_value date.timezone Europe/Paris
+
+# secure .htaccess
+<Files .htaccess>
+	Order allow,deny
+	Deny from all
+</Files>
+
+# secure .env
+<Files .env>
+	Order allow,deny
+	Deny from all
+</Files>
+
+# disable directory browsing
+Options All -Indexes
+
+RewriteEngine On
+RewriteBase /
+
+# serve request for existing files, links, directories
+# RewriteCond %{REQUEST_FILENAME} -s [OR]
+# RewriteCond %{REQUEST_FILENAME} -l [OR]
+# RewriteCond %{REQUEST_FILENAME} -d
+# RewriteRule ^.*$ - [L]
+
+# rewrite all other valid queries to parameterized index.php
+# RewriteRule ^([a-zA-Z0-9\-\_\/]*)$ index.php?p=$1 [L]
+
+# serve version according to platform
+# see https://developers.whatismybrowser.com/useragents/explore/
+# RewriteCond "%{HTTP_USER_AGENT}" "(iPhone|iPad|Android)"
+# RewriteRule ^(.*)$ $1&mobile=1 [L, QSA]
