@@ -82,7 +82,7 @@
 1. Run js tests
 
     ```shell
-    npm run test-php
+    npm run test-js
     ```
 
 1. Run all tests
@@ -118,5 +118,6 @@ see [project board](https://trello.com/b/zBuG36CV/comparoperator)
 
 -   Follow PSR-1 and PSR-12 coding standards.
 -   Use trello project board.
+-   Express user requirements using Gherkin syntax.
 
 ## reference links
