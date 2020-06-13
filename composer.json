@@ -1,4 +1,6 @@
 {
+    "name": "simplon/comparoperator",
+    "description": "simplon p3 2020 tp",
     "autoload": {
         "classmap": [
             "src/"
@@ -8,5 +10,11 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^9"
-    }
+    },
+    "config": {
+        "platform": {
+            "php": "7.3.16"
+        }
+    },
+    "license": "ISC"
 }

@@ -8,13 +8,14 @@
     git clone --depth=1 https://github.com/pozorfluo/comparoperator.git
     ```
 
-1. Setup
+1. Install dependencies
 
     ```shell
-    cd scripts
-    ./setup.sh
+    npm run setup
     ```
 
+    _( note : on windows execute npm i, then manually install composer, execute
+    composer install, download phpDocumentor v3.0.0-rc )_
 1. Setup the database with :
 
     ```
@@ -38,7 +39,7 @@
         "DB_HOST": "127.0.0.1",
         "DB_PORT": "3306",
         "DB_CHARSET": "utf8mb4",
-        "DB_NAME": "tp_product_hunt",
+        "DB_NAME": "ComparOperator",
         "DB_USER": "your_user_name",
         "DB_PASSWORD": "your_db_password"
         }
@@ -46,13 +47,6 @@
 1. Navigate to index.php
 
 ## build
-
-1. Install dependencies
-
-    ```shell
-    cd
-    npm i
-    ```
 
 1. Build sass and js
 
@@ -70,6 +64,12 @@
 
     ```shell
     npm run watch-stop
+    ```
+
+1. Generate php documentation
+
+    ```shell
+    npm run doc-php
     ```
 
 ## tests
@@ -95,8 +95,7 @@
 ![mobile](htdocs/resources/images/wireframe-mobile.png)
 
 ## todo
-
-see [project board]()
+see [project board](https://trello.com/b/zBuG36CV/comparoperator)
 
 ## decisions log
 

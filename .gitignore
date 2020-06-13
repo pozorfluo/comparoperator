@@ -4,10 +4,10 @@
 # .archive/*
 # .tmp/*
 
-#gdb
+# gdb
 .gdb_history
 
-#project specific
+# project specific
 cache/
 lispy_history.txt
 test_report.yaml
@@ -20,8 +20,10 @@ Testing
 
 # php
 composer.phar
-htdocs/vendor/
+phpDocumentor.phar
+vendor/
 .phpdoc/
+
 # Makefile
 cmake_install.cmake
 install_manifest.txt
