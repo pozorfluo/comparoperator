@@ -19,7 +19,6 @@ if (!defined('ROOT')) {
 spl_autoload_register(function (string $class): bool {
 
     $base_dir = ROOT.'src/';
-    // $base_dir = __DIR__.'src/';
     
     /* Not currently using a project prefix */
 

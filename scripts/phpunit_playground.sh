@@ -9,6 +9,9 @@ php composer.phar dump-autoload
 ./vendor/bin/phpunit tests
 
 # install along with phpspec
-php composer.phar remove phpunit/phpunit --dev
-php composer.phar require --dev phpspec/phpspec
-php composer.phar require --dev phpunit/phpunit
+# php composer.phar remove phpunit/phpunit --dev
+# php composer.phar require --dev phpspec/phpspec
+# php composer.phar require --dev phpunit/phpunit
+
+# -> Your requirements could not be resolved to an installable set of packages.
+php composer.phar remove phpspec/phpspec --dev
