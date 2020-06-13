@@ -11,9 +11,15 @@ namespace Helpers;
 /**
  * 
  */
+
+if (!defined('ROOT')) {
+    define('ROOT', str_replace('Helpers', '', __DIR__));
+}
+
 spl_autoload_register(function (string $class): bool {
 
     $base_dir = ROOT.'src/';
+    // $base_dir = __DIR__.'src/';
     
     /* Not currently using a project prefix */
 
