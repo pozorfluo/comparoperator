@@ -73,6 +73,23 @@
     ```
 
 ## tests
+1. Run php tests
+
+    ```shell
+    npm run test-php
+    ```
+
+1. Run js tests
+
+    ```shell
+    npm run test-php
+    ```
+
+1. Run all tests
+
+    ```shell
+    npm test
+    ```
 
 ## docs
 
@@ -100,6 +117,6 @@ see [project board](https://trello.com/b/zBuG36CV/comparoperator)
 ## decisions log
 
 -   Follow PSR-1 and PSR-12 coding standards.
--   Use github project board.
+-   Use trello project board.
 
 ## reference links
