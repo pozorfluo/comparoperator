@@ -14,7 +14,7 @@ final class CacheTest extends TestCase
     {
         /* Given a Cache instance */
         $existing_cache = new \Helpers\Cache('ExistingCacheName');
-        
+
         /* When a Cache with an existing Cache name is instanced */
         $cache = new \Helpers\Cache('ExistingCacheName');
 

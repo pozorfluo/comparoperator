@@ -8,7 +8,6 @@ declare(strict_types=1);
 
 namespace Models;
 
-use Exception;
 use Helpers\DB;
 use Controllers\Controller;
 

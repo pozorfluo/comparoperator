@@ -15,7 +15,7 @@ use Models\Model;
 /**
  * 
  */
-final class ProductHuntAPI extends API
+final class ComparOperatorAPI extends API
 {
     /**
      * 
@@ -91,13 +91,13 @@ final class ProductHuntAPI extends API
     /**
      * RESTish API : Register a vote for given user on given product.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * @endpoint Vote
      * @mode POST 
      * 
-     * @query ?controller=ProductHuntAPI&endpoint=Vote&user_id={id}&product_id={id}
+     * @query ?controller=ComparOperatorAPI&endpoint=Vote&user_id={id}&product_id={id}
      *
-     * @return array to be emitted as json by ProductHuntAPI controller
+     * @return array to be emitted as json by ComparOperatorAPI controller
      * 
      * @Example
      * @Response STATUS 200 - application/json
@@ -191,12 +191,12 @@ final class ProductHuntAPI extends API
     /**
      * RESTish API : Get product content associated to a given product id.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * @endpoint Product
      * @mode GET 
-     * @query ?controller=ProductHuntAPI&endpoint=Product&product_id={id}
+     * @query ?controller=ComparOperatorAPI&endpoint=Product&product_id={id}
      *
-     * @return array to be emitted as json by ProductHuntAPI controller
+     * @return array to be emitted as json by ComparOperatorAPI controller
      * 
      * @Example
      * @Response STATUS 200 - application/json
@@ -295,14 +295,14 @@ final class ProductHuntAPI extends API
     /**
      * RESTish API : Get most recent products.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * @endpoint Product
      * @sub-resource Fresh
      * @mode GET
      * 
      * Pagination option is available on this resource.
      * 
-     * @query ?controller=ProductHuntAPI&endpoint=Product&sub=Fresh
+     * @query ?controller=ComparOperatorAPI&endpoint=Product&sub=Fresh
      * 
      * @optional &maxResults= 
      *           How many products to return (default = 10).
@@ -310,7 +310,7 @@ final class ProductHuntAPI extends API
      * @optional &startAt= 
      *           How many products to skip   (default = 0).
      * 
-     * @return array to be emitted as json by ProductHuntAPI controller
+     * @return array to be emitted as json by ComparOperatorAPI controller
      * 
      * @Example
      * @Response STATUS 200 - application/json
@@ -392,14 +392,14 @@ final class ProductHuntAPI extends API
     /**
      * RESTish API : Get most popular products.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * @endpoint Product
      * @sub-resource Popular
      * @mode GET
      *
      * Pagination option is available on this resource.
      * 
-     * @query ?controller=ProductHuntAPI&endpoint=Product&sub=Popular
+     * @query ?controller=ComparOperatorAPI&endpoint=Product&sub=Popular
      * 
      * @optional &maxResults= 
      *           How many products to return (default = 10).
@@ -407,7 +407,7 @@ final class ProductHuntAPI extends API
      * @optional &startAt= 
      *           How many products to skip   (default = 0).
      * 
-     * @return array to be emitted as json by ProductHuntAPI controller
+     * @return array to be emitted as json by ComparOperatorAPI controller
      * 
      * @Example
      * @Response STATUS 200 - application/json

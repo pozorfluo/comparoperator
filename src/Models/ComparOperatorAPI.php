@@ -5,22 +5,20 @@ declare(strict_types=1);
 
 namespace Models;
 
-use Exception;
-use PDO, PDOException;
-use Helpers\DBConfig;
+use PDOException;
 use Controllers\Controller;
 
 
 /**
- * ProductHunt API
+ * ComparOperatorAPI
  */
-class ProductHuntAPI extends DBPDO
+class ComparOperatorAPI extends DBPDO
 {
     /**
-     * Create a new ProductHuntAPI instance from a decoded config json.
+     * Create a new ComparOperatorAPI instance from a decoded config json.
      * 
      * @param  array $config
-     * @return ProductHuntAPI
+     * @return ComparOperatorAPI
      * 
      * @todo Return entities instead of assoc arrays in next more oop-ish 
      *       iteration.
@@ -29,9 +27,9 @@ class ProductHuntAPI extends DBPDO
      *       implementation and NOT break to many things.
      * 
      */
-    public static function fromConfig(array $db_configs): ProductHuntAPI
+    public static function fromConfig(array $db_configs): ComparOperatorAPI
     {
-        $controller = new \Controllers\ProductHuntAPI();
+        $controller = new \Controllers\ComparOperatorAPI();
 
         $controller->set(['db_configs' => $db_configs]);
         return new self($controller);
@@ -39,7 +37,7 @@ class ProductHuntAPI extends DBPDO
 
 
     /**
-     * Create a new ProductHuntAPI instance.
+     * Create a new ComparOperatorAPI instance.
      *
      * @param  Controller|NULL $controller
      * @return void
@@ -47,7 +45,7 @@ class ProductHuntAPI extends DBPDO
     public function __construct(?Controller $controller = NULL)
     {
         if (is_null($controller)) {
-            $controller = new \Controllers\ProductHuntAPI();
+            $controller = new \Controllers\ComparOperatorAPI();
         }
         parent::__construct($controller);
     }
@@ -55,7 +53,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Get most recent products.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $count  How many products to return (default = 10).
      * @param  int $offset How many products to skip   (default = 0)
@@ -117,7 +115,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Get most popular products.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $count  How many products to return (default = 10).
      * @param  int $offset How many products to skip   (default = 0)
@@ -179,7 +177,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Get categories sorted by id.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $count  How many categories to return (default = 10).
      * @param  int $offset How many categories to skip   (default = 0)
@@ -217,7 +215,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Get category info for a given category id.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $category_id
      * 
@@ -258,7 +256,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Get product content associated with a given product id.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $product_id
      * 
@@ -316,7 +314,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Get products associated with a given category.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $category_id
      * @param  int $count  How many products to return (default = 10).
@@ -394,7 +392,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Find products whose name match given search string.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  string $search_string
      * @param  int $count  How many products to return (default = 10).
@@ -467,7 +465,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Find products whose content match given search string.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  string $search_string
      * @param  int $count  How many products to return (default = 10).
@@ -521,7 +519,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Get products id a given user voted for.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $user_id
      * 
@@ -555,7 +553,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Get comments for a given product.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $product_id
      * 
@@ -601,7 +599,7 @@ class ProductHuntAPI extends DBPDO
      * note
      *      Returns an empty array if given user id does NOT exist.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $user_id
      * 
@@ -650,7 +648,7 @@ class ProductHuntAPI extends DBPDO
      * note
      *      Returns an empty array if given user name does NOT exist.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  string $name
      * 
@@ -698,7 +696,7 @@ class ProductHuntAPI extends DBPDO
      * note
      *      Returns an empty array if operation could NOT complete.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  string $name
      * @param  string $ip
@@ -753,7 +751,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Register a vote for given user on given product.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $user_id
      * @param  int $product_id
@@ -796,7 +794,7 @@ class ProductHuntAPI extends DBPDO
     /**
      * Register a comment for given user on given product.
      * 
-     * @api ProductHuntAPI
+     * @api ComparOperatorAPI
      * 
      * @param  int $user_id
      * @param  int $product_id
