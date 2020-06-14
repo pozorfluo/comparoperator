@@ -39,7 +39,8 @@ if (!isset($config['components']) || DEV_FORCE_CONFIG_UPDATE) {
 
         if (!$is_interface_or_abstract) {
             $component = array_slice(explode(DIRECTORY_SEPARATOR, $php_file[0]), -2);
-            $config['components'][$component[0]][] = substr($component[1], 0, -4);
+            // $config['components'][$component[0]][] = substr($component[1], 0, -4);
+            $config['components'][$component[0]][substr($component[1], 0, -4)] = 1;
         }
     }
     $config_exists = false;

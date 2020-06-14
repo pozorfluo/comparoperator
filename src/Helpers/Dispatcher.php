@@ -5,18 +5,20 @@ declare(strict_types=1);
 namespace Helpers;
 
 use Controllers\Controller;
-use Interfaces\Loadable;
+// use Interfaces\Loadable;
 
 /**
  * Translate and dispatch a QUERY_STRING to the appropriate Controller or serve
  * a valid cached version of the pages if one is available.
  * 
- * Accept queries formatted as follow :
- * index.php?controller=ControllerName&action=ActionName&p1=v1&p2=v2&pn=vn"
- * 
  * Provide fallback routes for incomplete or junk queries.
  * 
- * note
+ * @example 
+ *   Accept queries formatted as follow :
+ *   index.php?controller=ControllerName&action=ActionName&p1=v1&p2=v2&pn=vn"
+ * 
+ * 
+ * @note
  *   Dispatcher is not in charge of invalidating cache files.
  *   If a cache file exists and is not past its expiration date, it is 
  *   considered valid and Dispatcher will serve it.
@@ -26,14 +28,14 @@ class Dispatcher
     protected $request;
 
     /**
-     * @var Loadable
+     * @var Controller
      */
     protected $controller;
 
     /**
      * var array ['route_name' => route]
      */
-    protected $routes;
+    // protected $routes;
 
     // const CACHE_TTL = 30; /* seconds */
     // const CACHE_PATH = ROOT . 'cache/';
@@ -58,15 +60,10 @@ class Dispatcher
         /**
          * Validate query against whitelist of registered components
          * Assert that the controller is instantiable
-         * Redirect to Home if query string specifies junk controller
+         * Redirect to Home if query string specifies no or junk controller
          */
         if ((!isset($this->request['controller'])
-            || (!in_array(
-                    $this->request['controller'],
-                    $config['components']['Controllers'],
-                    true
-                )))) {
-
+            || (!isset($config['components']['Controllers'][$this->request['controller']])))) {
             /**
              * note
              *   If you need to remember this redirection happened :
@@ -91,8 +88,8 @@ class Dispatcher
         // }
 
         $this->request['db_configs'] = $config['db_configs'];
-        $this->request['cached_file'] =
-            substr(self::CACHE_PATH . $base_name, 0, 250) . '.html';
+        // $this->request['cached_file'] =
+        //     substr(self::CACHE_PATH . $base_name, 0, 250) . '.html';
     }
 
     /**
