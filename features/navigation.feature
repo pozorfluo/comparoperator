@@ -20,4 +20,10 @@ Feature: Navigation
       When I misspell that link parameters
       Then I should be silently served the default version of <page>
 
+    Examples:
+        | page        |
+        | home        |
+        | destination |
+        | admin       |
+
 # La page administrateur est accessible juste en ajoutant /admin dans l'URL
