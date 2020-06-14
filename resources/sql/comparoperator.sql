@@ -1,147 +1,104 @@
--- phpMyAdmin SQL Dump
--- version 4.8.4
--- https://www.phpmyadmin.net/
---
 -- Host: mysql
--- Generation Time: May 28, 2019 at 11:47 AM
--- Server version: 10.3.4-MariaDB
--- PHP Version: 7.2.15
+-- PHP Version: 7.3.16
+SET
+    SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
+SET
+    AUTOCOMMIT = 0;
+
 START TRANSACTION;
-SET time_zone = "+00:00";
 
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+SET
+    time_zone = "+00:00";
 
 --
--- Database: `ComparOperator`
+-- Database: `tp_comparoperator`
 --
-CREATE DATABASE IF NOT EXISTS `ComparOperator` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `ComparOperator`;
+CREATE DATABASE IF NOT EXISTS `tp_comparoperator` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+
+USE `tp_comparoperator`;
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `operators`
+--
+CREATE TABLE `operators` (
+    `operator_id` MEDIUMINT UNSIGNED NOT NULL,
+    `name` VARCHAR(255) NOT NULL,
+    `website` VARCHAR(512) CHARACTER SET 'ascii' COLLATE 'ascii_general_ci' NOT NULL,
+    `thumbnail` VARCHAR(255) CHARACTER SET 'ascii' COLLATE 'ascii_general_ci' NOT NULL,
+    `is_premium` TINYINT(1) NOT NULL DEFAULT 0,
+    PRIMARY KEY (`operator_id`)
+) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
+-- --------------------------------------------------------
 --
 -- Table structure for table `destinations`
 --
-
 CREATE TABLE `destinations` (
-  `id` int(10) NOT NULL,
-  `location` varchar(150) NOT NULL,
-  `price` int(10) NOT NULL,
-  `id_tour_operator` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `destinations`
---
-
-INSERT INTO `destinations` (`id`, `location`, `price`, `id_tour_operator`) VALUES
-(1, 'corse', 500, 1);
+    `destination_id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `operator_id` MEDIUMINT UNSIGNED NOT NULL,
+    `created_at` DATETIME NOT NULL,
+    `location` VARCHAR(255) NOT NULL,
+    `price` DECIMAL(7,2) NOT NULL,
+    `thumbnail` VARCHAR(255) CHARACTER SET 'ascii' COLLATE 'ascii_general_ci' NOT NULL,
+    PRIMARY KEY (`destination_id`),
+    INDEX freshness (`created_at`),
+    CONSTRAINT `constraint_destinations_operator_fk`
+        FOREIGN KEY `operators_fk` (`operator_id`) REFERENCES `operators` (`operator_id`)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `users`
+--
+CREATE TABLE `users` (
+    `user_id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `name` CHAR(32) NOT NULL,
+    `created_at` DATETIME NOT NULL,
+    `ip` VARBINARY(16) NOT NULL ,
+    PRIMARY KEY (`user_id`),
+    UNIQUE INDEX username (`name`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
+-- --------------------------------------------------------
 --
 -- Table structure for table `reviews`
 --
-
 CREATE TABLE `reviews` (
-  `id` int(10) NOT NULL,
-  `message` varchar(250) NOT NULL,
-  `author` varchar(150) NOT NULL,
-  `id_tour_operator` int(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `reviews`
---
-
-INSERT INTO `reviews` (`id`, `message`, `author`, `id_tour_operator`) VALUES
-(1, 'super club !', 'alex', 1);
+    `review_id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `operator_id` MEDIUMINT UNSIGNED NOT NULL,
+    `user_id` MEDIUMINT UNSIGNED NOT NULL,
+    `created_at` DATETIME NOT NULL,
+    `message` TEXT NOT NULL,
+    PRIMARY KEY (`review_id`),
+    INDEX freshness (`created_at`),
+    CONSTRAINT `constraint_comments_operator_fk`
+        FOREIGN KEY `operators_fk` (`operator_id`) REFERENCES `operators` (`operator_id`)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `constraint_comments_user_fk`
+        FOREIGN KEY `user_fk` (`user_id`) REFERENCES `users` (`user_id`)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `ratings`
+--
+CREATE TABLE `ratings` (
+    `operator_id` MEDIUMINT UNSIGNED NOT NULL,
+    `user_id` MEDIUMINT UNSIGNED NOT NULL,
+    `rating` TINYINT UNSIGNED NOT NULL CHECK (rating <= 5),
+    `created_at` DATETIME NOT NULL,
+    PRIMARY KEY (`operator_id`, `user_id`),
+    INDEX freshness (`created_at`),
+    CONSTRAINT `constraint_ratings_operator_fk`
+        FOREIGN KEY `operators_fk` (`operator_id`) REFERENCES `operators` (`operator_id`)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `constraint_ratings_user_fk`
+        FOREIGN KEY `users_fk` (`user_id`) REFERENCES `users` (`user_id`)
+        ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
---
--- Table structure for table `tour_operators`
---
-
-CREATE TABLE `tour_operators` (
-  `id` int(10) NOT NULL,
-  `name` varchar(150) NOT NULL,
-  `grade` int(2) NOT NULL,
-  `link` varchar(255) NOT NULL,
-  `is_premium` tinyint(1) NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `tour_operators`
---
-
-INSERT INTO `tour_operators` (`id`, `name`, `grade`, `link`, `is_premium`) VALUES
-(1, 'club med', 5, 'https://www.clubmed.fr/', 0);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `destinations`
---
-ALTER TABLE `destinations`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `fk_operator` (`id_tour_operator`);
-
---
--- Indexes for table `reviews`
---
-ALTER TABLE `reviews`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `id_tour_operator` (`id_tour_operator`);
-
---
--- Indexes for table `tour_operators`
---
-ALTER TABLE `tour_operators`
-  ADD PRIMARY KEY (`id`);
-
-
---
--- AUTO_INCREMENT for table `destinations`
---
-ALTER TABLE `destinations`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `reviews`
---
-ALTER TABLE `reviews`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `tour_operators`
---
-ALTER TABLE `tour_operators`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
-
---
--- Constraints for table `destinations`
---
-ALTER TABLE `destinations`
-  ADD CONSTRAINT `fk_operator` FOREIGN KEY (`id_tour_operator`) REFERENCES `tour_operators` (`id`) ON DELETE CASCADE;
-
---
--- Constraints for table `reviews`
---
-ALTER TABLE `reviews`
-  ADD CONSTRAINT `fk_tour_operator` FOREIGN KEY (`id_tour_operator`) REFERENCES `tour_operators` (`id`) ON DELETE CASCADE;
 COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

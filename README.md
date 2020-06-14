@@ -39,7 +39,7 @@
         "DB_HOST": "127.0.0.1",
         "DB_PORT": "3306",
         "DB_CHARSET": "utf8mb4",
-        "DB_NAME": "ComparOperator",
+        "DB_NAME": "tp_comparoperator",
         "DB_USER": "your_user_name",
         "DB_PASSWORD": "your_db_password"
         }
@@ -96,20 +96,21 @@
 ## app flowchart
 
 ## db
+![db](resources/images/tp-comparoperator-db.png)
 
 ## wireframes
 
 ### desktop/laptop
 
-![desktop](htdocs/resources/images/wireframe-desktop.png)
+<!-- ![desktop](resources/images/wireframe-desktop.png) -->
 
 ### tablet
 
-![tablet](htdocs/resources/images/wireframe-tablet.png)
+<!-- ![tablet](resources/images/wireframe-tablet.png) -->
 
 ### mobile
 
-![mobile](htdocs/resources/images/wireframe-mobile.png)
+<!-- ![mobile](resources/images/wireframe-mobile.png) -->
 
 ## todo
 see [project board](https://trello.com/b/zBuG36CV/comparoperator)
