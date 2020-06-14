@@ -5,7 +5,7 @@ Feature: Navigation
     Scenario: Navigating back to the home page
       Given that I navigated away from the home page
       And I am still in the app
-      Then I should be able navigate back to the home page in a single click
+      Then I should see a link to the home page
 
     Scenario: Requesting a page that does not exist
       Given there is a link that does not resolve to a meaningful request
