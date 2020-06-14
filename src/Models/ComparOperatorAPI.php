@@ -11,6 +11,12 @@ use Controllers\Controller;
 
 /**
  * ComparOperatorAPI
+ * 
+ * @todo Return entities instead of assoc arrays in next more oop-ish 
+ *       iteration.
+ * @todo Consider returning a generic 'EntityInterface' instead of an entity
+ *       to be able to move things around in a specific entity
+ *       implementation and NOT break to many things.
  */
 class ComparOperatorAPI extends DBPDO
 {
@@ -19,13 +25,6 @@ class ComparOperatorAPI extends DBPDO
      * 
      * @param  array $config
      * @return ComparOperatorAPI
-     * 
-     * @todo Return entities instead of assoc arrays in next more oop-ish 
-     *       iteration.
-     * @todo Consider returning a generic 'EntityInterface' instead of an entity
-     *       to be able to move things around in a specific entity
-     *       implementation and NOT break to many things.
-     * 
      */
     public static function fromConfig(array $db_configs): ComparOperatorAPI
     {
@@ -420,8 +419,8 @@ class ComparOperatorAPI extends DBPDO
         int $count = 10,
         int $offset = 0
     ): array {
-        
-        $search_string = '%'.$search_string.'%';
+
+        $search_string = '%' . $search_string . '%';
 
         if ($count < 0) {
             $count = 10;
