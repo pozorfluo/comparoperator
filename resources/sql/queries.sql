@@ -99,35 +99,6 @@ GROUP BY
     `operators`.`operator_id`    
 LIMIT 10 OFFSET 0;
 
-
-
-
-
-SELECT
-    `destinations`.`destination_id`,
-    `destinations`.`price`,
-    `destinations`.`thumbnail`,
-    `destinations`.`operator_id`,
-    `operators`.`name` AS `operator`,
-    `operators`.`website`,
-    `operators`.`logo`,
-    `operators`.`is_premium`,
-    COUNT(DISTINCT `reviews`.`review_id`) AS `review_count`
-FROM
-    `destinations`
-LEFT JOIN
-    `operators`
-ON
-    `destinations`.`operator_id` = `operators`.`operator_id`
-LEFT JOIN
-    `reviews`
-ON
-    `operators`.`operator_id` = `reviews`.`operator_id`
-WHERE
-    `destinations`.`location` = 'Osaka'
-GROUP BY
-    `operators`.`operator_id`    
-LIMIT 10 OFFSET 0;
 -- --------------------------------------------------------
 --
 -- public function getFreshProducts(int $count = 10, int $offset = 0): array
@@ -158,6 +129,23 @@ ORDER BY
 LIMIT 10 OFFSET 0;
 
 
+-- --------------------------------------------------------
+--
+-- public function getOperatorReviews(int $operator_id, int $count = 10, int $offset = 0): array
+--
+SELECT
+    `review_id`,
+    `operator_id`,
+    `user_id`,
+    `created_at`,
+    `message`
+FROM
+    `reviews`
+WHERE
+    `operator_id` = 6
+LIMIT 10 OFFSET 0;
+-- --------------------------------------------------------
+-- --------------------------------------------------------
 -- --------------------------------------------------------
 --
 -- public function getPopularProducts(int $count = 10, int $offset = 0): array

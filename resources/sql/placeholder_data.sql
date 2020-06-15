@@ -14,6 +14,7 @@ SET
 --
 -- Database: `tp_comparoperator`
 --
+USE `tp_comparoperator`;
 -- --------------------------------------------------------
 --
 -- Placeholder data for table `operators`
