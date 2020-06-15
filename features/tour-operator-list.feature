@@ -28,6 +28,13 @@ Feature: Tour operator list
       And I should be requested to type my name
       And that review should be displayed in the offering
 
+    # Scenario: Leaving a review
+    #   Given I am a registered user
+    #   And I am logged in
+    #   When I select an offering review field
+    #   Then I should be able to type a review
+    #   And that review should be displayed in the offering
+
     # Scenario: Grading a tour operator
 
   Rule: Tour operator list follows responsive web design
@@ -41,5 +48,5 @@ Feature: Tour operator list
         | platform | presentation |
         | desktop  | desktop      |
         | laptop   | desktop      |
-        | tablet   | tablet       |
+        | tablet   | mobile       |
         | mobile   | mobile       |
