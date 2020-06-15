@@ -37,21 +37,14 @@ class Dispatcher
      */
     // protected $routes;
 
-    // const CACHE_TTL = 30; /* seconds */
-    // const CACHE_PATH = ROOT . 'cache/';
+    const CACHE_TTL = 30; /* seconds */
+    const CACHE_PATH = ROOT . 'cache/';
 
     /**
      * Create a new Dispatcher instance.
      *
      * @param  array $config
      * @return void
-     * 
-     * @todo Consider making a set 
-     *       ( or a ghetto-set e.g., [component => bool $is_instantiable] )
-     *       out of registered components instead of an array.
-     * 
-     * @todo Bench break even count of registered components for 
-     *       isset/array_key_exists vs in_array.
      */
     public function __construct(array $config)
     {
@@ -88,17 +81,12 @@ class Dispatcher
         // }
 
         $this->request['db_configs'] = $config['db_configs'];
-        // $this->request['cached_file'] =
-        //     substr(self::CACHE_PATH . $base_name, 0, 250) . '.html';
+
+        $this->request['cached_file'] =
+            substr(self::CACHE_PATH . $base_name, 0, 250) . '.html';
     }
 
     /**
-     * @todo
-     *   - [x] Figure out how to prevent a call to a method that does
-     *         NOT represent an action ?!
-     *     + [x] Consider prepending / appending with 'run' or Action' 
-     *           both to make it clear what is meant to be a callable 
-     *           action and thwart malicious requests
      * @todo Move the controller instancing logic to a method in Controller base
      *       class that returns the appropriate Controller all setup with given
      *       request as args.

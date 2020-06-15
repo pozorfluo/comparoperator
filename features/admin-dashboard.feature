@@ -5,3 +5,6 @@
 # L'administrateur peut également ajouter des destinations aux TO parmi une 
 # liste fixe.
 # Un tour opérateur peut être passé en premium sur cette page.
+
+# @todo Consider doing admin task via RESTish API with some (faked) form of auth
+# @todo Consider doing admin task via regular forms

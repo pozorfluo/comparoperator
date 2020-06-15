@@ -9,6 +9,8 @@ Feature: Destination list
       Given there is a request for the home page
       When I am on the home page
       Then I should see the list of available destinations
+      And I should see a thumbnail for each destination
+      And I should see the number of offerings for each destination
 
     Scenario Outline: Selecting a destination
       Given I am on the home page

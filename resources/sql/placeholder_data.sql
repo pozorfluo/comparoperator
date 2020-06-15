@@ -23,7 +23,7 @@ INSERT INTO
         `operator_id`,
         `name`,
         `website`,
-        `thumbnail`,
+        `logo`,
         `is_premium`
     )
 VALUES

@@ -8,7 +8,7 @@ declare(strict_types=1);
 
 namespace Controllers;
 
-use Interfaces\Loadable;
+// use Interfaces\Loadable;
 use Models\Model;
 use Views\View;
 

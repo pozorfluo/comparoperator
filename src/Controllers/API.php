@@ -155,7 +155,7 @@ abstract class API extends Controller
     public function call(): self
     {
         /**
-         * note
+         * @note
          *   'escaping' and providing default action
          *   Endpoint may access multiple sub-ressources with different methods
          */

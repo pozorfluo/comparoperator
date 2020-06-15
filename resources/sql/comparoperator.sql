@@ -26,7 +26,7 @@ CREATE TABLE `operators` (
     `operator_id` MEDIUMINT UNSIGNED NOT NULL,
     `name` VARCHAR(255) NOT NULL,
     `website` VARCHAR(512) CHARACTER SET 'ascii' COLLATE 'ascii_general_ci' NOT NULL,
-    `thumbnail` VARCHAR(255) CHARACTER SET 'ascii' COLLATE 'ascii_general_ci' NOT NULL,
+    `logo` VARCHAR(255) CHARACTER SET 'ascii' COLLATE 'ascii_general_ci' NOT NULL,
     `is_premium` TINYINT(1) NOT NULL DEFAULT 0,
     PRIMARY KEY (`operator_id`)
 ) ENGINE=InnoDB CHARACTER SET utf8 COLLATE utf8_general_ci;
@@ -34,6 +34,10 @@ CREATE TABLE `operators` (
 -- --------------------------------------------------------
 --
 -- Table structure for table `destinations`
+--
+-- @todo
+--   Consider splitting destination to a location table and a separate 
+--   offering/destinations table.
 --
 CREATE TABLE `destinations` (
     `destination_id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,

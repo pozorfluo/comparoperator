@@ -46,7 +46,7 @@ class Entity implements Validatable
                     'options' => ['regexp' => '/^([A-Za-z0-9_\-\s]+)$/']
                 ];
 
-            // echo '<pre>' . var_export($this->definitions[$field], true) . '</pre>';
+            echo '<pre>' . var_export($this->definitions[$field], true) . '</pre>';
         }
     }
 
