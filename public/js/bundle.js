@@ -1,0 +1,1 @@
+console.error("Error: Cannot find module '/home/clement/Desktop/devilbox/data/www/comparoperator/resources/js/script.js' from '/home/clement/Desktop/devilbox/data/www/comparoperator'");
