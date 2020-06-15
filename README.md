@@ -102,15 +102,16 @@
 
 ### desktop/laptop
 
-<!-- ![desktop](resources/images/wireframe-desktop.png) -->
+![desktop](resources/images/wireframe-desktop-homepage.png)
+![desktop](resources/images/wireframe-desktop-to-list.png)
+![desktop](resources/images/wireframe-desktop-to-modal.png)
 
 ### tablet
-
-<!-- ![tablet](resources/images/wireframe-tablet.png) -->
-
 ### mobile
 
-<!-- ![mobile](resources/images/wireframe-mobile.png) -->
+![mobile](resources/images/wireframe-mobile-homepage.png)
+![mobile](resources/images/wireframe-mobile-to-list.png)
+![mobile](resources/images/wireframe-mobile-to-modal.png)
 
 ## todo
 see [project board](https://trello.com/b/zBuG36CV/comparoperator)
