@@ -94,6 +94,7 @@
 ## docs
 
 ## app flowchart
+![flowchart](resources/images/flowchart.svg)
 
 ## db
 ![db](resources/images/tp-comparoperator-db.png)
