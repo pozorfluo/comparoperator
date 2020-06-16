@@ -49,6 +49,7 @@ require ROOT . 'src/Helpers/AutoLoader.php';
 
 use Helpers\Dispatcher;
 use Entities\Entity;
+use Entities\User;
 use Helpers\Cache;
 use Helpers\CacheItem;
 //--------------------------------------------------------------- playground
@@ -134,6 +135,13 @@ date_default_timezone_set('Europe/Paris');
 //     'footer' => include TEMPLATE . 'footer.php'
 // ];
 
+echo ''.date('Y-m-d H:i:s', strtotime('-8 days'));
+
+$test_entity =  new User(1, 'El Guapo', date('Y-m-d H:i:s'), '127.0.0.1');
+
+echo '<pre>'.var_export($test_entity->isValid(), true).'</pre><hr />';
+echo '<pre>'.var_export($test_entity->getFiltered(), true).'</pre><hr />';
+echo '<pre>'.var_export($test_entity, true).'</pre><hr />';
 // include ROOT . 'src/Layouts/Layout.php';
 //---------------------------------------------------------------------- run
 $t = microtime(true);
