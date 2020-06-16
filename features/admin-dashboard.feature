@@ -1,3 +1,9 @@
+Feature: Admin dashboard
+    In order to manage TourOperators
+    As an Admin
+    I need to be able to add TourOperators
+    And tag TourOperators as premium
+
 # La page administrateur est accessible juste en ajoutant /admin dans l'URL
 # Bonus : authentification par mot de passe enregistré en session 
 # (un mot de passe unique pour tous les administrateurs d'un site).

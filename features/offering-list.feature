@@ -1,9 +1,9 @@
-Feature: Tour operator list
+Feature: Offering list
       In order to book a trip with a tour operator for a destination
       As a User
       I need to be able to see and compare tour operator offerings
 
-  Rule: Each destination has its own tour operator list page
+  Rule: Each destination has its own offering list page
 
     Background:
       Given I selected a destination
@@ -37,7 +37,7 @@ Feature: Tour operator list
 
     # Scenario: Grading a tour operator
 
-  Rule: Tour operator list follows responsive web design
+  Rule: Offering list follows responsive web design
 
     Scenario Outline: Accessing from different platforms
       Given that I use a <platform>
