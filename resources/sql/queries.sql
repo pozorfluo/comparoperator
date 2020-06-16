@@ -39,7 +39,6 @@ WHERE
     `user_id` = 1;
 
 -- --------------------------------------------------------
-
 --
 -- public function addUser(string $name, string $ip): array
 --
@@ -101,6 +100,133 @@ LIMIT 10 OFFSET 0;
 
 -- --------------------------------------------------------
 --
+-- public function getOperatorReviews(int $operator_id, int $count = 10, int $offset = 0): array
+--
+SELECT
+    `review_id`,
+    `operator_id`,
+    `user_id`,
+    `created_at`,
+    `message`
+FROM
+    `reviews`
+WHERE
+    `operator_id` = 6
+LIMIT 10 OFFSET 0;
+
+-- --------------------------------------------------------
+--
+-- public function getOperators(int $count = 10, int $offset = 0): array
+--
+SELECT
+    `operator_id`,
+    `name`,
+    `website`,
+    `logo`,
+    `is_premium`
+FROM 
+    `operators`
+LIMIT 10 OFFSET 0;
+
+-- --------------------------------------------------------
+--
+-- public function getOperatorbyName(string $name): array
+--
+SELECT
+    `operator_id`,
+    `name`,
+    `website`,
+    `logo`,
+    `is_premium`
+FROM 
+    `operators`
+WHERE
+    `name` = "FRAM";
+
+-- --------------------------------------------------------
+--
+-- public function getOperatorById(int $operator_id): array
+--
+SELECT
+    `operator_id`,
+    `name`,
+    `website`,
+    `logo`,
+    `is_premium`
+FROM 
+    `operators`
+WHERE
+    `operator_id` = 4;
+
+-- --------------------------------------------------------
+--
+-- public function setOperatorPremium(int $operator_id, bool $premium): array
+--
+-- -> Put operation in RESTish API
+--
+
+UPDATE 
+    `operators`
+SET
+    `is_premium` = 0
+WHERE 
+    `operator_id` = 1;
+
+SELECT
+    `operator_id`,
+    `name`,
+    `website`,
+    `logo`,
+    `is_premium`
+FROM 
+    `operators`
+WHERE
+    `operator_id` = 1;
+
+-- --------------------------------------------------------
+--
+-- public function addOperator(string $name, string $url, string $logo_path, bool $premium = false): array
+--
+INSERT INTO
+    `operators` (
+        `name`,
+        `website`,
+        `logo`,
+        `is_premium`
+    )
+VALUES
+    (
+        'Club Red',
+        'https://www.clubred.fr/',
+        'images/products/operators/clubmed.svg',
+        0
+    );
+SELECT
+    `operator_id`,
+    `name`,
+    `website`,
+    `logo`,
+    `is_premium`
+FROM 
+    `operators`
+WHERE
+    `operator_id` = LAST_INSERT_ID();
+-- --------------------------------------------------------
+--
+-- public function addDestination(string $location, float $prince, string $thumb_path): array
+--
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+
+
+
+
+
+-- --------------------------------------------------------
+--
 -- public function getFreshProducts(int $count = 10, int $offset = 0): array
 --
 SELECT
@@ -129,23 +255,6 @@ ORDER BY
 LIMIT 10 OFFSET 0;
 
 
--- --------------------------------------------------------
---
--- public function getOperatorReviews(int $operator_id, int $count = 10, int $offset = 0): array
---
-SELECT
-    `review_id`,
-    `operator_id`,
-    `user_id`,
-    `created_at`,
-    `message`
-FROM
-    `reviews`
-WHERE
-    `operator_id` = 6
-LIMIT 10 OFFSET 0;
--- --------------------------------------------------------
--- --------------------------------------------------------
 -- --------------------------------------------------------
 --
 -- public function getPopularProducts(int $count = 10, int $offset = 0): array
@@ -249,19 +358,7 @@ ORDER BY
     `votes_count` DESC, `products`.`created_at` DESC
 LIMIT 10 OFFSET 0;
 
--- --------------------------------------------------------
---
--- public function getProduct(int $product_id): array
---
-SELECT
-    `articles`.`product_id`,
-    `articles`.`article_id`,
-    `articles`.`content`,
-    `articles`.`media`
-FROM 
-    `articles`
-WHERE
-    `articles`.`product_id` = 1;
+
 
 -- --------------------------------------------------------
 --
