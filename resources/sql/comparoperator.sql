@@ -23,7 +23,7 @@ USE `tp_comparoperator`;
 -- Table structure for table `operators`
 --
 CREATE TABLE `operators` (
-    `operator_id` MEDIUMINT UNSIGNED NOT NULL,
+    `operator_id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `name` VARCHAR(255) NOT NULL,
     `website` VARCHAR(512) CHARACTER SET 'ascii' COLLATE 'ascii_general_ci' NOT NULL,
     `logo` VARCHAR(255) CHARACTER SET 'ascii' COLLATE 'ascii_general_ci' NOT NULL,
