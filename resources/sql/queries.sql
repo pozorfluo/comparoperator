@@ -77,7 +77,7 @@ SELECT
     `operators`.`logo`,
     `operators`.`is_premium`,
     COUNT(DISTINCT `reviews`.`review_id`) AS `review_count`,
-    AVG(`ratings`.`rating`) AS `operator_rating`
+    IFNULL(AVG(`reviews`.`rating`), 0.0) AS `operator_rating`
 FROM
     `destinations`
 LEFT JOIN
@@ -88,31 +88,40 @@ LEFT JOIN
     `reviews`
 ON
     `operators`.`operator_id` = `reviews`.`operator_id`
-LEFT JOIN
-    `ratings`
-ON
-    `operators`.`operator_id` = `ratings`.`operator_id`
 WHERE
     `destinations`.`location` = 'Osaka'
 GROUP BY
     `operators`.`operator_id`    
 LIMIT 10 OFFSET 0;
-
--- --------------------------------------------------------
---
--- public function getOperatorReviews(int $operator_id, int $count = 10, int $offset = 0): array
---
-SELECT
-    `review_id`,
-    `operator_id`,
-    `user_id`,
-    `created_at`,
-    `message`
-FROM
-    `reviews`
-WHERE
-    `operator_id` = 6
-LIMIT 10 OFFSET 0;
+--     `destinations`.`destination_id`,
+--     `destinations`.`price`,
+--     `destinations`.`thumbnail`,
+--     `destinations`.`operator_id`,
+--     `operators`.`name` AS `operator`,
+--     `operators`.`website`,
+--     `operators`.`logo`,
+--     `operators`.`is_premium`,
+--     COUNT(DISTINCT `reviews`.`review_id`) AS `review_count`,
+--     AVG(`ratings`.`rating`) AS `operator_rating`
+-- FROM
+--     `destinations`
+-- LEFT JOIN
+--     `operators`
+-- ON
+--     `destinations`.`operator_id` = `operators`.`operator_id`
+-- LEFT JOIN
+--     `reviews`
+-- ON
+--     `operators`.`operator_id` = `reviews`.`operator_id`
+-- LEFT JOIN
+--     `ratings`
+-- ON
+--     `operators`.`operator_id` = `ratings`.`operator_id`
+-- WHERE
+--     `destinations`.`location` = 'Osaka'
+-- GROUP BY
+--     `operators`.`operator_id`    
+-- LIMIT 10 OFFSET 0;
 
 -- --------------------------------------------------------
 --
@@ -130,7 +139,7 @@ LIMIT 10 OFFSET 0;
 
 -- --------------------------------------------------------
 --
--- public function getOperatorbyName(string $name): array
+-- public function getOperatorByName(string $name): array
 --
 SELECT
     `operator_id`,
@@ -215,158 +224,129 @@ WHERE
 --
 -- public function addDestination(string $location, float $prince, string $thumb_path): array
 --
--- --------------------------------------------------------
--- --------------------------------------------------------
--- --------------------------------------------------------
--- --------------------------------------------------------
--- --------------------------------------------------------
-
-
-
-
-
--- --------------------------------------------------------
---
--- public function getFreshProducts(int $count = 10, int $offset = 0): array
---
+INSERT INTO
+    `destinations` (
+        `operator_id`,
+        `created_at`,
+        `location`,
+        `price`,
+        `thumbnail`
+    )
+VALUES
+    (
+        1,
+        '2020-05-10 07:01:01',
+        'Vienna',
+        600,
+        'images/products/destinations/0001.jpg'
+    );
 SELECT
-    `products`.`product_id`,
-    `products`.`created_at`,
-    `products`.`name`,
-    `products`.`summary`,
-    `products`.`website`,
-    `products`.`thumbnail`,
-    COUNT(DISTINCT `comments`.`comment_id`) AS `comments_count`,
-    COUNT(DISTINCT `votes`.`user_id`) AS `votes_count`
+    `destination_id`,
+    `operator_id`,
+    `created_at`,
+    `location`,
+    `price`,
+    `thumbnail`
 FROM 
-    `products`
-LEFT JOIN
-    `comments`
-ON
-    `products`.`product_id` = `comments`.`product_id`
-LEFT JOIN
-    `votes`
-ON
-    `products`.`product_id` = `votes`.`product_id`
-GROUP BY
-    `products`.`product_id`
-ORDER BY
-    `products`.`created_at` DESC
-LIMIT 10 OFFSET 0;
-
-
--- --------------------------------------------------------
---
--- public function getPopularProducts(int $count = 10, int $offset = 0): array
---
-SELECT
-    `products`.`product_id`,
-    `products`.`created_at`,
-    `products`.`name`,
-    `products`.`summary`,
-    `products`.`website`,
-    `products`.`thumbnail`,
-    COUNT(DISTINCT `comments`.`comment_id`) AS `comments_count`,
-    COUNT(DISTINCT `votes`.`user_id`) AS `votes_count`
-FROM 
-    `products`
-LEFT JOIN
-    `comments`
-ON
-    `products`.`product_id` = `comments`.`product_id`
-LEFT JOIN
-    `votes`
-ON
-    `products`.`product_id` = `votes`.`product_id`
-GROUP BY
-    `products`.`product_id`
-ORDER BY
-    `votes_count` DESC, `products`.`created_at` DESC
-LIMIT 10 OFFSET 0
-
--- --------------------------------------------------------
---
--- public function getProductsCollection(
---     int $category_id,
---     int $count = 10,
---     int $offset = 0
--- ): array
---
-SELECT
-    `products`.`product_id`,
-    `products`.`created_at`,
-    `products`.`name`,
-    `products`.`summary`,
-    `products`.`website`,
-    `products`.`thumbnail`,
-    COUNT(DISTINCT `comments`.`comment_id`) AS `comments_count`,
-    COUNT(DISTINCT `votes`.`user_id`) AS `votes_count`
-FROM 
-    `products`
-INNER JOIN
-    `collections`
-ON
-    `products`.`product_id` = `collections`.`product_id`
-LEFT JOIN
-    `comments`
-ON
-    `products`.`product_id` = `comments`.`product_id`
-LEFT JOIN
-    `votes`
-ON
-    `products`.`product_id` = `votes`.`product_id`
+    `destinations`
 WHERE
-    `collections`.`category_id` = 1
-GROUP BY
-    `products`.`product_id`
-ORDER BY
-    `votes_count` DESC, `products`.`created_at` DESC
-LIMIT 10 OFFSET 0;
+    `destination_id` = LAST_INSERT_ID();
 
 -- --------------------------------------------------------
 --
--- public function findProductsByName(
---     string $search_string,
---     int $count = 10,
---     int $offset = 0
--- ): array 
+-- public function getUserRatings(int $user_id): array
 --
-SELECT
-    `products`.`product_id`,
-    `products`.`created_at`,
-    `products`.`name`,
-    `products`.`summary`,
-    `products`.`website`,
-    `products`.`thumbnail`,
-    COUNT(DISTINCT `comments`.`comment_id`) AS `comments_count`,
-    COUNT(DISTINCT `votes`.`user_id`) AS `votes_count`
-FROM 
-    `products`
-LEFT JOIN
-    `comments`
-ON
-    `products`.`product_id` = `comments`.`product_id`
-LEFT JOIN
-    `votes`
-ON
-    `products`.`product_id` = `votes`.`product_id`
-WHERE
-    `products`.`name` LIKE '%cal%'
-GROUP BY
-    `products`.`product_id`
-ORDER BY
-    `votes_count` DESC, `products`.`created_at` DESC
-LIMIT 10 OFFSET 0;
-
+-- SELECT
+--     `operator_id`,
+--     `rating`
+-- FROM
+--     `ratings`
+-- WHERE
+--     `user_id` = 1;
 
 
 -- --------------------------------------------------------
 --
--- public function getUserVotes(int $user_id): array
+-- public function getReviewsByDestination(int $destination_id): array
 --
 SELECT
-    `product_id`
+    `review_id`,
+    `destination_id`,
+    `operator_id`,
+    `user_id`,
+    `created_at`,
+    `rating`,
+    `message`
 FROM
-    `votes`
+    `reviews`
 WHERE
-    `user_id` = 1;
+    `destination_id` = 4
+LIMIT 10 OFFSET 0;
+-- --------------------------------------------------------
+--
+-- public function getReviewsByOperator(int $operator_id, int $count = 10, int $offset = 0): array
+--
+SELECT
+    `review_id`,
+    `destination_id`,
+    `operator_id`,
+    `user_id`,
+    `created_at`,
+    `rating`,
+    `message`
+FROM
+    `reviews`
+WHERE
+    `operator_id` = 4
+LIMIT 10 OFFSET 0;
+-- --------------------------------------------------------
+--
+-- public function review(int $user_id, int $operator_id, int $rating): array
+--
+-- @todo Consider alternative to avg subquery
+-- @todo Explore cost of this kind of subquery
+--
+INSERT INTO 
+    `reviews` (
+        `destination_id`,
+        `operator_id`,
+        `user_id`,
+        `created_at`,
+        `rating`,
+        `message`
+    )
+VALUES
+    (
+        1,
+        1,
+        3,
+        '2020-05-10 07:01:01',
+        5,
+        'One more review'
+    );
+
+SELECT
+    `review_id`,
+    `destination_id`,
+    `operator_id`,
+    `user_id`,
+    `created_at`,
+    `rating`,
+    `message`,
+    (
+        SELECT
+            IFNULL(AVG(`reviews`.`rating`), 0.0)
+        FROM
+            `reviews`
+        WHERE
+            `operator_id`= 1
+    ) AS `operator_rating`
+FROM
+    `reviews`
+WHERE
+    `review_id` = LAST_INSERT_ID();
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+-- --------------------------------------------------------
+-- --------------------------------------------------------

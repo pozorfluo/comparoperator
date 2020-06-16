@@ -57,6 +57,8 @@ CREATE TABLE `destinations` (
 --
 -- Table structure for table `users`
 --
+-- `group` ENUM('user', 'operator', 'admin'),
+--
 CREATE TABLE `users` (
     `user_id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
     `name` CHAR(32) NOT NULL,
@@ -72,13 +74,18 @@ CREATE TABLE `users` (
 --
 CREATE TABLE `reviews` (
     `review_id` MEDIUMINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    `destination_id` MEDIUMINT UNSIGNED NOT NULL,
     `operator_id` MEDIUMINT UNSIGNED NOT NULL,
     `user_id` MEDIUMINT UNSIGNED NOT NULL,
     `created_at` DATETIME NOT NULL,
+    `rating` TINYINT UNSIGNED NOT NULL CHECK (rating <= 5),
     `message` TEXT NOT NULL,
     PRIMARY KEY (`review_id`),
     INDEX freshness (`created_at`),
-    CONSTRAINT `constraint_comments_operator_fk`
+    CONSTRAINT `constraint_reviews_destination_fk`
+        FOREIGN KEY `destinations_fk` (`destination_id`) REFERENCES `destinations` (`destination_id`)
+        ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT `constraint_reviews_operator_fk`
         FOREIGN KEY `operators_fk` (`operator_id`) REFERENCES `operators` (`operator_id`)
         ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT `constraint_comments_user_fk`
@@ -90,19 +97,19 @@ CREATE TABLE `reviews` (
 --
 -- Table structure for table `ratings`
 --
-CREATE TABLE `ratings` (
-    `operator_id` MEDIUMINT UNSIGNED NOT NULL,
-    `user_id` MEDIUMINT UNSIGNED NOT NULL,
-    `rating` TINYINT UNSIGNED NOT NULL CHECK (rating <= 5),
-    `created_at` DATETIME NOT NULL,
-    PRIMARY KEY (`operator_id`, `user_id`),
-    INDEX freshness (`created_at`),
-    CONSTRAINT `constraint_ratings_operator_fk`
-        FOREIGN KEY `operators_fk` (`operator_id`) REFERENCES `operators` (`operator_id`)
-        ON DELETE CASCADE ON UPDATE CASCADE,
-    CONSTRAINT `constraint_ratings_user_fk`
-        FOREIGN KEY `users_fk` (`user_id`) REFERENCES `users` (`user_id`)
-        ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
+-- CREATE TABLE `ratings` (
+--     `operator_id` MEDIUMINT UNSIGNED NOT NULL,
+--     `user_id` MEDIUMINT UNSIGNED NOT NULL,
+--     `rating` TINYINT UNSIGNED NOT NULL CHECK (rating <= 5),
+--     `created_at` DATETIME NOT NULL,
+--     PRIMARY KEY (`operator_id`, `user_id`),
+--     INDEX freshness (`created_at`),
+--     CONSTRAINT `constraint_ratings_operator_fk`
+--         FOREIGN KEY `operators_fk` (`operator_id`) REFERENCES `operators` (`operator_id`)
+--         ON DELETE CASCADE ON UPDATE CASCADE,
+--     CONSTRAINT `constraint_ratings_user_fk`
+--         FOREIGN KEY `users_fk` (`user_id`) REFERENCES `users` (`user_id`)
+--         ON DELETE CASCADE ON UPDATE CASCADE
+-- ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE utf8_general_ci;
 
 COMMIT;
