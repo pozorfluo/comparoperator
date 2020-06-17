@@ -56,7 +56,7 @@ final class UserTest extends TestCase
                 'user_id' => 0,
                 'name' => 'El Guapo',
                 'created_at' =>  date('Y-m-d H:i:s'),
-                'ip' => '127.0.01',
+                'ip' => inet_pton('127.0.0.1'),
             ]
         );
         /* When  */
@@ -73,10 +73,10 @@ final class UserTest extends TestCase
         /* Given */
         $entity =  \Entities\User::fromData(
             [
-                'user_id' => 0,
+                'user_id' => 1,
                 'name' => 'El%Guapo',
                 'created_at' =>  date('Y-m-d H:i:s'),
-                'ip' => '127.0.01',
+                'ip' => inet_pton('127.0.0.1'),
             ]
         );
         /* When  */
@@ -93,10 +93,10 @@ final class UserTest extends TestCase
         /* Given */
         $entity =  \Entities\User::fromData(
             [
-                'user_id' => 0,
-                'name' => 'El%Guapo',
-                'created_at' =>  date('Y-m-d H:i:s'),
-                'ip' => '127.0.01',
+                'user_id' => 1,
+                'name' => 'El Guapo',
+                'created_at' =>  date('Y-m-d i:s'),
+                'ip' => inet_pton('127.0.0.1'),
             ]
         );
         /* When  */
