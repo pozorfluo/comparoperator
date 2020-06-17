@@ -345,6 +345,44 @@ FROM
     `reviews`
 WHERE
     `review_id` = LAST_INSERT_ID();
+
+
+
+-- INSERT INTO 
+--     `reviews` (
+--         `destination_id`,
+--         `operator_id`,
+--         `user_id`,
+--         `created_at`,
+--         `rating`,
+--         `message`
+--     )
+-- VALUES
+--     (
+--         1,
+--         1,
+--         3,
+--         '2020-05-10 07:01:01',
+--         5,
+--         'One more review'
+--     );
+-- SELECT
+--     `reviews`.`review_id`,
+--     `reviews`.`destination_id`,
+--     `reviews`.`operator_id`,
+--     `reviews`.`user_id`,
+--     `reviews`.`created_at`,
+--     `reviews`.`rating`,
+--     `reviews`.`message`,
+--      IFNULL(AVG(`ratings`.`rating`), 0.0) AS `operator_rating`
+-- FROM
+--     `reviews`
+-- RIGHT OUTER JOIN
+--     `reviews` as `ratings`
+-- ON
+--     `reviews`.`operator_id` = `ratings`.`operator_id`
+-- WHERE
+--     `reviews`.`review_id` = LAST_INSERT_ID();
 -- --------------------------------------------------------
 -- --------------------------------------------------------
 -- --------------------------------------------------------

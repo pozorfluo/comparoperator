@@ -34,7 +34,7 @@
       e.g.,
     ```json
       "db_configs": {
-        "product_hunt": {
+        "comparoperator": {
         "DB_DRIVER": "mysql",
         "DB_HOST": "127.0.0.1",
         "DB_PORT": "3306",

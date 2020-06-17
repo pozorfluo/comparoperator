@@ -97,7 +97,7 @@ class Entity implements Validatable
     {
         return $this->is_valid ?? !in_array(
             false,
-            filter_var_array($this->getData(), $this->definitions),
+            filter_var_array($this->data, $this->definitions),
             true // strict
         );
     }
@@ -107,7 +107,7 @@ class Entity implements Validatable
      */
     public function getFiltered(): array
     {
-        return filter_var_array($this->getData(), $this->definitions);
+        return filter_var_array($this->data, $this->definitions);
     }
 
     /**
@@ -118,7 +118,7 @@ class Entity implements Validatable
      */
     public function validate(): self
     {
-        $this->data = filter_var_array($this->getData(), $this->definitions);
+        $this->data = filter_var_array($this->data, $this->definitions);
         $this->is_valid = !in_array(
             false,
             filter_var_array($this->data, $this->definitions),

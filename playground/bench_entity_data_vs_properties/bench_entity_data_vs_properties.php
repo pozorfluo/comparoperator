@@ -221,6 +221,34 @@ echo '<pre>' . var_export('User : ' . (microtime(true) - $t), true) . '</pre>';
 echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
 echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+$collisions = 0;
+while ($i < $iterations) {
+    $users  = [];
+    $raw_users = $pdo->execute(
+        'comparoperator',
+        "SELECT
+            `user_id`,
+            `name`,
+            `created_at`,
+            `ip`
+         FROM `users`"
+    );
+
+    foreach($raw_users as $raw_user) {
+        $users[] = new UserD($raw_user);
+    }
+    $user_index =  $i % count($users);
+    $filtered = $users[$user_index]->getFiltered();
+    $data_array = $users[$user_index]->getData();
+    ++$i;
+}
+echo '<pre>' . var_export('UserD : ' . (microtime(true) - $t), true) . '</pre>';
+// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 // echo '//--------------------------------------------------------------<br />';
 // $t = microtime(true);
 // $i   = 0;
