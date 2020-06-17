@@ -98,7 +98,7 @@
         </div>
     </div>
 
-    <div class="card" style="width: 13rem;">
+    <div class="card" style="width: 12rem;">
   <img class="card-img-top" src="images/destinations/0002.jpg" alt="Prenium TO">
   <div class="card-body">
     <h5 class="card-title">Card title</h5>
