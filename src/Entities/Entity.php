@@ -44,9 +44,27 @@ class Entity implements Validatable
      */
     public static function fromData(array $data): self
     {
-        $name =  __CLASS__;
+        $name =  static::class;
+        return new $name($data);
+    }
+
+    /**
+     * Create a new Entity instance from a given associative array.
+     * 
+     * @note
+     *   Use with class inheriting from Entity where the definitions are already
+     *   specified.
+     * 
+     * @param  array $data
+     * @return Entity
+     */
+    public static function fromDataAsProperties(array $data): self
+    {
+        $name =  static::class;
         $entity = new $name($data);
-        // $entity->data = $data;
+        foreach($data as $key => $value) {
+            $entity->$key = $value;
+        }
         return $entity;
     }
 
@@ -63,7 +81,7 @@ class Entity implements Validatable
                 ? $definitions[$field]
                 : [
                     'filter' => FILTER_VALIDATE_REGEXP,
-                    'options' => ['regexp' => '/^([A-Za-z0-9_\-\s]+)$/']
+                    'options' => ['regexp' => '/^([A-Za-z0-9_\-\s\.]+)$/']
                 ];
 
             // echo '<pre>' . var_export($this->definitions[$field], true) . '</pre>';
@@ -121,7 +139,7 @@ class Entity implements Validatable
         $this->data = filter_var_array($this->getData(), $this->definitions);
         $this->is_valid = !in_array(
             false,
-            filter_var_array($this->data, $this->definitions),
+            $this->data,
             true // strict
         );
         return $this;

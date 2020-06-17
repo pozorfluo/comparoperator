@@ -68,7 +68,27 @@ final class UserTest extends TestCase
     /**
      * @test
      */
-    public function User_instanced_with_invalid_name_id_invalidates_itself(): void
+    public function User_instanced_with_invalid_name_invalidates_itself(): void
+    {
+        /* Given */
+        $entity =  \Entities\User::fromData(
+            [
+                'user_id' => 0,
+                'name' => 'El%Guapo',
+                'created_at' =>  date('Y-m-d H:i:s'),
+                'ip' => '127.0.01',
+            ]
+        );
+        /* When  */
+
+        /* Then */
+        $this->assertFalse($entity->isValid());
+    }
+
+    /**
+     * @test
+     */
+    public function User_instanced_with_invalid_created_at_invalidates_itself(): void
     {
         /* Given */
         $entity =  \Entities\User::fromData(

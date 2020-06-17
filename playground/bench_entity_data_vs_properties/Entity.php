@@ -44,7 +44,7 @@ class Entity implements Validatable
      */
     public static function fromData(array $data): self
     {
-        $name =  __CLASS__;
+        $name = static::class;
         $entity = new $name($data);
         // $entity->data = $data;
         return $entity;

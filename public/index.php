@@ -136,17 +136,7 @@ date_default_timezone_set('Europe/Paris');
 //     'footer' => include TEMPLATE . 'footer.php'
 // ];
 
-echo '' . date('Y-m-d H:i:s', strtotime('-8 days'));
-
-$test_entity =  new User(1, 'El Guapo', date('Y-m-d H:i:s'), '127.0.0.1');
-
-// echo '<pre>'.var_export($test_entity->isValid(), true).'</pre><hr />';
-// echo '<pre>'.var_export($test_entity->getFiltered(), true).'</pre><hr />';
-// echo '<pre>'.var_export($test_entity, true).'</pre><hr />';
-// echo '<pre>'.var_export($test_entity->data['user_id'], true).'</pre><hr />';
-// echo '<pre>'.var_export(json_encode($test_entity->getData()), true).'</pre><hr />';
-
-echo '<br />' . get_class($test_entity);
+echo '' . date('Y-m-d H:i:s');
 
 use Models\ComparOperatorAPI;
 
@@ -190,12 +180,29 @@ echo '//--------------------------------------------------------------<br />';
 // echo '<br />' . get_class($users[0]);
 
 
-$iterations = 1000;
+
+
+$iterations = 10;
+$i   = 0;
+// while ($i < $iterations) {
+
+//     // $a = $test_entity->getData();
+//     // $test_entity->user_id = $i;
+//     $users = $pdo->execute(
+//         'comparoperator',
+//         "INSERT INTO
+//         `users` (`name`, `created_at`, `ip`)
+//     VALUES
+//         (?, '2020-05-16 14:48:18', 0xac10ee01);",
+//         ['rando'.$i],
+//     );
+//     ++$i;
+// }
 
 echo '//--------------------------------------------------------------<br />';
 $t = microtime(true);
 $i   = 0;
-$collisions = 0;
+
 while ($i < $iterations) {
 
     // $a = $test_entity->getData();
@@ -209,14 +216,141 @@ while ($i < $iterations) {
             `ip`
          FROM `users`",
         NULL,
-        [\PDO::FETCH_CLASS, '\Entities\User']
+        [\PDO::FETCH_CLASS, '\Entities\UserP']
     );
     $user_index =  $i % count($users);
     $filtered = $users[$user_index]->getFiltered();
     $data_array = $users[$user_index]->getData();
     ++$i;
 }
-echo '<pre>' . var_export('User : ' . (microtime(true) - $t), true) . '</pre>';
+echo '<pre>'.var_export(count($users), true).'</pre><hr />';
+echo '<pre>' . var_export('from Query User w Properties: ' . (microtime(true) - $t), true) . '</pre>';
+// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+
+while ($i < $iterations) {
+
+    // $a = $test_entity->getData();
+    // $test_entity->user_id = $i;
+    $raw_users = $pdo->execute(
+        'comparoperator',
+        "SELECT
+            `user_id`,
+            `name`,
+            `created_at`,
+            `ip`
+         FROM `users`",
+    );
+    $users = [];
+    // foreach($raw_users as $raw_user) {
+    for($u = 0, $count = count($raw_users); $u < $count; $u++) {
+        $users[] = new User($raw_users[$u]);
+    }
+    $user_index =  $i % count($users);
+    $filtered = $users[$user_index]->getFiltered();
+    $data_array = $users[$user_index]->getData();
+    ++$i;
+}
+echo '<pre>'.var_export(count($users), true).'</pre><hr />';
+echo '<pre>' . var_export('from Query User w Assoc Array for : ' . (microtime(true) - $t), true) . '</pre>';
+// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+
+while ($i < $iterations) {
+
+    // $a = $test_entity->getData();
+    // $test_entity->user_id = $i;
+    $raw_users = $pdo->execute(
+        'comparoperator',
+        "SELECT
+            `user_id`,
+            `name`,
+            `created_at`,
+            `ip`
+         FROM `users`",
+    );
+    $users = [];
+    foreach($raw_users as $raw_user) {
+        $users[] = new User($raw_user);
+    }
+    $user_index =  $i % count($users);
+    $filtered = $users[$user_index]->getFiltered();
+    $data_array = $users[$user_index]->getData();
+    ++$i;
+}
+echo '<pre>'.var_export(count($users), true).'</pre><hr />';
+echo '<pre>' . var_export('from Query User w Assoc Array fe : ' . (microtime(true) - $t), true) . '</pre>';
+// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+
+$iterations = 100;
+$count = 1016;
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+
+while ($i < $iterations) {
+
+    // $a = $test_entity->getData();
+    // $test_entity->user_id = $i;
+    $users = [];
+    for ($j = 0; $j < $count; $j++) {
+        $users[] =  \Entities\UserP::fromDataAsProperties(
+            [
+                'user_id' => $j,
+                'name' => 'El Guapo',
+                'created_at' =>  date('Y-m-d H:i:s'),
+                'ip' => inet_pton('127.0.0.1'),
+            ]
+        );
+    }
+    // $user_index =  $i % count($users);
+    // $filtered = $users[$user_index]->getFiltered();
+    // $data_array = $users[$user_index]->getData();
+ 
+    ++$i;
+}
+echo '<pre>'.var_export(count($users), true).'</pre><hr />';
+echo '<pre>' . var_export('from Data User w Properties : ' . (microtime(true) - $t), true) . '</pre>';
+// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+
+while ($i < $iterations) {
+
+    // $a = $test_entity->getData();
+    // $test_entity->user_id = $i;
+    $users = [];
+    for ($j = 0; $j < $count; $j++) {
+        $users[] =  new \Entities\User(
+            [
+                'user_id' => $j,
+                'name' => 'El Guapo',
+                'created_at' =>  date('Y-m-d H:i:s'),
+                'ip' => inet_pton('127.0.0.1'),
+            ]
+        );
+    }
+    $user_index =  $i % count($users);
+    $filtered = $users[$user_index]->getFiltered();
+    $data_array = $users[$user_index]->getData();
+ 
+    ++$i;
+}
+echo '<pre>'.var_export(count($users), true).'</pre><hr />';
+echo '<pre>' . var_export('from Data User w Assoc Array: ' . (microtime(true) - $t), true) . '</pre>';
 // echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
 echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
 echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
@@ -224,7 +358,7 @@ echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 // echo '//--------------------------------------------------------------<br />';
 // $t = microtime(true);
 // $i   = 0;
-// $collisions = 0;
+// 
 // while ($i < $iterations) {
 
 //     $users = $pdo->execute(
