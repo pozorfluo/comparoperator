@@ -57,7 +57,6 @@ class DB
     public function connect(?string $config_name = null): ?self
     {
         $config_name = $config_name ?? array_key_first($this->configs);
-
         if (isset($this->configs[$config_name])) {
 
             $dsn = $this->configs[$config_name]['DB_DRIVER']
@@ -74,8 +73,8 @@ class DB
                     $this->options
                 );
             } catch (PDOException $e) {
+                echo 'PDO Error : ' . $e->getMessage() . '<br/>';
                 throw new PDOException($e->getMessage(), (int) $e->getCode());
-                // echo 'PDO Error : ' . $e->getMessage() . '<br/>';
                 // die();
             }
             $this->connected_to = $config_name;

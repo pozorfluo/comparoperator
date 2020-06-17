@@ -50,7 +50,6 @@ require ROOT . 'src/Helpers/AutoLoader.php';
 use Helpers\Dispatcher;
 use Entities\Entity;
 use Entities\User;
-use Entities\UserD;
 use Helpers\Cache;
 use Helpers\CacheItem;
 //--------------------------------------------------------------- playground
@@ -182,8 +181,8 @@ echo '//--------------------------------------------------------------<br />';
 
 
 
-$iterations = 10;
-$i   = 0;
+// $iterations = 100;
+// $i   = 0;
 // while ($i < $iterations) {
 
 //     // $a = $test_entity->getData();
@@ -199,6 +198,7 @@ $i   = 0;
 //     ++$i;
 // }
 
+$iterations = 10;
 echo '//--------------------------------------------------------------<br />';
 $t = microtime(true);
 $i   = 0;
@@ -293,7 +293,7 @@ echo '<pre>' . var_export('from Query User w Assoc Array fe : ' . (microtime(tru
 // echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 
 $iterations = 100;
-$count = 1016;
+$count = count($users);
 echo '//--------------------------------------------------------------<br />';
 $t = microtime(true);
 $i   = 0;
@@ -319,6 +319,7 @@ while ($i < $iterations) {
  
     ++$i;
 }
+// echo '<pre>'.var_export(get_class($users[0]), true).'</pre><hr />';
 echo '<pre>'.var_export(count($users), true).'</pre><hr />';
 echo '<pre>' . var_export('from Data User w Properties : ' . (microtime(true) - $t), true) . '</pre>';
 // echo '<pre>' . var_export($users[0], true) . '</pre><hr />';

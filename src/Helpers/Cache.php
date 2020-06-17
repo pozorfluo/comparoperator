@@ -81,9 +81,8 @@ class Cache
     /**
      * Cache metadata collection.
      * 
-     * todo
-     *   - [ ] Decide if keeping a flipped [$filename => $key] as a ghetto set 
-     *         is worth it to speed up unique filename collision detection
+     * @todo Decide if keeping a flipped [$filename => $key] as a ghetto set 
+     *       is worth it to speed up unique filename collision detection
      * 
      * @var array [string $key, CacheItem $item]
      */

@@ -50,13 +50,9 @@ class DBPDO extends Model
         array $options = [],
         bool $transaction = false
     ): ?array {
-
-        // if (!is_null($this->useConfig($config_name))) {
-            // $t = microtime(true);
             if ($this->db->connected_to !== $config_name) {
                $this->db->connect($config_name);
             }
-            // echo '<pre>connect ' . var_export((microtime(true) - $t), true) . '</pre><hr />';
             /**
              *  todo 
              *    - [ ] Sanitize here !
@@ -64,13 +60,7 @@ class DBPDO extends Model
             if ($transaction) {
                 return $this->db->transaction($query, $args);
             } else {
-                // $t = microtime(true);
                 $statement = $this->db->query($query, $args);
-                // $res = $statement->fetchAll();
-                // echo '<pre>queryFetch ' . var_export((microtime(true) - $t), true) . '</pre><hr />';
-                // return $res;
-                // $statement->setFetchMode(\PDO::FETCH_CLASS, '\Entities\User');
-                // $statement->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_CLASSTYPE);
                 return $statement->fetchAll(...$options);
             }
         // }
