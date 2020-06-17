@@ -93,7 +93,7 @@ class Entity implements Validatable
     /**
      * Return this Entity's data.
      * 
-     * @return  array [ string $field_name => mixed $value ]
+     * @return array [ string $field_name => mixed $value ]
      */
     public function getData(): array
     {
@@ -103,7 +103,7 @@ class Entity implements Validatable
     /**
      * Return this Entity's definition.
      * 
-     * @return  array [ string $field_name => mixed $value ]
+     * @return array [ string $field_name => mixed $value ]
      */
     public function getDefinitions(): array
     {
@@ -136,7 +136,7 @@ class Entity implements Validatable
     /**
      * Return this Entity's filtered data, do not change internal state.
      * 
-     * @return  array [ string $field_name => mixed $value ]
+     * @return array [ string $field_name => mixed $value ]
      */
     public function getFiltered(): array
     {
@@ -144,7 +144,7 @@ class Entity implements Validatable
     }
 
     /**
-     * Apply filters on this Entity's filtered data, change internal state.
+     * Apply filters on this Entity's data, change internal state.
      * 
      * @note
      *   Raw data of a field is lost if its filter fails !

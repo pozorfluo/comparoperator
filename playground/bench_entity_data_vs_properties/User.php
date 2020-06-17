@@ -14,22 +14,8 @@ namespace Entities;
 class User extends Entity
 {
     /**
-     * @var int
+     * @var array [ string $field_name => mixed $filter_definition ]
      */
-    public $user_id;
-    /**
-     * @var string
-     */
-    public  $name =  '';
-    /**
-     * @var string
-     */
-    public  $created_at =  '';
-    /**
-     * @var string
-     */
-    public  $ip =  '';
-
     protected $definitions =
     [
         'user_id' => [
@@ -54,36 +40,21 @@ class User extends Entity
                 'regexp' => '/^[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]$/'
             ]
         ],
+        'ip' => [
+            'filter' => FILTER_CALLBACK,
+            'options' => 'inet_ntop'
+        ]
         // 'ip' => [
         //     'filter' => FILTER_VALIDATE_IP,
         //     'flags' => FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6
-        // ],
-        'ip' => [
-            'filter' => FILTER_CALLBACK,
-            'options' => 'inet_pton'
-        ]
+        // ]
     ];
 
-    function __construct()
-    {
-    }
-
-    public function getData(): array
-    {
-        return [
-            'user_id' => $this->user_id,
-            'name' => $this->name,
-            'created_at' => $this->created_at,
-            'ip' => inet_ntop($this->ip),
-            // 'ip' => $this->ip,
-        ];
-    }
-
     /**
-     * Return filtered data, do not change internal state
+     * @param  array $data [ string $field_name => mixed $value ]
      */
-    public function getFiltered(): array
+    public function __construct(array $data)
     {
-        return filter_var_array($this->getData(), $this->definitions);
+        $this->data = $data;
     }
 }

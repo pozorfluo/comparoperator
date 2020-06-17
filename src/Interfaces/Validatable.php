@@ -14,30 +14,41 @@ namespace Interfaces;
 interface Validatable
 {
     /**
-     * [ string $field_name => mixed $value ]
+     * Return this Class data.
+     * 
+     * @return array [ string $field_name => mixed $value ]
      */
     public function getData(): array;
 
     /**
-     * [ string $field_name => mixed $filter_definition ]
+     * Return this Class definition.
+     * 
+     * @return array [ string $field_name => mixed $value ]
      */
     public function getDefinitions(): array;
 
     /**
+     * Determine if this Class data is valid according to this Class
+     * definition.
      * 
+     * @return bool
      */
     public function isValid(): bool;
 
     /**
-     * Return filtered data, do not change internal state.
+     * Return this Class filtered data, do not change internal state.
+     * 
+     * @return array [ string $field_name => mixed $value ]
      */
     public function getFiltered(): array;
 
     /**
-     * Apply filters.
+     * Apply filters on this Class data, change internal state.
      * 
      * @note
      *   Raw data of a field is lost if its filter fails !
+     * 
+     * @return self
      */
     public function validate();
 }
