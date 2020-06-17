@@ -19,12 +19,12 @@ use RecursiveIteratorIterator;
  * 
  * see https://www.php.net/manual/en/function.filter-var-array.php
  */
-class Entity implements Validatable
+abstract class Entity implements Validatable
 {
     /**
      * [ string $field_name => mixed $value ]
      */
-    protected $data;
+    public $data;
 
     /**
      * [ string $field_name => mixed $filter_definition ]
@@ -37,26 +37,30 @@ class Entity implements Validatable
     public function __construct(array $data, array $definitions = [])
     {
         $this->data = $data;
+        $this->definitions = $definitions;
+        
+        /**
+         * @note
+         *   No definitions ? No validation ! Up to you.
+         */
+        // foreach (array_keys($data) as $field) {
+        //     $this->definitions[$field] = isset($definitions[$field])
+        //         ? $definitions[$field]
+        //         : [
+        //             'filter' => FILTER_VALIDATE_REGEXP,
+        //             'options' => ['regexp' => '/^([A-Za-z0-9_\-\s]+)$/']
+        //         ];
 
-        foreach (array_keys($data) as $field) {
-            $this->definitions[$field] = isset($definitions[$field])
-                ? $definitions[$field]
-                : [
-                    'filter' => FILTER_VALIDATE_REGEXP,
-                    'options' => ['regexp' => '/^([A-Za-z0-9_\-\s]+)$/']
-                ];
-
-            // echo '<pre>' . var_export($this->definitions[$field], true) . '</pre>';
-        }
+        //     // echo '<pre>' . var_export($this->definitions[$field], true) . '</pre>';
+        // }
     }
 
     /**
      * 
      */
-    public function getData(): array
-    {
-        return $this->data;
-    }
+    abstract public function getData(): array;
+
+
     public function getDefinitions(): array
     {
         return $this->definitions;

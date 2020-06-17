@@ -139,9 +139,55 @@ echo ''.date('Y-m-d H:i:s', strtotime('-8 days'));
 
 $test_entity =  new User(1, 'El Guapo', date('Y-m-d H:i:s'), '127.0.0.1');
 
-echo '<pre>'.var_export($test_entity->isValid(), true).'</pre><hr />';
-echo '<pre>'.var_export($test_entity->getFiltered(), true).'</pre><hr />';
-echo '<pre>'.var_export($test_entity, true).'</pre><hr />';
+// echo '<pre>'.var_export($test_entity->isValid(), true).'</pre><hr />';
+// echo '<pre>'.var_export($test_entity->getFiltered(), true).'</pre><hr />';
+// echo '<pre>'.var_export($test_entity, true).'</pre><hr />';
+// echo '<pre>'.var_export($test_entity->data['user_id'], true).'</pre><hr />';
+// echo '<pre>'.var_export(json_encode($test_entity->getData()), true).'</pre><hr />';
+
+use Models\DBPDO;
+use Models\ComparOperatorAPI;
+
+// $controller = new Home(['db_configs' => $config['db_configs']]);
+// $pdo = new DBPDO($controller);
+$pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
+
+$users = $pdo->execute(
+    'tp_comparoperator',
+    'SELECT * FROM `users`'
+);
+// $pdo->db->pdo->setFetchMode(PDO::FETCH_CLASS, 'User');
+echo '<pre>'.var_export($users, true).'</pre><hr />';
+echo gettype($users);
+$iterations = 1000000;
+
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
+// $collisions = 0;
+// while ($i < $iterations) {
+
+//     $a = $test_entity->getData();
+//     $test_entity->user_id = $i;
+//     ++$i;
+// }
+// echo '<pre>' . var_export('getData : ' . (microtime(true) - $t), true) . '</pre>';
+
+
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
+// $collisions = 0;
+// while ($i < $iterations) {
+
+//     $b = $test_entity->getData2();
+//     $test_entity->user_id = $i;
+//     ++$i;
+// }
+// echo '<pre>' . var_export('getData : ' . (microtime(true) - $t), true) . '</pre>';
+
+// echo '<pre>'.var_export($a, true).'</pre><hr />';
+// echo '<pre>'.var_export($b, true).'</pre><hr />';
 // include ROOT . 'src/Layouts/Layout.php';
 //---------------------------------------------------------------------- run
 $t = microtime(true);

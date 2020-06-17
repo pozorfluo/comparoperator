@@ -10,7 +10,6 @@ namespace Models;
 
 use Helpers\DB;
 use Controllers\Controller;
-
 /**
  * 
  */
@@ -69,6 +68,7 @@ class DBPDO extends Model
                 // $res = $statement->fetchAll();
                 // echo '<pre>queryFetch ' . var_export((microtime(true) - $t), true) . '</pre><hr />';
                 // return $res;
+                $statement->setFetchMode(\PDO::FETCH_CLASS, '\Entities\User');
                 return $statement->fetchAll();
             }
         // }
