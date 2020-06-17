@@ -167,7 +167,7 @@ abstract class API extends Controller
 
         // echo $this->args['method'];
         // exit();
-        
+
         if (method_exists($this, $this->args['method'])) {
             /* requested mode of operation exists, run it */
             $this->emit(
@@ -202,6 +202,22 @@ abstract class API extends Controller
         return $this;
     }
 
+    /**
+     * Fallback action called when the Dispatcher resolves the url/request to
+     * a route that does NOT exist.
+     * 
+     * @example Serve a 404 page.
+     * 
+     * @param  string $name
+     * @param  array $arguments
+     * @return void
+     * 
+     * @todo Research if that use case for __call is ill-advised.
+     */
+    public function __call(string $name, array $arguments): void
+    {
+        $this->emit(['no can do'], 405);
+    }
     /**
      * @note
      *   Prepend all model mode of operation meant to be callable by a request
