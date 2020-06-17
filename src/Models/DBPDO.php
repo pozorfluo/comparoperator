@@ -47,6 +47,7 @@ class DBPDO extends Model
         string $config_name,
         string $query,
         ?array $args = NULL,
+        array $options = [],
         bool $transaction = false
     ): ?array {
 
@@ -68,8 +69,9 @@ class DBPDO extends Model
                 // $res = $statement->fetchAll();
                 // echo '<pre>queryFetch ' . var_export((microtime(true) - $t), true) . '</pre><hr />';
                 // return $res;
-                $statement->setFetchMode(\PDO::FETCH_CLASS, '\Entities\User');
-                return $statement->fetchAll();
+                // $statement->setFetchMode(\PDO::FETCH_CLASS, '\Entities\User');
+                // $statement->setFetchMode(\PDO::FETCH_CLASS | \PDO::FETCH_CLASSTYPE);
+                return $statement->fetchAll(...$options);
             }
         // }
         // echo '<pre>HelloPdo->execute() error : Could not select db.</pre>';
