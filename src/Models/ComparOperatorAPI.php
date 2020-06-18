@@ -81,15 +81,11 @@ class ComparOperatorAPI extends DBPDO
             [$user_id]
         );
 
-        if (!empty($raw_user)) {
-            $raw_user = $raw_user[0];
-            // if (isset($raw_user['ip'])) {
-            //     $raw_user['ip'] = inet_ntop($raw_user['ip']);
-            // }
-            return [new User($raw_user)];
+        if (empty($raw_user)) {
+            return [];
         }
 
-        return [];
+        return [new User($raw_user[0])];
     }
 
     /**
@@ -110,7 +106,7 @@ class ComparOperatorAPI extends DBPDO
             return [];
         }
 
-        $user = $this->execute(
+        $raw_user = $this->execute(
             'product_hunt',
             'SELECT
                  `user_id`,
@@ -124,15 +120,11 @@ class ComparOperatorAPI extends DBPDO
             [$name]
         );
 
-        if (!empty($user)) {
-            $user = $user[0];
+        if (empty($raw_user)) {
+            return [];
         }
 
-        if (isset($user['ip'])) {
-            $user['ip'] = inet_ntop($user['ip']);
-        }
-
-        return $user;
+        return [new User($raw_user[0])];
     }
 
     /**
