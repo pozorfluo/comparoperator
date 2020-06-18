@@ -67,4 +67,19 @@ class DBPDO extends Model
         // echo '<pre>HelloPdo->execute() error : Could not select db.</pre>';
         return null;
     }
+
+    /**
+     * Shortcut and wrapper for internal pdo instance lastInsertId() returned 
+     * as integer.
+     * 
+     * @note
+     *   Return 0 on failure.
+     * @see https://www.php.net/manual/en/function.intval
+     * @see https://www.php.net/manual/en/pdo.lastinsertid.php
+     * 
+     * @return int
+     */
+    public function lastInsertId() {
+        return intval($this->db->pdo->lastInsertId());
+    }
 }
