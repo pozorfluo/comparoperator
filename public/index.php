@@ -48,10 +48,7 @@ define('DEV_GLOBALS_DUMP', true);
 require ROOT . 'src/Helpers/AutoLoader.php';
 
 use Helpers\Dispatcher;
-use Entities\Entity;
-use Entities\User;
 use Helpers\Cache;
-use Helpers\CacheItem;
 //--------------------------------------------------------------- playground
 
 //------------------------------------------------------------------ session
@@ -102,26 +99,7 @@ date_default_timezone_set('Europe/Paris');
 // echo time() - $render_time * $distribution_factor * $log_odd;
 // exit;
 
-// use Entities\User;
-
-// $test_entity = new User(
-//     '10', //strval(rand(0, 9999)).
-//     'D' . str_shuffle('ubois') . ' de la M' . str_shuffle('oquette'),
-//     'Jdean-Mi' . str_shuffle('michelou'),
-//     date('Y-m-d'). 'xdf',
-//     strval(rand(1111111111, 9999999999)).'f',
-//     'jean-mi' . strval(rand(11, 999)) . '@@caramail.com'
-// );
-
-// $t = microtime(true);
-// echo '<pre>'.var_export($test_entity->isValid(), true).'</pre><hr />';
-// echo '<pre>'.var_export($test_entity->getData(), true).'</pre><hr />';
-// echo '<pre>'.var_export($test_entity->getDefinitions(), true).'</pre><hr />';
-// echo '<pre>'.var_export($test_entity->getFiltered(), true).'</pre><hr />';
-// echo '<pre>'.var_export($test_entity->validate()->getData(), true).'</pre><hr />';
-// echo (microtime(true) - $t);
-
-
+//--------------------------------------------------------------- playground
 // define('TEMPLATE', ROOT . 'src/Templates/');
 
 // $hero = [
@@ -134,68 +112,21 @@ date_default_timezone_set('Europe/Paris');
 //     'article' => include TEMPLATE . 'hero.php',
 //     'footer' => include TEMPLATE . 'footer.php'
 // ];
+// include ROOT . 'src/Layouts/Layout.php';
+
+//--------------------------------------------------------------- playground
+echo '' . date('Y-m-d H:i:s');
 
 echo '' . date('Y-m-d H:i:s');
 
 use Models\ComparOperatorAPI;
-
+use Entities\User;
+use Entities\Location;
 // $controller = new Home(['db_configs' => $config['db_configs']]);
 // $pdo = new DBPDO($controller);
 $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
 // class SuperUseless {
 
-// }
-echo '//--------------------------------------------------------------<br />';
-// $users = $pdo->execute(
-//     'comparoperator',
-//     "SELECT
-//         `user_id`,
-//         `name`,
-//         `created_at`,
-//         `ip`
-//      FROM `users`",
-//     NULL,
-//     [\PDO::FETCH_CLASS, '\Entities\User']
-//     // [\PDO::FETCH_COLUMN]
-// );
-// // echo '<pre>' . var_export($users, true) . '</pre><hr />';
-// echo '<br />' . get_class($users[0]);
-echo '//--------------------------------------------------------------<br />';
-// $users = $pdo->execute(
-//     'comparoperator',
-//     "SELECT
-//         `user_id`,
-//         `name`,
-//         `created_at`,
-//         `ip`
-//      FROM `users`",
-//     NULL,
-//     [\PDO::FETCH_ASSOC | \PDO::FETCH_FUNC, function (...$row_data) {
-//         return User::fromData($row_data);
-//         // echo '<pre>'.var_export($row_data, true).'</pre><hr />';
-//     }]
-// );
-// echo '<pre>' . var_export($users, true) . '</pre><hr />';
-// echo '<br />' . get_class($users[0]);
-
-
-
-
-// $iterations = 100;
-// $i   = 0;
-// while ($i < $iterations) {
-
-//     // $a = $test_entity->getData();
-//     // $test_entity->user_id = $i;
-//     $users = $pdo->execute(
-//         'comparoperator',
-//         "INSERT INTO
-//         `users` (`name`, `created_at`, `ip`)
-//     VALUES
-//         (?, '2020-05-16 14:48:18', 0xac10ee01);",
-//         ['rando'.$i],
-//     );
-//     ++$i;
 // }
 
 $iterations = 10;
@@ -204,30 +135,34 @@ $t = microtime(true);
 $i   = 0;
 
 while ($i < $iterations) {
-
-    // $a = $test_entity->getData();
-    // $test_entity->user_id = $i;
-    $users = $pdo->execute(
+    $raw_locations = $pdo->execute(
         'comparoperator',
         "SELECT
-            `user_id`,
-            `name`,
-            `created_at`,
-            `ip`
-         FROM `users`",
-        NULL,
-        [\PDO::FETCH_CLASS, '\Entities\UserP']
+            `location` AS `name`,
+            `thumbnail`,
+            COUNT(DISTINCT `destination_id`) AS `offering_count`
+         FROM
+            `destinations`
+         GROUP BY
+            `location`",
     );
-    $user_index =  $i % count($users);
-    $filtered = $users[$user_index]->getFiltered();
-    $data_array = $users[$user_index]->getData();
+    $locations = [];
+    // foreach($raw_users as $raw_user) {
+    for ($u = 0, $count = count($raw_locations); $u < $count; $u++) {
+        $locations[] = new Location($raw_locations[$u]);
+    }
+    $index =  $i % count($locations);
+    $filtered = $locations[$index]->getFiltered();
+    $data_array = $locations[$index]->getData();
     ++$i;
 }
-echo '<pre>'.var_export(count($users), true).'</pre><hr />';
-echo '<pre>' . var_export('from Query User w Properties: ' . (microtime(true) - $t), true) . '</pre>';
-// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
-// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
-// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+echo '<pre>' . var_export(count($locations), true) . '</pre><hr />';
+echo '<pre>' . var_export($locations[0], true) . '</pre><hr />';
+echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+
+
+$iterations = 10;
 echo '//--------------------------------------------------------------<br />';
 $t = microtime(true);
 $i   = 0;
@@ -247,7 +182,7 @@ while ($i < $iterations) {
     );
     $users = [];
     // foreach($raw_users as $raw_user) {
-    for($u = 0, $count = count($raw_users); $u < $count; $u++) {
+    for ($u = 0, $count = count($raw_users); $u < $count; $u++) {
         $users[] = new User($raw_users[$u]);
     }
     $user_index =  $i % count($users);
@@ -255,7 +190,7 @@ while ($i < $iterations) {
     $data_array = $users[$user_index]->getData();
     ++$i;
 }
-echo '<pre>'.var_export(count($users), true).'</pre><hr />';
+echo '<pre>' . var_export(count($users), true) . '</pre><hr />';
 echo '<pre>' . var_export('from Query User w Assoc Array for : ' . (microtime(true) - $t), true) . '</pre>';
 // echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
 // echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
@@ -278,7 +213,7 @@ while ($i < $iterations) {
          FROM `users`",
     );
     $users = [];
-    foreach($raw_users as $raw_user) {
+    foreach ($raw_users as $raw_user) {
         $users[] = new User($raw_user);
     }
     $user_index =  $i % count($users);
@@ -286,7 +221,7 @@ while ($i < $iterations) {
     $data_array = $users[$user_index]->getData();
     ++$i;
 }
-echo '<pre>'.var_export(count($users), true).'</pre><hr />';
+echo '<pre>' . var_export(count($users), true) . '</pre><hr />';
 echo '<pre>' . var_export('from Query User w Assoc Array fe : ' . (microtime(true) - $t), true) . '</pre>';
 // echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
 // echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
@@ -294,37 +229,6 @@ echo '<pre>' . var_export('from Query User w Assoc Array fe : ' . (microtime(tru
 
 $iterations = 100;
 $count = count($users);
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
-
-while ($i < $iterations) {
-
-    // $a = $test_entity->getData();
-    // $test_entity->user_id = $i;
-    $users = [];
-    for ($j = 0; $j < $count; $j++) {
-        $users[] =  \Entities\UserP::fromDataAsProperties(
-            [
-                'user_id' => $j,
-                'name' => 'El Guapo',
-                'created_at' =>  date('Y-m-d H:i:s'),
-                'ip' => inet_pton('127.0.0.1'),
-            ]
-        );
-    }
-    // $user_index =  $i % count($users);
-    // $filtered = $users[$user_index]->getFiltered();
-    // $data_array = $users[$user_index]->getData();
- 
-    ++$i;
-}
-// echo '<pre>'.var_export(get_class($users[0]), true).'</pre><hr />';
-echo '<pre>'.var_export(count($users), true).'</pre><hr />';
-echo '<pre>' . var_export('from Data User w Properties : ' . (microtime(true) - $t), true) . '</pre>';
-// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
-// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
-// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 echo '//--------------------------------------------------------------<br />';
 $t = microtime(true);
 $i   = 0;
@@ -347,46 +251,15 @@ while ($i < $iterations) {
     $user_index =  $i % count($users);
     $filtered = $users[$user_index]->getFiltered();
     $data_array = $users[$user_index]->getData();
- 
+
     ++$i;
 }
-echo '<pre>'.var_export(count($users), true).'</pre><hr />';
+echo '<pre>' . var_export(count($users), true) . '</pre><hr />';
 echo '<pre>' . var_export('from Data User w Assoc Array: ' . (microtime(true) - $t), true) . '</pre>';
 // echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
 echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
 echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 
-// echo '//--------------------------------------------------------------<br />';
-// $t = microtime(true);
-// $i   = 0;
-// 
-// while ($i < $iterations) {
-
-//     $users = $pdo->execute(
-//         'comparoperator',
-//         "SELECT
-//             `user_id`,
-//             `name`,
-//             `created_at`,
-//             `ip`
-//          FROM `users`",
-//         NULL,
-//         [\PDO::FETCH_ASSOC | \PDO::FETCH_FUNC, function (...$row_data) {
-//             echo '<pre>'.var_export($row_data, true).'</pre><hr />';
-//             return new UserD($row_data);
-//         }]
-//     );
-//     // $filtered = $users[$i]->getFiltered();
-//     $data_array = $users[$i]->getData();
-//     ++$i;
-// }
-// echo '<pre>' . var_export('UserD : ' . (microtime(true) - $t), true) . '</pre>';
-// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
-// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
-// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
-// echo '<pre>'.var_export($a, true).'</pre><hr />';
-// echo '<pre>'.var_export($b, true).'</pre><hr />';
-// include ROOT . 'src/Layouts/Layout.php';
 //---------------------------------------------------------------------- run
 $t = microtime(true);
 
