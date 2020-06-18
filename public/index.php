@@ -122,6 +122,7 @@ echo '' . date('Y-m-d H:i:s');
 use Models\ComparOperatorAPI;
 use Entities\User;
 use Entities\Location;
+use Entities\Offering;
 // $controller = new Home(['db_configs' => $config['db_configs']]);
 // $pdo = new DBPDO($controller);
 $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
@@ -130,6 +131,53 @@ $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
 // }
 
 $iterations = 10;
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+
+while ($i < $iterations) {
+    $raw_offerings = $pdo->execute(
+        'comparoperator',
+        "SELECT
+             `destinations`.`destination_id`,
+             `destinations`.`price`,
+             `destinations`.`thumbnail`,
+             `destinations`.`operator_id`,
+             `operators`.`name` AS `operator`,
+             `operators`.`website`,
+             `operators`.`logo`,
+             `operators`.`is_premium`,
+             COUNT(DISTINCT `reviews`.`review_id`) AS `review_count`,
+             IFNULL(AVG(`reviews`.`rating`), 0.0) AS `operator_rating`
+         FROM
+             `destinations`
+         LEFT JOIN
+             `operators`
+         ON
+             `destinations`.`operator_id` = `operators`.`operator_id`
+         LEFT JOIN
+             `reviews`
+         ON
+             `operators`.`operator_id` = `reviews`.`operator_id`
+         WHERE
+             `destinations`.`location` = 'Osaka'
+         GROUP BY
+             `operators`.`operator_id`",
+    );
+    $offerings = [];
+    // foreach($raw_users as $raw_user) {
+    for ($u = 0, $count = count($raw_offerings); $u < $count; $u++) {
+        $offerings[] = new Offering($raw_offerings[$u]);
+    }
+    $index =  $i % count($offerings);
+    $filtered = $offerings[$index]->getFiltered();
+    $data_array = $offerings[$index]->getData();
+    ++$i;
+}
+echo '<pre>' . var_export(count($offerings), true) . '</pre><hr />';
+echo '<pre>' . var_export($offerings[0], true) . '</pre><hr />';
+echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 echo '//--------------------------------------------------------------<br />';
 $t = microtime(true);
 $i   = 0;

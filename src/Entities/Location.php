@@ -23,9 +23,9 @@ class Location extends Entity
         ],
         'thumbnail' => [
             'filter' => FILTER_VALIDATE_REGEXP,
-            'options' => ['regexp' => '/^(?!.*--|.*\/\/|.*\\\\\\\\|.*\.\.)[\\\\\/A-Za-z0-9_\-\.]+\.(?:jpg|jpeg|gif|svg|webp|png)$/'],
-            // ^(?!.*--|.*\/\/)(?!.*\.\.)[\\\/A-Za-z0-9_\-\.]+\.(?:jpg|jpeg|gif|svg|webp|png)$
-            // ^(?!.*--)(?!.*\/\/)(?!.*\.\.)[\\\/A-Za-z0-9_\-\.]+\.(?:jpg|jpeg|gif|svg|webp|png)$
+            'options' => [
+                'regexp' => '/^(?!.*--|.*\/\/|.*\\\\\\\\|.*\.\.)[\\\\\/A-Za-z0-9_\-\.]+\.(?:jpg|jpeg|gif|svg|webp|png)$/'
+            ],
         ],
         'offering_count' => [
             'filter' => FILTER_VALIDATE_INT
