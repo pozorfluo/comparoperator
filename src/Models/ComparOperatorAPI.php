@@ -7,7 +7,7 @@ namespace Models;
 
 use PDOException;
 use Controllers\Controller;
-
+use Entities\User;
 
 /**
  * ComparOperatorAPI
@@ -49,6 +49,149 @@ class ComparOperatorAPI extends DBPDO
         parent::__construct($controller);
     }
 
+    /**
+     * Get user info for a given user id.
+     * 
+     * note
+     *      Returns an empty array if given user id does NOT exist.
+     * 
+     * @api ComparOperatorAPI
+     * 
+     * @param  int $user_id
+     * 
+     * @return \Entities\User[]
+     */
+    public function getUserById(int $user_id): array
+    {
+        if ($user_id <= 0) {
+            return [];
+        }
+
+        $raw_user = $this->execute(
+            'comparoperator',
+            'SELECT
+                 `user_id`,
+                 `name`,
+                 `created_at`,
+                 `ip`
+             FROM
+                 `users`
+             WHERE
+                 `user_id` = ?;',
+            [$user_id]
+        );
+
+        if (!empty($raw_user)) {
+            $raw_user = $raw_user[0];
+            // if (isset($raw_user['ip'])) {
+            //     $raw_user['ip'] = inet_ntop($raw_user['ip']);
+            // }
+            return [new User($raw_user)];
+        }
+
+        return [];
+    }
+
+    /**
+     * Get user info for a given user name.
+     * 
+     * note
+     *      Returns an empty array if given user name does NOT exist.
+     * 
+     * @api ComparOperatorAPI
+     * 
+     * @param  string $name
+     * 
+     * @return \Entities\User[]
+     */
+    public function getUserbyName(string $name): array
+    {
+        if ($name === '') {
+            return [];
+        }
+
+        $user = $this->execute(
+            'product_hunt',
+            'SELECT
+                 `user_id`,
+                 `name`,
+                 `created_at`,
+                 `ip`
+             FROM
+                 `users`
+             WHERE
+                 `name` = ?;',
+            [$name]
+        );
+
+        if (!empty($user)) {
+            $user = $user[0];
+        }
+
+        if (isset($user['ip'])) {
+            $user['ip'] = inet_ntop($user['ip']);
+        }
+
+        return $user;
+    }
+
+    /**
+     * Register a given new user.
+     * 
+     * note
+     *      Returns an empty array if operation could NOT complete.
+     * 
+     * @api ComparOperatorAPI
+     * 
+     * @param  string $name
+     * @param  string $ip
+     * 
+     * @return array <pre><code>[
+     *     'user_id'     => int,
+     *     'name'        => string,
+     *     'created_at'  => string date('Y-m-d H:i:s'),
+     *     'ip'          => string
+     * ] </code></pre>
+     */
+    public function addUser(string $name, string $ip): array
+    {
+        if ($name === '' || !filter_var(
+            $ip,
+            FILTER_VALIDATE_IP,
+            FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6
+        )) {
+            return [];
+        }
+
+        try {
+            $user = $this->execute(
+                'product_hunt',
+                'INSERT INTO `users`(
+                `name`, 
+                `created_at`, 
+                `ip`)
+            VALUES(
+                ?,
+                ?,
+                ?);',
+                [$name, date('Y-m-d H:i:s'), inet_pton($ip)]
+            );
+        } catch (PDOException $e) {
+            $error_msg = $e->getMessage();
+
+            $duplicate_entry = 'Integrity constraint violation: 1062 Duplicate entry';
+            if (strpos($error_msg, $duplicate_entry) !== false) {
+                /* Name already exists */
+                return [];
+            } else {
+                throw $e;
+            }
+        }
+
+        $user = $this->getUserById(intval($this->db->pdo->lastInsertId()));
+
+        return $user;
+    }
     /**
      * Get most recent products.
      * 
@@ -590,161 +733,6 @@ class ComparOperatorAPI extends DBPDO
                 'content'        => 'This is another placeholder comment.'
             ]
         ];
-    }
-
-    /**
-     * Get user info for a given user id.
-     * 
-     * note
-     *      Returns an empty array if given user id does NOT exist.
-     * 
-     * @api ComparOperatorAPI
-     * 
-     * @param  int $user_id
-     * 
-     * @return array <pre><code>[
-     *     'user_id'     => int,
-     *     'name'        => string,
-     *     'created_at'  => string date('Y-m-d H:i:s'),
-     *     'ip'          => string
-     * ] </code></pre>
-     */
-    public function getUserById(int $user_id): array
-    {
-        if ($user_id <= 0) {
-            return [];
-        }
-
-        $user = $this->execute(
-            'product_hunt',
-            'SELECT
-                 `user_id`,
-                 `name`,
-                 `created_at`,
-                 `ip`
-             FROM
-                 `users`
-             WHERE
-                 `user_id` = ?;',
-            [$user_id]
-        );
-
-        if (!empty($user)) {
-            $user = $user[0];
-
-            if (isset($user['ip'])) {
-                $user['ip'] = inet_ntop($user['ip']);
-            }
-        }
-
-
-        return $user;
-    }
-
-    /**
-     * Get user info for a given user name.
-     * 
-     * note
-     *      Returns an empty array if given user name does NOT exist.
-     * 
-     * @api ComparOperatorAPI
-     * 
-     * @param  string $name
-     * 
-     * @return array <pre><code>[
-     *     'user_id'     => int,
-     *     'name'        => string,
-     *     'created_at'  => string date('Y-m-d H:i:s'),
-     *     'ip'          => string
-     * ] </code></pre>
-     */
-    public function getUserbyName(string $name): array
-    {
-        if ($name === '') {
-            return [];
-        }
-
-        $user = $this->execute(
-            'product_hunt',
-            'SELECT
-                 `user_id`,
-                 `name`,
-                 `created_at`,
-                 `ip`
-             FROM
-                 `users`
-             WHERE
-                 `name` = ?;',
-            [$name]
-        );
-
-        if (!empty($user)) {
-            $user = $user[0];
-        }
-
-        if (isset($user['ip'])) {
-            $user['ip'] = inet_ntop($user['ip']);
-        }
-
-        return $user;
-    }
-
-    /**
-     * Register a given new user.
-     * 
-     * note
-     *      Returns an empty array if operation could NOT complete.
-     * 
-     * @api ComparOperatorAPI
-     * 
-     * @param  string $name
-     * @param  string $ip
-     * 
-     * @return array <pre><code>[
-     *     'user_id'     => int,
-     *     'name'        => string,
-     *     'created_at'  => string date('Y-m-d H:i:s'),
-     *     'ip'          => string
-     * ] </code></pre>
-     */
-    public function addUser(string $name, string $ip): array
-    {
-        if ($name === '' || !filter_var(
-            $ip,
-            FILTER_VALIDATE_IP,
-            FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6
-        )) {
-            return [];
-        }
-
-        try {
-            $user = $this->execute(
-                'product_hunt',
-                'INSERT INTO `users`(
-                `name`, 
-                `created_at`, 
-                `ip`)
-            VALUES(
-                ?,
-                ?,
-                ?);',
-                [$name, date('Y-m-d H:i:s'), inet_pton($ip)]
-            );
-        } catch (PDOException $e) {
-            $error_msg = $e->getMessage();
-
-            $duplicate_entry = 'Integrity constraint violation: 1062 Duplicate entry';
-            if (strpos($error_msg, $duplicate_entry) !== false) {
-                /* Name already exists */
-                return [];
-            } else {
-                throw $e;
-            }
-        }
-
-        $user = $this->getUserById(intval($this->db->pdo->lastInsertId()));
-
-        return $user;
     }
 
     /**
