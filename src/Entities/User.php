@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace Entities;
 
 /**
- * 
- */
+                 * 
+                 */
 class User extends Entity
 {
     /**
-     * @var array [ string $field_name => mixed $filter_definition ]
+                 * @var array [ string $field_name => mixed $filter_definition ]
      */
     protected $definitions =
     [
@@ -40,10 +40,17 @@ class User extends Entity
             'filter' => FILTER_CALLBACK,
             'options' => 'inet_ntop'
         ]
-        // 'ip' => [
-        //     'filter' => FILTER_VALIDATE_IP,
-        //     'flags' => FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6
-        // ]
+    ];
+
+    /**
+     * List of field names required for insertion in database.
+     * 
+     * @var array string[]
+     */
+    protected $required_fields = [
+        'name',
+        'created_at',
+        'ip'
     ];
 
     /**

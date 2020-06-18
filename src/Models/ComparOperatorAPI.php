@@ -17,6 +17,7 @@ use Entities\User;
  * @todo Consider returning a generic 'EntityInterface' instead of an entity
  *       to be able to move things around in a specific entity
  *       implementation and NOT break to many things.
+ * @todo Break-up API into multiple files by endpoints.
  */
 class ComparOperatorAPI extends DBPDO
 {
@@ -107,7 +108,7 @@ class ComparOperatorAPI extends DBPDO
         }
 
         $raw_user = $this->execute(
-            'product_hunt',
+            'comparoperator',
             'SELECT
                  `user_id`,
                  `name`,
@@ -135,6 +136,8 @@ class ComparOperatorAPI extends DBPDO
      * 
      * @api ComparOperatorAPI
      * 
+     * @todo Consider not executing the query if validates on a required field.
+     * 
      * @param  \Entities\User $new_user
      * 
      * @return \Entities\User[]
@@ -143,7 +146,12 @@ class ComparOperatorAPI extends DBPDO
     {
         $new_user->validate();
 
-        echo '<pre>'.var_export($new_user->getData(), true).'</pre><hr />';
+        if (!($new_user->data['name']
+            && $new_user->data['created_at']
+            && $new_user->data['ip'])) {
+            echo '<pre>'.var_export($new_user->getData(), true).'</pre><hr />';
+            return [];
+        }
 
         try {
             $raw_user = $this->execute(
@@ -158,7 +166,7 @@ class ComparOperatorAPI extends DBPDO
                      ?);',
                 [
                     $new_user->data['name'],
-                    $new_user->data['created_at'], 
+                    $new_user->data['created_at'],
                     $new_user->data['ip']
                 ]
             );
@@ -174,10 +182,39 @@ class ComparOperatorAPI extends DBPDO
             }
         }
 
-        $user = $this->getUserById($this->lastInsertId());
-        // $user = new User($raw_user[0]);
-        // return $user->isValid() ? [$user] : [];
-        return $user;
+        return $this->getUserById($this->lastInsertId());
+    }
+
+    /**
+     * Get locations.
+     * 
+     * @api ComparOperatorAPI
+     * 
+     * @param  int $count  How many categories to return (default = 10).
+     * @param  int $offset How many categories to skip   (default = 0)
+     *                     Use for pagination.
+     * 
+     * @return \Entities\Location[]
+     */
+    public function getCategories(int $count = 10, int $offset = 0): array
+    {
+        if ($count < 0) {
+            $count = 10;
+        }
+        if ($offset < 0) {
+            $offset = 0;
+        }
+
+        return $this->execute(
+            'comparoperator',
+            'SELECT
+                 `category_id`,
+                 `name`
+             FROM
+                 `categories`
+             LIMIT ? OFFSET ?;',
+            [$count, $offset]
+        );
     }
     /**
      * Get most recent products.
@@ -212,7 +249,7 @@ class ComparOperatorAPI extends DBPDO
         }
 
         return $this->execute(
-            'product_hunt',
+            'comparoperator',
             'SELECT
                  `products`.`product_id`,
                  `products`.`created_at`,
@@ -274,7 +311,7 @@ class ComparOperatorAPI extends DBPDO
         }
 
         return $this->execute(
-            'product_hunt',
+            'comparoperator',
             'SELECT
                  `products`.`product_id`,
                  `products`.`created_at`,
@@ -304,44 +341,6 @@ class ComparOperatorAPI extends DBPDO
     }
 
     /**
-     * Get categories sorted by id.
-     * 
-     * @api ComparOperatorAPI
-     * 
-     * @param  int $count  How many categories to return (default = 10).
-     * @param  int $offset How many categories to skip   (default = 0)
-     *                     Use for pagination.
-     * 
-     * @return array <pre><code>[
-     *     [
-     *         'category_id'     => int,
-     *         'name'           => string,
-     *     ], 
-     *     ...
-     * ] </code></pre>
-     */
-    public function getCategories(int $count = 10, int $offset = 0): array
-    {
-        if ($count < 0) {
-            $count = 10;
-        }
-        if ($offset < 0) {
-            $offset = 0;
-        }
-
-        return $this->execute(
-            'product_hunt',
-            'SELECT
-                 `category_id`,
-                 `name`
-             FROM
-                 `categories`
-             LIMIT ? OFFSET ?;',
-            [$count, $offset]
-        );
-    }
-
-    /**
      * Get category info for a given category id.
      * 
      * @api ComparOperatorAPI
@@ -363,7 +362,7 @@ class ComparOperatorAPI extends DBPDO
         }
 
         $category = $this->execute(
-            'product_hunt',
+            'comparoperator',
             'SELECT
                  `category_id`,
                  `name`,
@@ -416,7 +415,7 @@ class ComparOperatorAPI extends DBPDO
         }
 
         $product = $this->execute(
-            'product_hunt',
+            'comparoperator',
             'SELECT
                  `product_id`,
                  `article_id`,
@@ -483,7 +482,7 @@ class ComparOperatorAPI extends DBPDO
         }
 
         return $this->execute(
-            'product_hunt',
+            'comparoperator',
             'SELECT
                  `products`.`product_id`,
                  `products`.`created_at`,
@@ -560,7 +559,7 @@ class ComparOperatorAPI extends DBPDO
         }
 
         return $this->execute(
-            'product_hunt',
+            'comparoperator',
             'SELECT
                  `products`.`product_id`,
                  `products`.`created_at`,
@@ -666,7 +665,7 @@ class ComparOperatorAPI extends DBPDO
         }
 
         $products = $this->execute(
-            'product_hunt',
+            'comparoperator',
             'SELECT
                  `product_id`
              FROM
@@ -740,7 +739,7 @@ class ComparOperatorAPI extends DBPDO
         }
 
         $insert_result = $this->execute(
-            'product_hunt',
+            'comparoperator',
             'INSERT INTO `votes`(
                 `product_id`,
                 `user_id`,
@@ -752,7 +751,7 @@ class ComparOperatorAPI extends DBPDO
 
 
         $result = $this->execute(
-            'product_hunt',
+            'comparoperator',
             'SELECT
                  COUNT(`product_id`) AS votes_count
              FROM

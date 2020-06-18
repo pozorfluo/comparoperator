@@ -22,6 +22,13 @@ class Entity implements Validatable
     protected $definitions;
 
     /**
+     * List of field names required for insertion in database.
+     * 
+     * @var array string[]
+     */
+    protected $required_fields = [];
+
+    /**
      * @var bool
      */
     protected $is_valid;
@@ -74,10 +81,14 @@ class Entity implements Validatable
      * @param  array $data [ string $field_name => mixed $value ]
      * @param  array $definitions [ string $field_name => mixed $filter_definition ]
      */
-    public function __construct(array $data, array $definitions = [])
-    {
+    public function __construct(
+        array $data,
+        array $definitions = [],
+        array $required_fields = []
+    ) {
         $this->data = $data;
         $this->definitions = $definitions;
+        $this->required_fields = $required_fields;
 
         foreach (array_keys($data) as $field) {
             $this->definitions[$field] = isset($definitions[$field])
@@ -121,6 +132,11 @@ class Entity implements Validatable
      * 
      * @See https://www.php.net/manual/en/types.comparisons.php
      * 
+     * @todo Consider that $this->is_valid is obsolete and misleading if 
+     *       anything fiddles with $this->data.
+     * @todo Consider either not storing a misleading is_valid state or
+     *       or invalidating it in a $this->data setter and restricted access.
+     * 
      * @return bool
      */
     public function isValid(): bool
@@ -132,6 +148,18 @@ class Entity implements Validatable
         );
     }
 
+    public function hasValidRequiredFields() : bool 
+    {
+        $valid = true;
+        $filtered = filter_var_array($this->getData(), $this->definitions);
+
+        foreach($this->required_fields as $field) {
+            $valid = $valid && $filtered[$field];
+            // echo '   |   ' . $field . ' : ' . $valid;
+        }
+
+        return $valid;
+    }
     /**
      * Return this Entity's filtered data, do not change internal state.
      * 

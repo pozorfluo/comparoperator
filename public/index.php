@@ -143,15 +143,26 @@ $new_user = new User(
 
 // echo '<pre>'.var_export($pdo, true).'</pre><hr />';
 $new_user_result = $pdo->addUser($new_user);
-echo '<pre>'.var_export($new_user->data['name'], true).'</pre><hr />';
-echo '<pre>'.var_export($new_user->data['created_at'], true).'</pre><hr />';
-echo '<pre>'.var_export($new_user->data['ip'], true).'</pre><hr />';
-echo '<pre>'.var_export($new_user->getData(), true).'</pre><hr />';
-echo '<pre>'.var_export($new_user->validate(), true).'</pre><hr />';
+
+$new_user = new User(
+    [
+        'user_id' => null,
+        'name' => 'El_'.uniqid().uniqid(),
+        'created_at' =>  'invalid date !',
+        'ip' => inet_pton('127.0.0.1'),
+    ]
+);
+$new_user_result = $pdo->addUser($new_user);
+
+// echo '<pre>'.var_export($new_user->data['name'], true).'</pre><hr />';
+// echo '<pre>'.var_export($new_user->data['created_at'], true).'</pre><hr />';
+// echo '<pre>'.var_export($new_user->data['ip'], true).'</pre><hr />';
+// echo '<pre>'.var_export($new_user->getData(), true).'</pre><hr />';
+// echo '<pre>'.var_export($new_user->validate(), true).'</pre><hr />';
 
 
-echo '<pre>'.var_export($new_user_result[0]->data, true).'</pre><hr />';
-echo '<pre>'.var_export($new_user_result[0]->getData(), true).'</pre><hr />';
+// echo '<pre>'.var_export($new_user_result[0]->data, true).'</pre><hr />';
+// echo '<pre>'.var_export($new_user_result[0]->getData(), true).'</pre><hr />';
 
 $user = $pdo->getUserById(4);
 echo '<pre>' . var_export($user[0]->validate()->getData(), true) . '</pre><hr />';
