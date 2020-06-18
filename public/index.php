@@ -132,10 +132,15 @@ $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
 // echo '<pre>'.var_export($config, true).'</pre><hr />';
 // echo '<pre>'.var_export($pdo, true).'</pre><hr />';
 
+$locations = $pdo->getLocations();
+foreach ($locations as $location) {
+    echo '<pre>' . var_export($location->data, true) . '</pre><hr />';
+}
+
 $new_user = new User(
     [
         'user_id' => null,
-        'name' => 'El_'.uniqid().uniqid(),
+        'name' => 'El_' . uniqid() . uniqid(),
         'created_at' =>  date('Y-m-d H:i:s'),
         'ip' => inet_pton('127.0.0.1'),
     ]
@@ -147,7 +152,7 @@ $new_user_result = $pdo->addUser($new_user);
 $new_user = new User(
     [
         'user_id' => null,
-        'name' => 'El_'.uniqid().uniqid(),
+        'name' => 'El_' . uniqid() . uniqid(),
         'created_at' =>  'invalid date !',
         'ip' => inet_pton('127.0.0.1'),
     ]

@@ -8,6 +8,10 @@ namespace Models;
 use PDOException;
 use Controllers\Controller;
 use Entities\User;
+use Entities\Location;
+use Entities\Offering;
+use Entities\Operator;
+use Entities\Review;
 
 /**
  * ComparOperatorAPI
@@ -17,6 +21,7 @@ use Entities\User;
  * @todo Consider returning a generic 'EntityInterface' instead of an entity
  *       to be able to move things around in a specific entity
  *       implementation and NOT break to many things.
+ * 
  * @todo Break-up API into multiple files by endpoints.
  */
 class ComparOperatorAPI extends DBPDO
@@ -149,7 +154,7 @@ class ComparOperatorAPI extends DBPDO
         if (!($new_user->data['name']
             && $new_user->data['created_at']
             && $new_user->data['ip'])) {
-            echo '<pre>'.var_export($new_user->getData(), true).'</pre><hr />';
+            echo '<pre>' . var_export($new_user->getData(), true) . '</pre><hr />';
             return [];
         }
 
@@ -196,7 +201,7 @@ class ComparOperatorAPI extends DBPDO
      * 
      * @return \Entities\Location[]
      */
-    public function getCategories(int $count = 10, int $offset = 0): array
+    public function getLocations(int $count = 10, int $offset = 0): array
     {
         if ($count < 0) {
             $count = 10;
@@ -205,16 +210,26 @@ class ComparOperatorAPI extends DBPDO
             $offset = 0;
         }
 
-        return $this->execute(
+        $raw_locations = $this->execute(
             'comparoperator',
             'SELECT
-                 `category_id`,
-                 `name`
+                 `location` AS `name`,
+                 `thumbnail`,
+                 COUNT(DISTINCT `destination_id`) AS `offering_count`
              FROM
-                 `categories`
+                 `destinations`
+             GROUP BY
+                 `location`
              LIMIT ? OFFSET ?;',
             [$count, $offset]
         );
+
+        $locations = [];
+        foreach ($raw_locations as $raw_location) {
+            $locations[] = new Location($raw_location);
+        }
+
+        return $locations;
     }
     /**
      * Get most recent products.

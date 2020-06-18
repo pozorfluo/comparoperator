@@ -286,10 +286,10 @@ final class EntityTest extends TestCase
 
         );
         /* When  */
-        echo PHP_EOL . var_export($data, true)
-            . "\t:\t" . var_export($entity->getFiltered()['field'], true)
-            . "\t|\t" . var_export($expected, true)
-            . "\t:\t" . var_export($entity->hasValidRequiredFields(), true) . PHP_EOL;
+        // echo PHP_EOL . var_export($data, true)
+        //     . "\t:\t" . var_export($entity->getFiltered()['field'], true)
+        //     . "\t|\t" . var_export($expected, true)
+        //     . "\t:\t" . var_export($entity->hasValidRequiredFields(), true) . PHP_EOL;
 
         /* Then */
         $this->assertSame($entity->hasValidRequiredFields(), $expected);
@@ -350,10 +350,10 @@ final class EntityTest extends TestCase
 
         );
         /* When  */
-        echo PHP_EOL . var_export($data, true)
-            . "\t:\t" . var_export($entity->getFiltered()['field'], true)
-            . "\t|\t" . var_export($expected, true)
-            . "\t:\t" . var_export($entity->hasValidRequiredFields(), true) . PHP_EOL;
+        // echo PHP_EOL . var_export($data, true)
+        //     . "\t:\t" . var_export($entity->getFiltered()['field'], true)
+        //     . "\t|\t" . var_export($expected, true)
+        //     . "\t:\t" . var_export($entity->hasValidRequiredFields(), true) . PHP_EOL;
 
         /* Then */
         $this->assertSame($entity->hasValidRequiredFields(), $expected);
