@@ -123,6 +123,8 @@ use Models\ComparOperatorAPI;
 use Entities\User;
 use Entities\Location;
 use Entities\Offering;
+use Entities\Operator;
+use Entities\Review;
 // $controller = new Home(['db_configs' => $config['db_configs']]);
 // $pdo = new DBPDO($controller);
 $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
@@ -131,6 +133,68 @@ $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
 // }
 
 $iterations = 10;
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+
+while ($i < $iterations) {
+    $raw_reviews = $pdo->execute(
+        'comparoperator',
+        "SELECT
+             `review_id`,
+             `destination_id`,
+             `operator_id`,
+             `user_id`,
+             `created_at`,
+             `rating`,
+             `message`
+         FROM
+             `reviews`",
+    );
+    $reviews = [];
+    // foreach($raw_users as $raw_user) {
+    for ($u = 0, $count = count($raw_reviews); $u < $count; $u++) {
+        $reviews[] = new Review($raw_reviews[$u]);
+    }
+    $index =  $i % count($reviews);
+    $filtered = $reviews[$index]->getFiltered();
+    $data_array = $reviews[$index]->getData();
+    ++$i;
+}
+echo '<pre>' . var_export(count($reviews), true) . '</pre><hr />';
+echo '<pre>' . var_export($reviews[0], true) . '</pre><hr />';
+echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+
+while ($i < $iterations) {
+    $raw_operators = $pdo->execute(
+        'comparoperator',
+        "SELECT
+             `operator_id`,
+             `name`,
+             `website`,
+             `logo`,
+             `is_premium`
+         FROM 
+             `operators`",
+    );
+    $operators = [];
+    // foreach($raw_users as $raw_user) {
+    for ($u = 0, $count = count($raw_operators); $u < $count; $u++) {
+        $operators[] = new Operator($raw_operators[$u]);
+    }
+    $index =  $i % count($operators);
+    $filtered = $operators[$index]->getFiltered();
+    $data_array = $operators[$index]->getData();
+    ++$i;
+}
+echo '<pre>' . var_export(count($operators), true) . '</pre><hr />';
+echo '<pre>' . var_export($operators[0], true) . '</pre><hr />';
+echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 echo '//--------------------------------------------------------------<br />';
 $t = microtime(true);
 $i   = 0;
