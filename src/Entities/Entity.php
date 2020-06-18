@@ -1,15 +1,14 @@
 <?php
 
-/**
- * 
- */
-
 declare(strict_types=1);
 
 namespace Entities;
 
 use Interfaces\Validatable;
 
+/**
+ * 
+ */
 class Entity implements Validatable
 {
     /**
