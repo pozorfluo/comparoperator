@@ -5,14 +5,15 @@ declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 
 final class UserTest extends TestCase
-{    
+{
     /**
      * @test
      */
     public function User_instanced_with_valid_data_validates_itself(): void
     {
         /* Given */
-        $entity =  \Entities\User::fromData(
+        // $entity =  \Entities\User::fromData(
+        $entity =  new \Entities\User(
             [
                 'user_id' => 1,
                 'name' => 'El Guapo',
@@ -32,7 +33,8 @@ final class UserTest extends TestCase
     public function User_instanced_with_invalid_ip_invalidates_itself(): void
     {
         /* Given */
-        $entity =  \Entities\User::fromData(
+        // $entity =  \Entities\User::fromData(
+        $entity =  new \Entities\User(
             [
                 'user_id' => 1,
                 'name' => 'El Guapo',
@@ -51,7 +53,8 @@ final class UserTest extends TestCase
     public function User_instanced_with_invalid_user_id_invalidates_itself(): void
     {
         /* Given */
-        $entity =  \Entities\User::fromData(
+        // $entity =  \Entities\User::fromData(
+        $entity =  new \Entities\User(
             [
                 'user_id' => 0,
                 'name' => 'El Guapo',
@@ -64,14 +67,15 @@ final class UserTest extends TestCase
         /* Then */
         $this->assertFalse($entity->isValid());
     }
-    
+
     /**
      * @test
      */
     public function User_instanced_with_invalid_name_invalidates_itself(): void
     {
         /* Given */
-        $entity =  \Entities\User::fromData(
+        // $entity =  \Entities\User::fromData(
+        $entity =  new \Entities\User(
             [
                 'user_id' => 1,
                 'name' => 'El%Guapo',
@@ -91,7 +95,8 @@ final class UserTest extends TestCase
     public function User_instanced_with_invalid_created_at_invalidates_itself(): void
     {
         /* Given */
-        $entity =  \Entities\User::fromData(
+        // $entity =  \Entities\User::fromData(
+        $entity =  new \Entities\User(
             [
                 'user_id' => 1,
                 'name' => 'El Guapo',
@@ -110,7 +115,8 @@ final class UserTest extends TestCase
     public function User_instanced_with_valid_data_validates_its_required_fields(): void
     {
         /* Given */
-        $entity =  \Entities\User::fromData(
+        // $entity =  \Entities\User::fromData(
+        $entity =  new \Entities\User(
             [
                 'user_id' => 1,
                 'name' => 'El Guapo',
@@ -129,7 +135,8 @@ final class UserTest extends TestCase
     public function User_instanced_with_valid_required_fields_and_other_invalid_fields_validates_its_required_fields(): void
     {
         /* Given */
-        $entity =  \Entities\User::fromData(
+        // $entity =  \Entities\User::fromData(
+        $entity =  new \Entities\User(
             [
                 'user_id' => 0,
                 'name' => 'El Guapo',
@@ -148,7 +155,8 @@ final class UserTest extends TestCase
     public function User_instanced_with_invalid_required_fields_invalidates_its_required_fields(): void
     {
         /* Given */
-        $entity =  \Entities\User::fromData(
+        // $entity =  \Entities\User::fromData(
+        $entity =  new \Entities\User(
             [
                 'user_id' => 1,
                 'name' => 'El :Guapo',
