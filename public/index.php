@@ -115,7 +115,7 @@ date_default_timezone_set('Europe/Paris');
 // include ROOT . 'src/Layouts/Layout.php';
 
 //--------------------------------------------------------------- playground
-echo '' . date('Y-m-d H:i:s');
+$t = microtime(true);
 
 echo '' . date('Y-m-d H:i:s');
 
@@ -128,254 +128,287 @@ use Entities\Review;
 // $controller = new Home(['db_configs' => $config['db_configs']]);
 // $pdo = new DBPDO($controller);
 $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
-// class SuperUseless {
 
+// echo '<pre>'.var_export($config, true).'</pre><hr />';
+// echo '<pre>'.var_export($pdo, true).'</pre><hr />';
+
+$new_user = new User(
+    [
+        'user_id' => null,
+        'name' => 'El_'.uniqid().uniqid(),
+        'created_at' =>  date('Y-m-d H:i:s'),
+        'ip' => inet_pton('127.0.0.1'),
+    ]
+);
+
+// echo '<pre>'.var_export($pdo, true).'</pre><hr />';
+$new_user_result = $pdo->addUser($new_user);
+echo '<pre>'.var_export($new_user->data['name'], true).'</pre><hr />';
+echo '<pre>'.var_export($new_user->data['created_at'], true).'</pre><hr />';
+echo '<pre>'.var_export($new_user->data['ip'], true).'</pre><hr />';
+echo '<pre>'.var_export($new_user->getData(), true).'</pre><hr />';
+echo '<pre>'.var_export($new_user->validate(), true).'</pre><hr />';
+
+
+echo '<pre>'.var_export($new_user_result[0]->data, true).'</pre><hr />';
+echo '<pre>'.var_export($new_user_result[0]->getData(), true).'</pre><hr />';
+
+$user = $pdo->getUserById(4);
+echo '<pre>' . var_export($user[0]->validate()->getData(), true) . '</pre><hr />';
+
+$user = $pdo->getUserById(0);
+echo '<pre>' . var_export($user, true) . '</pre><hr />';
+
+$user = $pdo->getUserByName('Hamza');
+echo '<pre>' . var_export($user[0]->validate()->getData(), true) . '</pre><hr />';
+
+$user = $pdo->getUserByName('');
+echo '<pre>' . var_export($user, true) . '</pre><hr />';
+
+// $iterations = 10;
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
+
+// while ($i < $iterations) {
+//     $raw_reviews = $pdo->execute(
+//         'comparoperator',
+//         "SELECT
+//              `review_id`,
+//              `destination_id`,
+//              `operator_id`,
+//              `user_id`,
+//              `created_at`,
+//              `rating`,
+//              `message`
+//          FROM
+//              `reviews`",
+//     );
+//     $reviews = [];
+//     // foreach($raw_users as $raw_user) {
+//     for ($u = 0, $count = count($raw_reviews); $u < $count; $u++) {
+//         $reviews[] = new Review($raw_reviews[$u]);
+//     }
+//     $index =  $i % count($reviews);
+//     $filtered = $reviews[$index]->getFiltered();
+//     $data_array = $reviews[$index]->getData();
+//     ++$i;
 // }
-
-$iterations = 10;
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
-
-while ($i < $iterations) {
-    $raw_reviews = $pdo->execute(
-        'comparoperator',
-        "SELECT
-             `review_id`,
-             `destination_id`,
-             `operator_id`,
-             `user_id`,
-             `created_at`,
-             `rating`,
-             `message`
-         FROM
-             `reviews`",
-    );
-    $reviews = [];
-    // foreach($raw_users as $raw_user) {
-    for ($u = 0, $count = count($raw_reviews); $u < $count; $u++) {
-        $reviews[] = new Review($raw_reviews[$u]);
-    }
-    $index =  $i % count($reviews);
-    $filtered = $reviews[$index]->getFiltered();
-    $data_array = $reviews[$index]->getData();
-    ++$i;
-}
-echo '<pre>' . var_export(count($reviews), true) . '</pre><hr />';
-echo '<pre>' . var_export($reviews[0], true) . '</pre><hr />';
-echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
-echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
-
-while ($i < $iterations) {
-    $raw_operators = $pdo->execute(
-        'comparoperator',
-        "SELECT
-             `operator_id`,
-             `name`,
-             `website`,
-             `logo`,
-             `is_premium`
-         FROM 
-             `operators`",
-    );
-    $operators = [];
-    // foreach($raw_users as $raw_user) {
-    for ($u = 0, $count = count($raw_operators); $u < $count; $u++) {
-        $operators[] = new Operator($raw_operators[$u]);
-    }
-    $index =  $i % count($operators);
-    $filtered = $operators[$index]->getFiltered();
-    $data_array = $operators[$index]->getData();
-    ++$i;
-}
-echo '<pre>' . var_export(count($operators), true) . '</pre><hr />';
-echo '<pre>' . var_export($operators[0], true) . '</pre><hr />';
-echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
-echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
-
-while ($i < $iterations) {
-    $raw_offerings = $pdo->execute(
-        'comparoperator',
-        "SELECT
-             `destinations`.`destination_id`,
-             `destinations`.`price`,
-             `destinations`.`thumbnail`,
-             `destinations`.`operator_id`,
-             `operators`.`name` AS `operator`,
-             `operators`.`website`,
-             `operators`.`logo`,
-             `operators`.`is_premium`,
-             COUNT(DISTINCT `reviews`.`review_id`) AS `review_count`,
-             IFNULL(AVG(`reviews`.`rating`), 0.0) AS `operator_rating`
-         FROM
-             `destinations`
-         LEFT JOIN
-             `operators`
-         ON
-             `destinations`.`operator_id` = `operators`.`operator_id`
-         LEFT JOIN
-             `reviews`
-         ON
-             `operators`.`operator_id` = `reviews`.`operator_id`
-         WHERE
-             `destinations`.`location` = 'Osaka'
-         GROUP BY
-             `operators`.`operator_id`",
-    );
-    $offerings = [];
-    // foreach($raw_users as $raw_user) {
-    for ($u = 0, $count = count($raw_offerings); $u < $count; $u++) {
-        $offerings[] = new Offering($raw_offerings[$u]);
-    }
-    $index =  $i % count($offerings);
-    $filtered = $offerings[$index]->getFiltered();
-    $data_array = $offerings[$index]->getData();
-    ++$i;
-}
-echo '<pre>' . var_export(count($offerings), true) . '</pre><hr />';
-echo '<pre>' . var_export($offerings[0], true) . '</pre><hr />';
-echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
-echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
-
-while ($i < $iterations) {
-    $raw_locations = $pdo->execute(
-        'comparoperator',
-        "SELECT
-            `location` AS `name`,
-            `thumbnail`,
-            COUNT(DISTINCT `destination_id`) AS `offering_count`
-         FROM
-            `destinations`
-         GROUP BY
-            `location`",
-    );
-    $locations = [];
-    // foreach($raw_users as $raw_user) {
-    for ($u = 0, $count = count($raw_locations); $u < $count; $u++) {
-        $locations[] = new Location($raw_locations[$u]);
-    }
-    $index =  $i % count($locations);
-    $filtered = $locations[$index]->getFiltered();
-    $data_array = $locations[$index]->getData();
-    ++$i;
-}
-echo '<pre>' . var_export(count($locations), true) . '</pre><hr />';
-echo '<pre>' . var_export($locations[0], true) . '</pre><hr />';
-echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
-echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
-
-
-$iterations = 10;
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
-
-while ($i < $iterations) {
-
-    // $a = $test_entity->getData();
-    // $test_entity->user_id = $i;
-    $raw_users = $pdo->execute(
-        'comparoperator',
-        "SELECT
-            `user_id`,
-            `name`,
-            `created_at`,
-            `ip`
-         FROM `users`",
-    );
-    $users = [];
-    // foreach($raw_users as $raw_user) {
-    for ($u = 0, $count = count($raw_users); $u < $count; $u++) {
-        $users[] = new User($raw_users[$u]);
-    }
-    $user_index =  $i % count($users);
-    $filtered = $users[$user_index]->getFiltered();
-    $data_array = $users[$user_index]->getData();
-    ++$i;
-}
-echo '<pre>' . var_export(count($users), true) . '</pre><hr />';
-echo '<pre>' . var_export('from Query User w Assoc Array for : ' . (microtime(true) - $t), true) . '</pre>';
-// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+// echo '<pre>' . var_export(count($reviews), true) . '</pre><hr />';
+// echo '<pre>' . var_export($reviews[0], true) . '</pre><hr />';
 // echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
 // echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
 
-while ($i < $iterations) {
+// while ($i < $iterations) {
+//     $raw_operators = $pdo->execute(
+//         'comparoperator',
+//         "SELECT
+//              `operator_id`,
+//              `name`,
+//              `website`,
+//              `logo`,
+//              `is_premium`
+//          FROM 
+//              `operators`",
+//     );
+//     $operators = [];
+//     // foreach($raw_users as $raw_user) {
+//     for ($u = 0, $count = count($raw_operators); $u < $count; $u++) {
+//         $operators[] = new Operator($raw_operators[$u]);
+//     }
+//     $index =  $i % count($operators);
+//     $filtered = $operators[$index]->getFiltered();
+//     $data_array = $operators[$index]->getData();
+//     ++$i;
+// }
+// echo '<pre>' . var_export(count($operators), true) . '</pre><hr />';
+// echo '<pre>' . var_export($operators[0], true) . '</pre><hr />';
+// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
 
-    // $a = $test_entity->getData();
-    // $test_entity->user_id = $i;
-    $raw_users = $pdo->execute(
-        'comparoperator',
-        "SELECT
-            `user_id`,
-            `name`,
-            `created_at`,
-            `ip`
-         FROM `users`",
-    );
-    $users = [];
-    foreach ($raw_users as $raw_user) {
-        $users[] = new User($raw_user);
-    }
-    $user_index =  $i % count($users);
-    $filtered = $users[$user_index]->getFiltered();
-    $data_array = $users[$user_index]->getData();
-    ++$i;
-}
-echo '<pre>' . var_export(count($users), true) . '</pre><hr />';
-echo '<pre>' . var_export('from Query User w Assoc Array fe : ' . (microtime(true) - $t), true) . '</pre>';
-// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+// while ($i < $iterations) {
+//     $raw_offerings = $pdo->execute(
+//         'comparoperator',
+//         "SELECT
+//              `destinations`.`destination_id`,
+//              `destinations`.`price`,
+//              `destinations`.`thumbnail`,
+//              `destinations`.`operator_id`,
+//              `operators`.`name` AS `operator`,
+//              `operators`.`website`,
+//              `operators`.`logo`,
+//              `operators`.`is_premium`,
+//              COUNT(DISTINCT `reviews`.`review_id`) AS `review_count`,
+//              IFNULL(AVG(`reviews`.`rating`), 0.0) AS `operator_rating`
+//          FROM
+//              `destinations`
+//          LEFT JOIN
+//              `operators`
+//          ON
+//              `destinations`.`operator_id` = `operators`.`operator_id`
+//          LEFT JOIN
+//              `reviews`
+//          ON
+//              `operators`.`operator_id` = `reviews`.`operator_id`
+//          WHERE
+//              `destinations`.`location` = 'Osaka'
+//          GROUP BY
+//              `operators`.`operator_id`",
+//     );
+//     $offerings = [];
+//     // foreach($raw_users as $raw_user) {
+//     for ($u = 0, $count = count($raw_offerings); $u < $count; $u++) {
+//         $offerings[] = new Offering($raw_offerings[$u]);
+//     }
+//     $index =  $i % count($offerings);
+//     $filtered = $offerings[$index]->getFiltered();
+//     $data_array = $offerings[$index]->getData();
+//     ++$i;
+// }
+// echo '<pre>' . var_export(count($offerings), true) . '</pre><hr />';
+// echo '<pre>' . var_export($offerings[0], true) . '</pre><hr />';
+// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
+
+// while ($i < $iterations) {
+//     $raw_locations = $pdo->execute(
+//         'comparoperator',
+//         "SELECT
+//             `location` AS `name`,
+//             `thumbnail`,
+//             COUNT(DISTINCT `destination_id`) AS `offering_count`
+//          FROM
+//             `destinations`
+//          GROUP BY
+//             `location`",
+//     );
+//     $locations = [];
+//     // foreach($raw_users as $raw_user) {
+//     for ($u = 0, $count = count($raw_locations); $u < $count; $u++) {
+//         $locations[] = new Location($raw_locations[$u]);
+//     }
+//     $index =  $i % count($locations);
+//     $filtered = $locations[$index]->getFiltered();
+//     $data_array = $locations[$index]->getData();
+//     ++$i;
+// }
+// echo '<pre>' . var_export(count($locations), true) . '</pre><hr />';
+// echo '<pre>' . var_export($locations[0], true) . '</pre><hr />';
 // echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
 // echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 
-$iterations = 100;
-$count = count($users);
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
 
-while ($i < $iterations) {
+// $iterations = 10;
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
 
-    // $a = $test_entity->getData();
-    // $test_entity->user_id = $i;
-    $users = [];
-    for ($j = 0; $j < $count; $j++) {
-        $users[] =  new \Entities\User(
-            [
-                'user_id' => $j,
-                'name' => 'El Guapo',
-                'created_at' =>  date('Y-m-d H:i:s'),
-                'ip' => inet_pton('127.0.0.1'),
-            ]
-        );
-    }
-    $user_index =  $i % count($users);
-    $filtered = $users[$user_index]->getFiltered();
-    $data_array = $users[$user_index]->getData();
+// while ($i < $iterations) {
 
-    ++$i;
-}
-echo '<pre>' . var_export(count($users), true) . '</pre><hr />';
-echo '<pre>' . var_export('from Data User w Assoc Array: ' . (microtime(true) - $t), true) . '</pre>';
-// echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
-echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
-echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+//     // $a = $test_entity->getData();
+//     // $test_entity->user_id = $i;
+//     $raw_users = $pdo->execute(
+//         'comparoperator',
+//         "SELECT
+//             `user_id`,
+//             `name`,
+//             `created_at`,
+//             `ip`
+//          FROM `users`",
+//     );
+//     $users = [];
+//     // foreach($raw_users as $raw_user) {
+//     for ($u = 0, $count = count($raw_users); $u < $count; $u++) {
+//         $users[] = new User($raw_users[$u]);
+//     }
+//     $user_index =  $i % count($users);
+//     $filtered = $users[$user_index]->getFiltered();
+//     $data_array = $users[$user_index]->getData();
+//     ++$i;
+// }
+// echo '<pre>' . var_export(count($users), true) . '</pre><hr />';
+// echo '<pre>' . var_export('from Query User w Assoc Array for : ' . (microtime(true) - $t), true) . '</pre>';
+// // echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+// // echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+// // echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
+
+// while ($i < $iterations) {
+
+//     // $a = $test_entity->getData();
+//     // $test_entity->user_id = $i;
+//     $raw_users = $pdo->execute(
+//         'comparoperator',
+//         "SELECT
+//             `user_id`,
+//             `name`,
+//             `created_at`,
+//             `ip`
+//          FROM `users`",
+//     );
+//     $users = [];
+//     foreach ($raw_users as $raw_user) {
+//         $users[] = new User($raw_user);
+//     }
+//     $user_index =  $i % count($users);
+//     $filtered = $users[$user_index]->getFiltered();
+//     $data_array = $users[$user_index]->getData();
+//     ++$i;
+// }
+// echo '<pre>' . var_export(count($users), true) . '</pre><hr />';
+// echo '<pre>' . var_export('from Query User w Assoc Array fe : ' . (microtime(true) - $t), true) . '</pre>';
+// // echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+// // echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+// // echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
+
+// $iterations = 100;
+// $count = count($users);
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
+
+// while ($i < $iterations) {
+
+//     // $a = $test_entity->getData();
+//     // $test_entity->user_id = $i;
+//     $users = [];
+//     for ($j = 0; $j < $count; $j++) {
+//         $users[] =  new \Entities\User(
+//             [
+//                 'user_id' => $j,
+//                 'name' => 'El Guapo',
+//                 'created_at' =>  date('Y-m-d H:i:s'),
+//                 'ip' => inet_pton('127.0.0.1'),
+//             ]
+//         );
+//     }
+//     $user_index =  $i % count($users);
+//     $filtered = $users[$user_index]->getFiltered();
+//     $data_array = $users[$user_index]->getData();
+
+//     ++$i;
+// }
+// echo '<pre>' . var_export(count($users), true) . '</pre><hr />';
+// echo '<pre>' . var_export('from Data User w Assoc Array: ' . (microtime(true) - $t), true) . '</pre>';
+// // echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
+// echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
+// echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
 
 //---------------------------------------------------------------------- run
-$t = microtime(true);
+// $t = microtime(true);
 
-$dispatcher = new Dispatcher($config);
+// $dispatcher = new Dispatcher($config);
 // $dispatcher->route()->cache();
 // $dispatcher->route();
 

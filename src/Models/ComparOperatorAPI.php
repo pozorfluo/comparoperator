@@ -135,38 +135,32 @@ class ComparOperatorAPI extends DBPDO
      * 
      * @api ComparOperatorAPI
      * 
-     * @param  string $name
-     * @param  string $ip
+     * @param  \Entities\User $new_user
      * 
-     * @return array <pre><code>[
-     *     'user_id'     => int,
-     *     'name'        => string,
-     *     'created_at'  => string date('Y-m-d H:i:s'),
-     *     'ip'          => string
-     * ] </code></pre>
+     * @return \Entities\User[]
      */
-    public function addUser(string $name, string $ip): array
+    public function addUser(User $new_user): array
     {
-        if ($name === '' || !filter_var(
-            $ip,
-            FILTER_VALIDATE_IP,
-            FILTER_FLAG_IPV4 | FILTER_FLAG_IPV6
-        )) {
-            return [];
-        }
+        $new_user->validate();
+
+        echo '<pre>'.var_export($new_user->getData(), true).'</pre><hr />';
 
         try {
-            $user = $this->execute(
-                'product_hunt',
+            $raw_user = $this->execute(
+                'comparoperator',
                 'INSERT INTO `users`(
-                `name`, 
-                `created_at`, 
-                `ip`)
-            VALUES(
-                ?,
-                ?,
-                ?);',
-                [$name, date('Y-m-d H:i:s'), inet_pton($ip)]
+                     `name`, 
+                     `created_at`, 
+                     `ip`)
+                 VALUES(
+                     ?,
+                     ?,
+                     ?);',
+                [
+                    $new_user->data['name'],
+                    $new_user->data['created_at'], 
+                    $new_user->data['ip']
+                ]
             );
         } catch (PDOException $e) {
             $error_msg = $e->getMessage();
@@ -180,8 +174,9 @@ class ComparOperatorAPI extends DBPDO
             }
         }
 
-        $user = $this->getUserById(intval($this->db->pdo->lastInsertId()));
-
+        $user = $this->getUserById($this->lastInsertId());
+        // $user = new User($raw_user[0]);
+        // return $user->isValid() ? [$user] : [];
         return $user;
     }
     /**

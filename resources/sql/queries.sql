@@ -49,6 +49,16 @@ VALUES(
     INET_ATON('127.0.0.1')
 );
 
+SELECT
+    `user_id`,
+    `name`,
+    `created_at`,
+    `ip`
+FROM
+    `users`
+WHERE
+    `user_id` = LAST_INSERT_ID();
+
 -- --------------------------------------------------------
 --
 -- public function getLocations(int $count = 10, int $offset = 0): array
