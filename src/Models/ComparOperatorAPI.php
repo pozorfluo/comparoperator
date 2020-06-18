@@ -149,12 +149,17 @@ class ComparOperatorAPI extends DBPDO
      */
     public function addUser(User $new_user): array
     {
-        $new_user->validate();
+        // $new_user->validate();
 
-        if (!($new_user->data['name']
-            && $new_user->data['created_at']
-            && $new_user->data['ip'])) {
-            echo '<pre>' . var_export($new_user->getData(), true) . '</pre><hr />';
+        // if (!($new_user->data['name']
+        //     && $new_user->data['created_at']
+        //     && $new_user->data['ip'])) {
+        //     // echo '<pre>' . var_export($new_user->getData(), true) . '</pre><hr />';
+        //     return [];
+        // }
+        if(!$new_user->hasValidRequiredFields()){
+            // echo 'field not valid, aborting addUser <br />';
+            // echo '<pre>' . var_export($new_user->getData(), true) . '</pre><hr />';
             return [];
         }
 
