@@ -83,9 +83,9 @@
                 </span>
                                                         </h2>
         <aside class="phpdocumentor-element-found-in">
-            <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+            <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
             :
-            <span class="phpdocumentor-element-found-in__line">21</span>
+            <span class="phpdocumentor-element-found-in__line">29</span>
         </aside>
 
         <p class="phpdocumentor-class__summary">ComparOperatorAPI</p>
@@ -97,7 +97,7 @@ derived classes</p></section>
                                                                 <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-DBPDO.html#property_db">$db</a></th>
                     <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell"><a href=""><abbr title=""></abbr></a></td>
+                    <td class="phpdocumentor-cell"><a href="../classes/Helpers-DB.html"><abbr title="\Helpers\DB">DB</abbr></a></td>
                 </tr>
                             <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-Model.html#property_args">$args</a></th>
@@ -112,7 +112,7 @@ derived classes</p></section>
                             <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-Model.html#property_controller">$controller</a></th>
                     <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell"><a href=""><abbr title=""></abbr></a></td>
+                    <td class="phpdocumentor-cell"><a href="../classes/Controllers-Controller.html"><abbr title="\Controllers\Controller">Controller</abbr></a></td>
                 </tr>
                                         <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-ComparOperatorAPI.html#method_fromConfig">fromConfig()</a></th>
@@ -137,21 +137,26 @@ derived classes</p></section>
                             <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-ComparOperatorAPI.html#method_addUser">addUser()</a></th>
                     <td class="phpdocumentor-cell">Register a given new user.</td>
-                    <td class="phpdocumentor-cell">array</td>
+                    <td class="phpdocumentor-cell">\Entities\User[]</td>
                 </tr>
                             <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/Models-ComparOperatorAPI.html#method_getFreshProducts">getFreshProducts()</a></th>
-                    <td class="phpdocumentor-cell">Get most recent products.</td>
-                    <td class="phpdocumentor-cell">array</td>
+                    <th class="phpdocumentor-heading"><a href="../classes/Models-ComparOperatorAPI.html#method_getLocations">getLocations()</a></th>
+                    <td class="phpdocumentor-cell">Get locations.</td>
+                    <td class="phpdocumentor-cell">\Entities\Location[]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/Models-ComparOperatorAPI.html#method_getOfferings">getOfferings()</a></th>
+                    <td class="phpdocumentor-cell">Get offerings for a given location.</td>
+                    <td class="phpdocumentor-cell">\Entities\Offering[]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/Models-ComparOperatorAPI.html#method_getOperators">getOperators()</a></th>
+                    <td class="phpdocumentor-cell">Get operators.</td>
+                    <td class="phpdocumentor-cell">\Entities\Operator[]</td>
                 </tr>
                             <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-ComparOperatorAPI.html#method_getPopularProducts">getPopularProducts()</a></th>
                     <td class="phpdocumentor-cell">Get most popular products.</td>
-                    <td class="phpdocumentor-cell">array</td>
-                </tr>
-                            <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/Models-ComparOperatorAPI.html#method_getCategories">getCategories()</a></th>
-                    <td class="phpdocumentor-cell">Get categories sorted by id.</td>
                     <td class="phpdocumentor-cell">array</td>
                 </tr>
                             <tr>
@@ -214,6 +219,12 @@ derived classes</p></section>
                     <td class="phpdocumentor-cell"></td>
                     <td class="phpdocumentor-cell">array|null</td>
                 </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/Models-DBPDO.html#method_lastInsertId">lastInsertId()</a></th>
+                    <td class="phpdocumentor-cell">Shortcut and wrapper for internal pdo instance lastInsertId() returned
+as integer.</td>
+                    <td class="phpdocumentor-cell">int</td>
+                </tr>
                     </table>
 
         
@@ -230,11 +241,11 @@ derived classes</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DBPDO.php"><a href="../files/src-models-dbpdo.html"><abbr title="src/Models/DBPDO.php">DBPDO.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">18</span>
+        <span class="phpdocumentor-element-found-in__line">21</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__type">mixed</span>
+                <span class="phpdocumentor-signature__type"><a href="../classes/Helpers-DB.html"><abbr title="\Helpers\DB">DB</abbr></a></span>
         <span class="phpdocumentor-signature__name">$db</span>
             </code>
     </article>
@@ -287,11 +298,11 @@ derived classes</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Model.php"><a href="../files/src-models-model.html"><abbr title="src/Models/Model.php">Model.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">26</span>
+        <span class="phpdocumentor-element-found-in__line">30</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__type">mixed</span>
+                <span class="phpdocumentor-signature__type"><a href="../classes/Controllers-Controller.html"><abbr title="\Controllers\Controller">Controller</abbr></a></span>
         <span class="phpdocumentor-signature__name">$controller</span>
             </code>
     </article>
@@ -308,9 +319,9 @@ derived classes</p></section>
 >
     <h4 class="phpdocumentor-method__name">fromConfig()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">29</span>
+        <span class="phpdocumentor-element-found-in__line">41</span>
     </aside>
         <p class="phpdocumentor-summary">Create a new ComparOperatorAPI instance from a decoded config json.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -348,9 +359,9 @@ derived classes</p></section>
 >
     <h4 class="phpdocumentor-method__name">__construct()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">44</span>
+        <span class="phpdocumentor-element-found-in__line">56</span>
     </aside>
         <p class="phpdocumentor-summary">Create a new ComparOperatorAPI instance.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -386,9 +397,9 @@ derived classes</p></section>
 >
     <h4 class="phpdocumentor-method__name">getUserById()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">64</span>
+        <span class="phpdocumentor-element-found-in__line">76</span>
     </aside>
         <p class="phpdocumentor-summary">Get user info for a given user id.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -402,8 +413,6 @@ derived classes</p></section>
         : <span class="phpdocumentor-signature__response_type">\Entities\User[]</span>
     </code>
 
-        <section class="phpdocumentor-description"><p>note
-Returns an empty array if given user id does NOT exist.</p></section>
     
             <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
         <dl class="phpdocumentor-argument-list">
@@ -417,6 +426,10 @@ Returns an empty array if given user id does NOT exist.</p></section>
                 <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
         <dl class="phpdocumentor-tag-list">
                                                 <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">note</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>Returns an empty array if given user id does NOT exist.</p></section></dd>
+                                                                <dt class="phpdocumentor-tag-list__entry">
                         <span class="phpdocumentor-tag__name">api</span>
                     </dt>
                     <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>ComparOperatorAPI</p></section></dd>
@@ -435,9 +448,9 @@ Returns an empty array if given user id does NOT exist.</p></section>
 >
     <h4 class="phpdocumentor-method__name">getUserbyName()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">107</span>
+        <span class="phpdocumentor-element-found-in__line">111</span>
     </aside>
         <p class="phpdocumentor-summary">Get user info for a given user name.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -451,8 +464,6 @@ Returns an empty array if given user id does NOT exist.</p></section>
         : <span class="phpdocumentor-signature__response_type">\Entities\User[]</span>
     </code>
 
-        <section class="phpdocumentor-description"><p>note
-Returns an empty array if given user name does NOT exist.</p></section>
     
             <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
         <dl class="phpdocumentor-argument-list">
@@ -466,6 +477,10 @@ Returns an empty array if given user name does NOT exist.</p></section>
                 <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
         <dl class="phpdocumentor-tag-list">
                                                 <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">note</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>Returns an empty array if given user name does NOT exist.</p></section></dd>
+                                                                <dt class="phpdocumentor-tag-list__entry">
                         <span class="phpdocumentor-tag__name">api</span>
                     </dt>
                     <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>ComparOperatorAPI</p></section></dd>
@@ -484,41 +499,95 @@ Returns an empty array if given user name does NOT exist.</p></section>
 >
     <h4 class="phpdocumentor-method__name">addUser()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">156</span>
+        <span class="phpdocumentor-element-found-in__line">148</span>
     </aside>
         <p class="phpdocumentor-summary">Register a given new user.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
                                 <span class="phpdocumentor-signature__name">addUser</span>(
                     <span class="phpdocumentor-signature__argument">
-                            <span class="phpdocumentor-signature__argument__name">$name</span> :
-                <span class="phpdocumentor-signature__argument__return-type">string</span>
-                            </span>
-                    <span class="phpdocumentor-signature__argument">
-            ,                 <span class="phpdocumentor-signature__argument__name">$ip</span> :
-                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            <span class="phpdocumentor-signature__argument__name">$new_user</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><a href="../classes/Entities-User.html"><abbr title="\Entities\User">User</abbr></a></span>
                             </span>
                 )
-        : <span class="phpdocumentor-signature__response_type">array</span>
+        : <span class="phpdocumentor-signature__response_type">\Entities\User[]</span>
     </code>
 
-        <section class="phpdocumentor-description"><p>note
-Returns an empty array if operation could NOT complete.</p></section>
     
             <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
         <dl class="phpdocumentor-argument-list">
                             <dt class="phpdocumentor-argument-list__entry">
-                    <span class="phpdocumentor-signature__argument__name">$name</span>
-                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                    <span class="phpdocumentor-signature__argument__name">$new_user</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><a href="../classes/Entities-User.html"><abbr title="\Entities\User">User</abbr></a></span>
                                     </dt>
                 <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+        <dl class="phpdocumentor-tag-list">
+                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">note</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>Returns an empty array if operation could NOT complete.</p></section></dd>
+                                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">api</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>ComparOperatorAPI</p></section></dd>
+                                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">todo</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>Consider not executing the query if validates on a required field.</p></section></dd>
+                                    </dl>
+    
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">\Entities\User[]</span>
+            
+</article>
+                                    <a id="method_getLocations"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getLocations()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">197</span>
+    </aside>
+        <p class="phpdocumentor-summary">Get locations.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">getLocations</span>(
+                    <span class="phpdocumentor-signature__argument">
+            [                <span class="phpdocumentor-signature__argument__name">$count</span> :
+                <span class="phpdocumentor-signature__argument__return-type">int</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">10</span> ]            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$offset</span> :
+                <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">\Entities\Location[]</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
                             <dt class="phpdocumentor-argument-list__entry">
-                    <span class="phpdocumentor-signature__argument__name">$ip</span>
-                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                    <span class="phpdocumentor-signature__argument__name">$count</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                     = <span class="phpdocumentor-signature__argument__default-value">10</span>                </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>How many categories to return (default = 10).</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$offset</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">int</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>How many categories to skip   (default = 0)
+Use for pagination.</p></section></dd>
                     </dl>
     
                 <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
@@ -530,34 +599,32 @@ Returns an empty array if operation could NOT complete.</p></section>
                                     </dl>
     
             <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array</span>
-                    &mdash; <span class="phpdocumentor-description"><pre class="prettyprint"><code class="prettyprint">[
-    'user_id'     => int,
-    'name'        => string,
-    'created_at'  => string date('Y-m-d H:i:s'),
-    'ip'          => string
-] </code></pre></span>
+        <span class="phpdocumentor-signature__response_type">\Entities\Location[]</span>
             
 </article>
-                                    <a id="method_getFreshProducts"></a>
+                                    <a id="method_getOfferings"></a>
 <article
         class="
             phpdocumentor-method
             phpdocumentor-method--public
                                                         "
 >
-    <h4 class="phpdocumentor-method__name">getFreshProducts()</h4>
+    <h4 class="phpdocumentor-method__name">getOfferings()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">218</span>
+        <span class="phpdocumentor-element-found-in__line">239</span>
     </aside>
-        <p class="phpdocumentor-summary">Get most recent products.</p>
+        <p class="phpdocumentor-summary">Get offerings for a given location.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
-                                <span class="phpdocumentor-signature__name">getFreshProducts</span>(
+                                <span class="phpdocumentor-signature__name">getOfferings</span>(
                     <span class="phpdocumentor-signature__argument">
-            [                <span class="phpdocumentor-signature__argument__name">$count</span> :
+                            <span class="phpdocumentor-signature__argument__name">$location</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            [,                 <span class="phpdocumentor-signature__argument__name">$count</span> :
                 <span class="phpdocumentor-signature__argument__return-type">int</span>
                  = <span class="phpdocumentor-signature__argument__default-value">10</span> ]            </span>
                     <span class="phpdocumentor-signature__argument">
@@ -565,12 +632,17 @@ Returns an empty array if operation could NOT complete.</p></section>
                 <span class="phpdocumentor-signature__argument__return-type">int</span>
                             </span>
                 )
-        : <span class="phpdocumentor-signature__response_type">array</span>
+        : <span class="phpdocumentor-signature__response_type">\Entities\Offering[]</span>
     </code>
 
     
             <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
         <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$location</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
                             <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$count</span>
                     : <span class="phpdocumentor-signature__argument__return-type">int</span>
@@ -593,20 +665,64 @@ Use for pagination.</p></section></dd>
                                     </dl>
     
             <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array</span>
-                    &mdash; <span class="phpdocumentor-description"><pre class="prettyprint"><code class="prettyprint">[
-    [
-        'product_id'     => int,
-        'name'           => string,
-        'created_at'     => string date('Y-m-d H:i:s'),
-        'website'        => string,
-        'summary'        => string,
-        'thumbnail'      => string,
-        'votes_count'    => int,
-        'comments_count' => int
-    ],
-    ...
-] </code></pre></span>
+        <span class="phpdocumentor-signature__response_type">\Entities\Offering[]</span>
+            
+</article>
+                                    <a id="method_getOperators"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getOperators()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">310</span>
+    </aside>
+        <p class="phpdocumentor-summary">Get operators.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">getOperators</span>(
+                    <span class="phpdocumentor-signature__argument">
+            [                <span class="phpdocumentor-signature__argument__name">$count</span> :
+                <span class="phpdocumentor-signature__argument__return-type">int</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">10</span> ]            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$offset</span> :
+                <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">\Entities\Operator[]</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$count</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                     = <span class="phpdocumentor-signature__argument__default-value">10</span>                </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>How many categories to return (default = 10).</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$offset</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>How many categories to skip   (default = 0)
+Use for pagination.</p></section></dd>
+                    </dl>
+    
+                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+        <dl class="phpdocumentor-tag-list">
+                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">api</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>ComparOperatorAPI</p></section></dd>
+                                    </dl>
+    
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">\Entities\Operator[]</span>
             
 </article>
                                     <a id="method_getPopularProducts"></a>
@@ -618,9 +734,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">getPopularProducts()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">280</span>
+        <span class="phpdocumentor-element-found-in__line">365</span>
     </aside>
         <p class="phpdocumentor-summary">Get most popular products.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -679,70 +795,6 @@ Use for pagination.</p></section></dd>
 ] </code></pre></span>
             
 </article>
-                                    <a id="method_getCategories"></a>
-<article
-        class="
-            phpdocumentor-method
-            phpdocumentor-method--public
-                                                        "
->
-    <h4 class="phpdocumentor-method__name">getCategories()</h4>
-    <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
-        :
-        <span class="phpdocumentor-element-found-in__line">336</span>
-    </aside>
-        <p class="phpdocumentor-summary">Get categories sorted by id.</p>
-        <code class="phpdocumentor-signature phpdocumentor-code ">
-        <span class="phpdocumentor-signature__visibility">public</span>
-                                <span class="phpdocumentor-signature__name">getCategories</span>(
-                    <span class="phpdocumentor-signature__argument">
-            [                <span class="phpdocumentor-signature__argument__name">$count</span> :
-                <span class="phpdocumentor-signature__argument__return-type">int</span>
-                 = <span class="phpdocumentor-signature__argument__default-value">10</span> ]            </span>
-                    <span class="phpdocumentor-signature__argument">
-            ,                 <span class="phpdocumentor-signature__argument__name">$offset</span> :
-                <span class="phpdocumentor-signature__argument__return-type">int</span>
-                            </span>
-                )
-        : <span class="phpdocumentor-signature__response_type">array</span>
-    </code>
-
-    
-            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
-        <dl class="phpdocumentor-argument-list">
-                            <dt class="phpdocumentor-argument-list__entry">
-                    <span class="phpdocumentor-signature__argument__name">$count</span>
-                    : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                     = <span class="phpdocumentor-signature__argument__default-value">10</span>                </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>How many categories to return (default = 10).</p></section></dd>
-                            <dt class="phpdocumentor-argument-list__entry">
-                    <span class="phpdocumentor-signature__argument__name">$offset</span>
-                    : <span class="phpdocumentor-signature__argument__return-type">int</span>
-                                    </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>How many categories to skip   (default = 0)
-Use for pagination.</p></section></dd>
-                    </dl>
-    
-                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
-        <dl class="phpdocumentor-tag-list">
-                                                <dt class="phpdocumentor-tag-list__entry">
-                        <span class="phpdocumentor-tag__name">api</span>
-                    </dt>
-                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>ComparOperatorAPI</p></section></dd>
-                                    </dl>
-    
-            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">array</span>
-                    &mdash; <span class="phpdocumentor-description"><pre class="prettyprint"><code class="prettyprint">[
-    [
-        'category_id'     => int,
-        'name'           => string,
-    ],
-    ...
-] </code></pre></span>
-            
-</article>
                                     <a id="method_getCategory"></a>
 <article
         class="
@@ -752,9 +804,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">getCategory()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">371</span>
+        <span class="phpdocumentor-element-found-in__line">418</span>
     </aside>
         <p class="phpdocumentor-summary">Get category info for a given category id.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -805,9 +857,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">getProduct()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">425</span>
+        <span class="phpdocumentor-element-found-in__line">472</span>
     </aside>
         <p class="phpdocumentor-summary">Get product content associated with a given product id.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -873,9 +925,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">getProductsCollection()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">482</span>
+        <span class="phpdocumentor-element-found-in__line">529</span>
     </aside>
         <p class="phpdocumentor-summary">Get products associated with a given category.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -956,9 +1008,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">findProductsByName()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">560</span>
+        <span class="phpdocumentor-element-found-in__line">607</span>
     </aside>
         <p class="phpdocumentor-summary">Find products whose name match given search string.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1039,9 +1091,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">findProductsByContent()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">633</span>
+        <span class="phpdocumentor-element-found-in__line">680</span>
     </aside>
         <p class="phpdocumentor-summary">Find products whose content match given search string.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1122,9 +1174,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">getUserVotes()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">675</span>
+        <span class="phpdocumentor-element-found-in__line">722</span>
     </aside>
         <p class="phpdocumentor-summary">Get products id a given user voted for.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1177,9 +1229,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">getProductComments()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">716</span>
+        <span class="phpdocumentor-element-found-in__line">763</span>
     </aside>
         <p class="phpdocumentor-summary">Get comments for a given product.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1239,9 +1291,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">vote()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">749</span>
+        <span class="phpdocumentor-element-found-in__line">796</span>
     </aside>
         <p class="phpdocumentor-summary">Register a vote for given user on given product.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1296,9 +1348,9 @@ Use for pagination.</p></section></dd>
 >
     <h4 class="phpdocumentor-method__name">comment()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/ComparOperatorAPI.php"><a href="../files/src-models-comparoperatorapi.html"><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/ComparOperatorAPI.php"><a href="../files/src-models-endpoints-comparoperatorapi.html"><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">801</span>
+        <span class="phpdocumentor-element-found-in__line">848</span>
     </aside>
         <p class="phpdocumentor-summary">Register a comment for given user on given product.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -1375,7 +1427,7 @@ Use for pagination.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Model.php"><a href="../files/src-models-model.html"><abbr title="src/Models/Model.php">Model.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">28</span>
+        <span class="phpdocumentor-element-found-in__line">32</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
@@ -1414,7 +1466,7 @@ Use for pagination.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DBPDO.php"><a href="../files/src-models-dbpdo.html"><abbr title="src/Models/DBPDO.php">DBPDO.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">34</span>
+        <span class="phpdocumentor-element-found-in__line">37</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
@@ -1453,7 +1505,7 @@ Use for pagination.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DBPDO.php"><a href="../files/src-models-dbpdo.html"><abbr title="src/Models/DBPDO.php">DBPDO.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">46</span>
+        <span class="phpdocumentor-element-found-in__line">49</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
@@ -1515,6 +1567,50 @@ Use for pagination.</p></section></dd>
         
             <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">array|null</span>
+            
+</article>
+                                    <a id="method_lastInsertId"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">lastInsertId()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DBPDO.php"><a href="../files/src-models-dbpdo.html"><abbr title="src/Models/DBPDO.php">DBPDO.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">85</span>
+    </aside>
+        <p class="phpdocumentor-summary">Shortcut and wrapper for internal pdo instance lastInsertId() returned
+as integer.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">lastInsertId</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type">int</span>
+    </code>
+
+    
+    
+                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+        <dl class="phpdocumentor-tag-list">
+                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">note</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>Return 0 on failure.</p></section></dd>
+                                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">see</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"></section></dd>
+                                    <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">see</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"></section></dd>
+                                    </dl>
+    
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
             
 </article>
                             </section>

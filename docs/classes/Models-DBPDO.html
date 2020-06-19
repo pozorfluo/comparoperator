@@ -100,7 +100,7 @@ derived classes</p></section>
                                         <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-DBPDO.html#property_db">$db</a></th>
                     <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell"><a href=""><abbr title=""></abbr></a></td>
+                    <td class="phpdocumentor-cell"><a href="../classes/Helpers-DB.html"><abbr title="\Helpers\DB">DB</abbr></a></td>
                 </tr>
                                                     <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-Model.html#property_args">$args</a></th>
@@ -115,7 +115,7 @@ derived classes</p></section>
                             <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-Model.html#property_controller">$controller</a></th>
                     <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell"><a href=""><abbr title=""></abbr></a></td>
+                    <td class="phpdocumentor-cell"><a href="../classes/Controllers-Controller.html"><abbr title="\Controllers\Controller">Controller</abbr></a></td>
                 </tr>
                                         <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-DBPDO.html#method___construct">__construct()</a></th>
@@ -131,6 +131,12 @@ derived classes</p></section>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-DBPDO.html#method_execute">execute()</a></th>
                     <td class="phpdocumentor-cell"></td>
                     <td class="phpdocumentor-cell">array|null</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/Models-DBPDO.html#method_lastInsertId">lastInsertId()</a></th>
+                    <td class="phpdocumentor-cell">Shortcut and wrapper for internal pdo instance lastInsertId() returned
+as integer.</td>
+                    <td class="phpdocumentor-cell">int</td>
                 </tr>
                                                     <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Models-Model.html#method___construct">__construct()</a></th>
@@ -153,11 +159,11 @@ derived classes</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DBPDO.php"><a href="../files/src-models-dbpdo.html"><abbr title="src/Models/DBPDO.php">DBPDO.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">18</span>
+        <span class="phpdocumentor-element-found-in__line">21</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__type">mixed</span>
+                <span class="phpdocumentor-signature__type"><a href="../classes/Helpers-DB.html"><abbr title="\Helpers\DB">DB</abbr></a></span>
         <span class="phpdocumentor-signature__name">$db</span>
             </code>
     </article>
@@ -210,11 +216,11 @@ derived classes</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Model.php"><a href="../files/src-models-model.html"><abbr title="src/Models/Model.php">Model.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">26</span>
+        <span class="phpdocumentor-element-found-in__line">30</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__type">mixed</span>
+                <span class="phpdocumentor-signature__type"><a href="../classes/Controllers-Controller.html"><abbr title="\Controllers\Controller">Controller</abbr></a></span>
         <span class="phpdocumentor-signature__name">$controller</span>
             </code>
     </article>
@@ -233,7 +239,7 @@ derived classes</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DBPDO.php"><a href="../files/src-models-dbpdo.html"><abbr title="src/Models/DBPDO.php">DBPDO.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">23</span>
+        <span class="phpdocumentor-element-found-in__line">26</span>
     </aside>
         <p class="phpdocumentor-summary">Define defaults, take arguments</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -273,7 +279,7 @@ derived classes</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DBPDO.php"><a href="../files/src-models-dbpdo.html"><abbr title="src/Models/DBPDO.php">DBPDO.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">34</span>
+        <span class="phpdocumentor-element-found-in__line">37</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
@@ -312,7 +318,7 @@ derived classes</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DBPDO.php"><a href="../files/src-models-dbpdo.html"><abbr title="src/Models/DBPDO.php">DBPDO.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">46</span>
+        <span class="phpdocumentor-element-found-in__line">49</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
@@ -376,6 +382,50 @@ derived classes</p></section>
         <span class="phpdocumentor-signature__response_type">array|null</span>
             
 </article>
+                                    <a id="method_lastInsertId"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">lastInsertId()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/DBPDO.php"><a href="../files/src-models-dbpdo.html"><abbr title="src/Models/DBPDO.php">DBPDO.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">85</span>
+    </aside>
+        <p class="phpdocumentor-summary">Shortcut and wrapper for internal pdo instance lastInsertId() returned
+as integer.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">lastInsertId</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type">int</span>
+    </code>
+
+    
+    
+                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+        <dl class="phpdocumentor-tag-list">
+                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">note</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>Return 0 on failure.</p></section></dd>
+                                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">see</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"></section></dd>
+                                    <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">see</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"></section></dd>
+                                    </dl>
+    
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">int</span>
+            
+</article>
                                                                     <a id="method___construct"></a>
 <article
         class="
@@ -387,7 +437,7 @@ derived classes</p></section>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Model.php"><a href="../files/src-models-model.html"><abbr title="src/Models/Model.php">Model.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">28</span>
+        <span class="phpdocumentor-element-found-in__line">32</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>

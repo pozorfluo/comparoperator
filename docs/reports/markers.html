@@ -93,8 +93,20 @@
                             <td class="phpdocumentor-cell">1</td>
                         </tr>
                                                                                 <tr>
+                            <td class="phpdocumentor-cell"><a href="#src/Controllers/Dashboard.php">src/Controllers/Dashboard.php</a></td>
+                            <td class="phpdocumentor-cell">1</td>
+                        </tr>
+                                                                                <tr>
                             <td class="phpdocumentor-cell"><a href="#src/Controllers/Home.php">src/Controllers/Home.php</a></td>
                             <td class="phpdocumentor-cell">1</td>
+                        </tr>
+                                                                                <tr>
+                            <td class="phpdocumentor-cell"><a href="#src/Entities/Entity.php">src/Entities/Entity.php</a></td>
+                            <td class="phpdocumentor-cell">6</td>
+                        </tr>
+                                                                                <tr>
+                            <td class="phpdocumentor-cell"><a href="#src/Entities/Generic.php">src/Entities/Generic.php</a></td>
+                            <td class="phpdocumentor-cell">5</td>
                         </tr>
                                                                                 <tr>
                             <td class="phpdocumentor-cell"><a href="#src/Helpers/Cache.php">src/Helpers/Cache.php</a></td>
@@ -117,8 +129,8 @@
                             <td class="phpdocumentor-cell">1</td>
                         </tr>
                                                                                 <tr>
-                            <td class="phpdocumentor-cell"><a href="#src/Models/ComparOperatorAPI.php">src/Models/ComparOperatorAPI.php</a></td>
-                            <td class="phpdocumentor-cell">9</td>
+                            <td class="phpdocumentor-cell"><a href="#src/Models/Endpoints/ComparOperatorAPI.php">src/Models/Endpoints/ComparOperatorAPI.php</a></td>
+                            <td class="phpdocumentor-cell">12</td>
                         </tr>
                                                 </table>
         
@@ -246,7 +258,25 @@ RESTish API.</td>
                 <tbody>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">177</td>
+                        <td class="phpdocumentor-cell">183</td>
+                        <td class="phpdocumentor-cell">Research if that use case for __call is ill-advised.</td>
+                    </tr>
+                                </tbody>
+            </table>
+                    <a id="src/Controllers/Dashboard.php"></a>
+            <h3><abbr title="src/Controllers/Dashboard.php">Dashboard.php</abbr></h3>
+            <table>
+                <thead>
+                <tr>
+                    <th class="phpdocumentor-heading">Type</th>
+                    <th class="phpdocumentor-heading">Line</th>
+                    <th class="phpdocumentor-heading">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">48</td>
                         <td class="phpdocumentor-cell">Research if that use case for __call is ill-advised.</td>
                     </tr>
                                 </tbody>
@@ -266,6 +296,92 @@ RESTish API.</td>
                         <td class="phpdocumentor-cell">TODO</td>
                         <td class="phpdocumentor-cell">48</td>
                         <td class="phpdocumentor-cell">Research if that use case for __call is ill-advised.</td>
+                    </tr>
+                                </tbody>
+            </table>
+                    <a id="src/Entities/Entity.php"></a>
+            <h3><abbr title="src/Entities/Entity.php">Entity.php</abbr></h3>
+            <table>
+                <thead>
+                <tr>
+                    <th class="phpdocumentor-heading">Type</th>
+                    <th class="phpdocumentor-heading">Line</th>
+                    <th class="phpdocumentor-heading">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">86</td>
+                        <td class="phpdocumentor-cell">Consider that $this-&gt;is_valid is obsolete and misleading if
+anything fiddles with $this-&gt;data.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">86</td>
+                        <td class="phpdocumentor-cell">Consider either not storing a misleading is_valid state or
+or invalidating it in a $this-&gt;data setter and restricted access.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">118</td>
+                        <td class="phpdocumentor-cell">Document the fact that false is a reserved value in Entity</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">118</td>
+                        <td class="phpdocumentor-cell">Consider using int instead.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">118</td>
+                        <td class="phpdocumentor-cell">Consider FILTER_NULL_ON_FAILURE.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">157</td>
+                        <td class="phpdocumentor-cell">Figure out how to work with self return type and inheritance or
+drop it.</td>
+                    </tr>
+                                </tbody>
+            </table>
+                    <a id="src/Entities/Generic.php"></a>
+            <h3><abbr title="src/Entities/Generic.php">Generic.php</abbr></h3>
+            <table>
+                <thead>
+                <tr>
+                    <th class="phpdocumentor-heading">Type</th>
+                    <th class="phpdocumentor-heading">Line</th>
+                    <th class="phpdocumentor-heading">Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">142</td>
+                        <td class="phpdocumentor-cell">Consider that $this-&gt;is_valid is obsolete and misleading if
+anything fiddles with $this-&gt;data.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">142</td>
+                        <td class="phpdocumentor-cell">Consider either not storing a misleading is_valid state or
+or invalidating it in a $this-&gt;data setter and restricted access.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">173</td>
+                        <td class="phpdocumentor-cell">Document the fact that false is a reserved value in Entity</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">173</td>
+                        <td class="phpdocumentor-cell">Consider using int instead.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">173</td>
+                        <td class="phpdocumentor-cell">Consider FILTER_NULL_ON_FAILURE.</td>
                     </tr>
                                 </tbody>
             </table>
@@ -396,8 +512,8 @@ used.</td>
                     </tr>
                                 </tbody>
             </table>
-                    <a id="src/Models/ComparOperatorAPI.php"></a>
-            <h3><abbr title="src/Models/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></h3>
+                    <a id="src/Models/Endpoints/ComparOperatorAPI.php"></a>
+            <h3><abbr title="src/Models/Endpoints/ComparOperatorAPI.php">ComparOperatorAPI.php</abbr></h3>
             <table>
                 <thead>
                 <tr>
@@ -409,50 +525,66 @@ used.</td>
                 <tbody>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">21</td>
+                        <td class="phpdocumentor-cell">29</td>
                         <td class="phpdocumentor-cell">Return entities instead of assoc arrays in next more oop-ish
 iteration.</td>
                     </tr>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">21</td>
+                        <td class="phpdocumentor-cell">29</td>
                         <td class="phpdocumentor-cell">Consider returning a generic &#039;EntityInterface&#039; instead of an entity
 to be able to move things around in a specific entity
 implementation and NOT break to many things.</td>
                     </tr>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">425</td>
+                        <td class="phpdocumentor-cell">29</td>
+                        <td class="phpdocumentor-cell">Break-up API into multiple files by endpoints.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">29</td>
+                        <td class="phpdocumentor-cell">Consider using traits for endpoints and composing API by using endpoint
+traits.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">148</td>
+                        <td class="phpdocumentor-cell">Consider not executing the query if validates on a required field.</td>
+                    </tr>
+                                    <tr>
+                        <td class="phpdocumentor-cell">TODO</td>
+                        <td class="phpdocumentor-cell">472</td>
                         <td class="phpdocumentor-cell">Return categories</td>
                     </tr>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">482</td>
+                        <td class="phpdocumentor-cell">529</td>
                         <td class="phpdocumentor-cell">Implement query</td>
                     </tr>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">560</td>
+                        <td class="phpdocumentor-cell">607</td>
                         <td class="phpdocumentor-cell">Implement query</td>
                     </tr>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">633</td>
+                        <td class="phpdocumentor-cell">680</td>
                         <td class="phpdocumentor-cell">Implement query</td>
                     </tr>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">675</td>
+                        <td class="phpdocumentor-cell">722</td>
                         <td class="phpdocumentor-cell">Implement query</td>
                     </tr>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">716</td>
+                        <td class="phpdocumentor-cell">763</td>
                         <td class="phpdocumentor-cell">Implement query</td>
                     </tr>
                                     <tr>
                         <td class="phpdocumentor-cell">TODO</td>
-                        <td class="phpdocumentor-cell">801</td>
+                        <td class="phpdocumentor-cell">848</td>
                         <td class="phpdocumentor-cell">Implement query</td>
                     </tr>
                                 </tbody>

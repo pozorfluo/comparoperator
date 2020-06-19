@@ -186,6 +186,21 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/Controllers-Controller.html#property_rendered_page"
         },                {
+            "fqsen": "\\Controllers\\Dashboard",
+            "name": "Dashboard",
+            "summary": "",
+            "url": "../classes/Controllers-Dashboard.html"
+        },                {
+            "fqsen": "\\Controllers\\Dashboard\u003A\u003ArunDefault\u0028\u0029",
+            "name": "runDefault",
+            "summary": "note\n\u0020\u0020Prepend\u0020all\u0020actions\u0020meant\u0020to\u0020be\u0020callable\u0020by\u0020a\u0020request\u0020with\u0020\u0027run\u0027",
+            "url": "../classes/Controllers-Dashboard.html#method_runDefault"
+        },                {
+            "fqsen": "\\Controllers\\Dashboard\u003A\u003A__call\u0028\u0029",
+            "name": "__call",
+            "summary": "Fallback\u0020action\u0020called\u0020when\u0020the\u0020Dispatcher\u0020resolves\u0020the\u0020url\/request\u0020to\na\u0020route\u0020that\u0020does\u0020NOT\u0020exist.",
+            "url": "../classes/Controllers-Dashboard.html#method___call"
+        },                {
             "fqsen": "\\Controllers\\Home",
             "name": "Home",
             "summary": "",
@@ -206,19 +221,9 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/Entities-Entity.html"
         },                {
-            "fqsen": "\\Entities\\Entity\u003A\u003AfromData\u0028\u0029",
-            "name": "fromData",
-            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance\u0020from\u0020a\u0020given\u0020associative\u0020array.",
-            "url": "../classes/Entities-Entity.html#method_fromData"
-        },                {
-            "fqsen": "\\Entities\\Entity\u003A\u003AfromDataAsProperties\u0028\u0029",
-            "name": "fromDataAsProperties",
-            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance\u0020from\u0020a\u0020given\u0020associative\u0020array.",
-            "url": "../classes/Entities-Entity.html#method_fromDataAsProperties"
-        },                {
             "fqsen": "\\Entities\\Entity\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance.",
+            "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
             "url": "../classes/Entities-Entity.html#method___construct"
         },                {
             "fqsen": "\\Entities\\Entity\u003A\u003AgetData\u0028\u0029",
@@ -236,6 +241,11 @@ Search.appendIndex(
             "summary": "Determine\u0020if\u0020this\u0020Entity\u0027s\u0020data\u0020is\u0020valid\u0020according\u0020to\u0020this\u0020Entity\u0027s\ndefinition.",
             "url": "../classes/Entities-Entity.html#method_isValid"
         },                {
+            "fqsen": "\\Entities\\Entity\u003A\u003AhasValidRequiredFields\u0028\u0029",
+            "name": "hasValidRequiredFields",
+            "summary": "Determine\u0020if\u0020this\u0020Entity\u0027s\u0020required\u0020fields\u0020are\u0020valid\u0020according\u0020to\u0020this\nEntity\u0027s\u0020definition.",
+            "url": "../classes/Entities-Entity.html#method_hasValidRequiredFields"
+        },                {
             "fqsen": "\\Entities\\Entity\u003A\u003AgetFiltered\u0028\u0029",
             "name": "getFiltered",
             "summary": "Return\u0020this\u0020Entity\u0027s\u0020filtered\u0020data,\u0020do\u0020not\u0020change\u0020internal\u0020state.",
@@ -246,20 +256,95 @@ Search.appendIndex(
             "summary": "Apply\u0020filters\u0020on\u0020this\u0020Entity\u0027s\u0020data,\u0020change\u0020internal\u0020state.",
             "url": "../classes/Entities-Entity.html#method_validate"
         },                {
+            "fqsen": "\\Entities\\Entity\u003A\u003Adefinitions",
+            "name": "definitions",
+            "summary": "",
+            "url": "../classes/Entities-Entity.html#constant_definitions"
+        },                {
+            "fqsen": "\\Entities\\Entity\u003A\u003Arequired_fields",
+            "name": "required_fields",
+            "summary": "List\u0020of\u0020field\u0020names\u0020required\u0020for\u0020insertion\u0020in\u0020database.",
+            "url": "../classes/Entities-Entity.html#constant_required_fields"
+        },                {
             "fqsen": "\\Entities\\Entity\u003A\u003A\u0024data",
             "name": "data",
             "summary": "",
             "url": "../classes/Entities-Entity.html#property_data"
         },                {
-            "fqsen": "\\Entities\\Entity\u003A\u003A\u0024definitions",
-            "name": "definitions",
-            "summary": "",
-            "url": "../classes/Entities-Entity.html#property_definitions"
-        },                {
             "fqsen": "\\Entities\\Entity\u003A\u003A\u0024is_valid",
             "name": "is_valid",
             "summary": "",
             "url": "../classes/Entities-Entity.html#property_is_valid"
+        },                {
+            "fqsen": "\\Entities\\Generic",
+            "name": "Generic",
+            "summary": "",
+            "url": "../classes/Entities-Generic.html"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003AfromData\u0028\u0029",
+            "name": "fromData",
+            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance\u0020from\u0020a\u0020given\u0020associative\u0020array.",
+            "url": "../classes/Entities-Generic.html#method_fromData"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003AfromDataAsProperties\u0028\u0029",
+            "name": "fromDataAsProperties",
+            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance\u0020from\u0020a\u0020given\u0020associative\u0020array.",
+            "url": "../classes/Entities-Generic.html#method_fromDataAsProperties"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance.",
+            "url": "../classes/Entities-Generic.html#method___construct"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003AgetData\u0028\u0029",
+            "name": "getData",
+            "summary": "Return\u0020this\u0020Entity\u0027s\u0020data.",
+            "url": "../classes/Entities-Generic.html#method_getData"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003AgetDefinitions\u0028\u0029",
+            "name": "getDefinitions",
+            "summary": "Return\u0020this\u0020Entity\u0027s\u0020definition.",
+            "url": "../classes/Entities-Generic.html#method_getDefinitions"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003AisValid\u0028\u0029",
+            "name": "isValid",
+            "summary": "Determine\u0020if\u0020this\u0020Entity\u0027s\u0020data\u0020is\u0020valid\u0020according\u0020to\u0020this\u0020Entity\u0027s\ndefinition.",
+            "url": "../classes/Entities-Generic.html#method_isValid"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003AhasValidRequiredFields\u0028\u0029",
+            "name": "hasValidRequiredFields",
+            "summary": "Determine\u0020if\u0020this\u0020Entity\u0027s\u0020required\u0020fields\u0020are\u0020valid\u0020according\u0020to\u0020this\nEntity\u0027s\u0020definition.",
+            "url": "../classes/Entities-Generic.html#method_hasValidRequiredFields"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003AgetFiltered\u0028\u0029",
+            "name": "getFiltered",
+            "summary": "Return\u0020this\u0020Entity\u0027s\u0020filtered\u0020data,\u0020do\u0020not\u0020change\u0020internal\u0020state.",
+            "url": "../classes/Entities-Generic.html#method_getFiltered"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003Avalidate\u0028\u0029",
+            "name": "validate",
+            "summary": "Apply\u0020filters\u0020on\u0020this\u0020Entity\u0027s\u0020data,\u0020change\u0020internal\u0020state.",
+            "url": "../classes/Entities-Generic.html#method_validate"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003A\u0024data",
+            "name": "data",
+            "summary": "",
+            "url": "../classes/Entities-Generic.html#property_data"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003A\u0024definitions",
+            "name": "definitions",
+            "summary": "",
+            "url": "../classes/Entities-Generic.html#property_definitions"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003A\u0024required_fields",
+            "name": "required_fields",
+            "summary": "List\u0020of\u0020field\u0020names\u0020required\u0020for\u0020insertion\u0020in\u0020database.",
+            "url": "../classes/Entities-Generic.html#property_required_fields"
+        },                {
+            "fqsen": "\\Entities\\Generic\u003A\u003A\u0024is_valid",
+            "name": "is_valid",
+            "summary": "",
+            "url": "../classes/Entities-Generic.html#property_is_valid"
         },                {
             "fqsen": "\\Entities\\Location",
             "name": "Location",
@@ -268,13 +353,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Entities\\Location\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance.",
+            "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
             "url": "../classes/Entities-Location.html#method___construct"
         },                {
-            "fqsen": "\\Entities\\Location\u003A\u003A\u0024definitions",
+            "fqsen": "\\Entities\\Location\u003A\u003Adefinitions",
             "name": "definitions",
             "summary": "",
-            "url": "../classes/Entities-Location.html#property_definitions"
+            "url": "../classes/Entities-Location.html#constant_definitions"
+        },                {
+            "fqsen": "\\Entities\\Location\u003A\u003Arequired_fields",
+            "name": "required_fields",
+            "summary": "List\u0020of\u0020field\u0020names\u0020required\u0020for\u0020insertion\u0020in\u0020database.",
+            "url": "../classes/Entities-Location.html#constant_required_fields"
         },                {
             "fqsen": "\\Entities\\Offering",
             "name": "Offering",
@@ -283,13 +373,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Entities\\Offering\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance.",
+            "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
             "url": "../classes/Entities-Offering.html#method___construct"
         },                {
-            "fqsen": "\\Entities\\Offering\u003A\u003A\u0024definitions",
+            "fqsen": "\\Entities\\Offering\u003A\u003Adefinitions",
             "name": "definitions",
             "summary": "",
-            "url": "../classes/Entities-Offering.html#property_definitions"
+            "url": "../classes/Entities-Offering.html#constant_definitions"
+        },                {
+            "fqsen": "\\Entities\\Offering\u003A\u003Arequired_fields",
+            "name": "required_fields",
+            "summary": "List\u0020of\u0020field\u0020names\u0020required\u0020for\u0020insertion\u0020in\u0020database.",
+            "url": "../classes/Entities-Offering.html#constant_required_fields"
         },                {
             "fqsen": "\\Entities\\Operator",
             "name": "Operator",
@@ -298,13 +393,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Entities\\Operator\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance.",
+            "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
             "url": "../classes/Entities-Operator.html#method___construct"
         },                {
-            "fqsen": "\\Entities\\Operator\u003A\u003A\u0024definitions",
+            "fqsen": "\\Entities\\Operator\u003A\u003Adefinitions",
             "name": "definitions",
             "summary": "",
-            "url": "../classes/Entities-Operator.html#property_definitions"
+            "url": "../classes/Entities-Operator.html#constant_definitions"
+        },                {
+            "fqsen": "\\Entities\\Operator\u003A\u003Arequired_fields",
+            "name": "required_fields",
+            "summary": "List\u0020of\u0020field\u0020names\u0020required\u0020for\u0020insertion\u0020in\u0020database.",
+            "url": "../classes/Entities-Operator.html#constant_required_fields"
         },                {
             "fqsen": "\\Entities\\Review",
             "name": "Review",
@@ -313,28 +413,33 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Entities\\Review\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance.",
+            "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
             "url": "../classes/Entities-Review.html#method___construct"
         },                {
-            "fqsen": "\\Entities\\Review\u003A\u003A\u0024definitions",
+            "fqsen": "\\Entities\\Review\u003A\u003Adefinitions",
             "name": "definitions",
             "summary": "",
-            "url": "../classes/Entities-Review.html#property_definitions"
+            "url": "../classes/Entities-Review.html#constant_definitions"
+        },                {
+            "fqsen": "\\Entities\\Review\u003A\u003Arequired_fields",
+            "name": "required_fields",
+            "summary": "List\u0020of\u0020field\u0020names\u0020required\u0020for\u0020insertion\u0020in\u0020database.",
+            "url": "../classes/Entities-Review.html#constant_required_fields"
         },                {
             "fqsen": "\\Entities\\User",
             "name": "User",
             "summary": "",
             "url": "../classes/Entities-User.html"
         },                {
-            "fqsen": "\\Entities\\User\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance.",
-            "url": "../classes/Entities-User.html#method___construct"
-        },                {
-            "fqsen": "\\Entities\\User\u003A\u003A\u0024definitions",
+            "fqsen": "\\Entities\\User\u003A\u003Adefinitions",
             "name": "definitions",
             "summary": "",
-            "url": "../classes/Entities-User.html#property_definitions"
+            "url": "../classes/Entities-User.html#constant_definitions"
+        },                {
+            "fqsen": "\\Entities\\User\u003A\u003Arequired_fields",
+            "name": "required_fields",
+            "summary": "List\u0020of\u0020field\u0020names\u0020required\u0020for\u0020insertion\u0020in\u0020database.",
+            "url": "../classes/Entities-User.html#constant_required_fields"
         },                {
             "fqsen": "\\Helpers\\Cache",
             "name": "Cache",
@@ -716,20 +821,25 @@ Search.appendIndex(
             "summary": "Register\u0020a\u0020given\u0020new\u0020user.",
             "url": "../classes/Models-ComparOperatorAPI.html#method_addUser"
         },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetFreshProducts\u0028\u0029",
-            "name": "getFreshProducts",
-            "summary": "Get\u0020most\u0020recent\u0020products.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getFreshProducts"
+            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetLocations\u0028\u0029",
+            "name": "getLocations",
+            "summary": "Get\u0020locations.",
+            "url": "../classes/Models-ComparOperatorAPI.html#method_getLocations"
+        },                {
+            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetOfferings\u0028\u0029",
+            "name": "getOfferings",
+            "summary": "Get\u0020offerings\u0020for\u0020a\u0020given\u0020location.",
+            "url": "../classes/Models-ComparOperatorAPI.html#method_getOfferings"
+        },                {
+            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetOperators\u0028\u0029",
+            "name": "getOperators",
+            "summary": "Get\u0020operators.",
+            "url": "../classes/Models-ComparOperatorAPI.html#method_getOperators"
         },                {
             "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetPopularProducts\u0028\u0029",
             "name": "getPopularProducts",
             "summary": "Get\u0020most\u0020popular\u0020products.",
             "url": "../classes/Models-ComparOperatorAPI.html#method_getPopularProducts"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetCategories\u0028\u0029",
-            "name": "getCategories",
-            "summary": "Get\u0020categories\u0020sorted\u0020by\u0020id.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getCategories"
         },                {
             "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetCategory\u0028\u0029",
             "name": "getCategory",
@@ -795,6 +905,11 @@ Search.appendIndex(
             "name": "execute",
             "summary": "",
             "url": "../classes/Models-DBPDO.html#method_execute"
+        },                {
+            "fqsen": "\\Models\\DBPDO\u003A\u003AlastInsertId\u0028\u0029",
+            "name": "lastInsertId",
+            "summary": "Shortcut\u0020and\u0020wrapper\u0020for\u0020internal\u0020pdo\u0020instance\u0020lastInsertId\u0028\u0029\u0020returned\nas\u0020integer.",
+            "url": "../classes/Models-DBPDO.html#method_lastInsertId"
         },                {
             "fqsen": "\\Models\\DBPDO\u003A\u003A\u0024db",
             "name": "db",
@@ -1031,6 +1146,21 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/Templates-Table.html#property_data"
         },                {
+            "fqsen": "\\Views\\AdminDashboard",
+            "name": "AdminDashboard",
+            "summary": "",
+            "url": "../classes/Views-AdminDashboard.html"
+        },                {
+            "fqsen": "\\Views\\AdminDashboard\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "../classes/Views-AdminDashboard.html#method___construct"
+        },                {
+            "fqsen": "\\Views\\AdminDashboard\u003A\u003Acompose\u0028\u0029",
+            "name": "compose",
+            "summary": "todo\n\u0020\u0020\u002D\u0020\u005B\u0020\u005D\u0020Build\u0020from\u0020data",
+            "url": "../classes/Views-AdminDashboard.html#method_compose"
+        },                {
             "fqsen": "\\Views\\Error404",
             "name": "Error404",
             "summary": "",
@@ -1060,6 +1190,36 @@ Search.appendIndex(
             "name": "compose",
             "summary": "todo\n\u0020\u0020\u002D\u0020\u005B\u0020\u005D\u0020Build\u0020from\u0020data",
             "url": "../classes/Views-Home.html#method_compose"
+        },                {
+            "fqsen": "\\Views\\OfferingList",
+            "name": "OfferingList",
+            "summary": "",
+            "url": "../classes/Views-OfferingList.html"
+        },                {
+            "fqsen": "\\Views\\OfferingList\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "../classes/Views-OfferingList.html#method___construct"
+        },                {
+            "fqsen": "\\Views\\OfferingList\u003A\u003Acompose\u0028\u0029",
+            "name": "compose",
+            "summary": "todo\n\u0020\u0020\u002D\u0020\u005B\u0020\u005D\u0020Build\u0020from\u0020data",
+            "url": "../classes/Views-OfferingList.html#method_compose"
+        },                {
+            "fqsen": "\\Views\\OperatorDashboard",
+            "name": "OperatorDashboard",
+            "summary": "",
+            "url": "../classes/Views-OperatorDashboard.html"
+        },                {
+            "fqsen": "\\Views\\OperatorDashboard\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "",
+            "url": "../classes/Views-OperatorDashboard.html#method___construct"
+        },                {
+            "fqsen": "\\Views\\OperatorDashboard\u003A\u003Acompose\u0028\u0029",
+            "name": "compose",
+            "summary": "todo\n\u0020\u0020\u002D\u0020\u005B\u0020\u005D\u0020Build\u0020from\u0020data",
+            "url": "../classes/Views-OperatorDashboard.html#method_compose"
         },                {
             "fqsen": "\\Views\\View",
             "name": "View",

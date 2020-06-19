@@ -99,6 +99,9 @@
 ## db
 ![db](resources/images/tp-comparoperator-db.png)
 
+## class diagram
+![class](docs/graphs/classes.svg)
+
 ## wireframes
 
 ### desktop/laptop
