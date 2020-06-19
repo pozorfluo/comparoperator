@@ -6,6 +6,7 @@ declare(strict_types=1);
 namespace Models\Endpoints;
 
 use PDOException;
+use Entities\Entity;
 use Entities\User;
 
 /**
@@ -15,6 +16,42 @@ use Entities\User;
  */
 trait UserEndpoint
 {
+    /**
+     * Get users.
+     * 
+     * @api ComparOperatorAPI
+     * 
+     * @param  int $count  How many categories to return (default = 10).
+     * @param  int $offset How many categories to skip   (default = 0)
+     *                     Use for pagination.
+     * 
+     * @return \Entities\User[]
+     */
+    public function getUsers(int $count = 10, int $offset = 0): array
+    {
+        if ($count < 0) {
+            $count = 10;
+        }
+        if ($offset < 0) {
+            $offset = 0;
+        }
+
+        $rows = $this->execute(
+            'comparoperator',
+            'SELECT
+                 `user_id`,
+                 `name`,
+                 `created_at`,
+                 `ip`
+             FROM
+                 `users`
+             LIMIT ? OFFSET ?;',
+            [$count, $offset]
+        );
+
+        return Entity::createEntities($rows, 'User');
+    }
+
     /**
      * Get user info for a given user id.
      * 
@@ -136,5 +173,4 @@ trait UserEndpoint
 
         return $this->getUserById($this->lastInsertId());
     }
-
 }

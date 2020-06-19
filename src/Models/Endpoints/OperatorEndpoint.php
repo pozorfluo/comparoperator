@@ -5,8 +5,7 @@ declare(strict_types=1);
 
 namespace Models\Endpoints;
 
-use Entities\Location;
-use Entities\Operator;
+use Entities\Entity;
 
 /**
  * @todo Break-up API into multiple files by endpoints.
@@ -49,11 +48,6 @@ trait OperatorEndpoint
             [$count, $offset]
         );
 
-        $operators = [];
-        foreach ($rows as $row) {
-            $operators[] = new Operator($row);
-        }
-
-        return $operators;
+        return Entity::createEntities($rows, 'Operator');
     }
 }

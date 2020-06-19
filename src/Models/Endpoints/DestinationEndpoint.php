@@ -5,8 +5,7 @@ declare(strict_types=1);
 
 namespace Models\Endpoints;
 
-use Entities\Location;
-use Entities\Offering;
+use Entities\Entity;
 
 /**
  * @todo Break-up API into multiple files by endpoints.
@@ -49,12 +48,7 @@ trait DestinationEndpoint
             [$count, $offset]
         );
 
-        $locations = [];
-        foreach ($rows as $row) {
-            $locations[] = new Location($row);
-        }
-
-        return $locations;
+        return Entity::createEntities($rows, 'Location');
     }
 
     /**
@@ -119,13 +113,7 @@ trait DestinationEndpoint
             [$location, $count, $offset]
         );
 
-
-        $offerings = [];
-        foreach ($rows as $row) {
-            $offerings[] = new Offering($row);
-        }
-
-        return $offerings;
+        return Entity::createEntities($rows, 'Offering');
     }
 
 }

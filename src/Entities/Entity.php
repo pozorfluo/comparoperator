@@ -33,6 +33,28 @@ abstract class Entity implements Validatable
      */
     protected $is_valid;
 
+    /**
+     * Create entities of given type from given rows of raw data.
+     * 
+     * @param array $rows
+     * @param string $entity_name
+     * 
+     * @return Entity[]
+     */
+    public static function createEntities(
+        array $rows,
+        string $entity_name
+    ): array {
+
+        $entity_class = '\Entities\\'. $entity_name;
+        $entities = [];
+        
+        foreach ($rows as $row) {
+            $entities[] = new $entity_class($row);
+        }
+
+        return $entities;
+    }
 
     /**
      * Create a new Entity instance.
