@@ -806,36 +806,6 @@ Search.appendIndex(
             "summary": "Create\u0020a\u0020new\u0020ComparOperatorAPI\u0020instance.",
             "url": "../classes/Models-ComparOperatorAPI.html#method___construct"
         },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetUserById\u0028\u0029",
-            "name": "getUserById",
-            "summary": "Get\u0020user\u0020info\u0020for\u0020a\u0020given\u0020user\u0020id.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getUserById"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetUserbyName\u0028\u0029",
-            "name": "getUserbyName",
-            "summary": "Get\u0020user\u0020info\u0020for\u0020a\u0020given\u0020user\u0020name.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getUserbyName"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AaddUser\u0028\u0029",
-            "name": "addUser",
-            "summary": "Register\u0020a\u0020given\u0020new\u0020user.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_addUser"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetLocations\u0028\u0029",
-            "name": "getLocations",
-            "summary": "Get\u0020locations.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getLocations"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetOfferings\u0028\u0029",
-            "name": "getOfferings",
-            "summary": "Get\u0020offerings\u0020for\u0020a\u0020given\u0020location.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getOfferings"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetOperators\u0028\u0029",
-            "name": "getOperators",
-            "summary": "Get\u0020operators.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getOperators"
-        },                {
             "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetPopularProducts\u0028\u0029",
             "name": "getPopularProducts",
             "summary": "Get\u0020most\u0020popular\u0020products.",
@@ -915,6 +885,51 @@ Search.appendIndex(
             "name": "db",
             "summary": "",
             "url": "../classes/Models-DBPDO.html#property_db"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\DestinationEndpoint",
+            "name": "DestinationEndpoint",
+            "summary": "",
+            "url": "../classes/Models-Endpoints-DestinationEndpoint.html"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\DestinationEndpoint\u003A\u003AgetLocations\u0028\u0029",
+            "name": "getLocations",
+            "summary": "Get\u0020locations.",
+            "url": "../classes/Models-Endpoints-DestinationEndpoint.html#method_getLocations"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\DestinationEndpoint\u003A\u003AgetOfferings\u0028\u0029",
+            "name": "getOfferings",
+            "summary": "Get\u0020offerings\u0020for\u0020a\u0020given\u0020location.",
+            "url": "../classes/Models-Endpoints-DestinationEndpoint.html#method_getOfferings"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\OperatorEndpoint",
+            "name": "OperatorEndpoint",
+            "summary": "",
+            "url": "../classes/Models-Endpoints-OperatorEndpoint.html"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\OperatorEndpoint\u003A\u003AgetOperators\u0028\u0029",
+            "name": "getOperators",
+            "summary": "Get\u0020operators.",
+            "url": "../classes/Models-Endpoints-OperatorEndpoint.html#method_getOperators"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\UserEndpoint",
+            "name": "UserEndpoint",
+            "summary": "",
+            "url": "../classes/Models-Endpoints-UserEndpoint.html"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\UserEndpoint\u003A\u003AgetUserById\u0028\u0029",
+            "name": "getUserById",
+            "summary": "Get\u0020user\u0020info\u0020for\u0020a\u0020given\u0020user\u0020id.",
+            "url": "../classes/Models-Endpoints-UserEndpoint.html#method_getUserById"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\UserEndpoint\u003A\u003AgetUserbyName\u0028\u0029",
+            "name": "getUserbyName",
+            "summary": "Get\u0020user\u0020info\u0020for\u0020a\u0020given\u0020user\u0020name.",
+            "url": "../classes/Models-Endpoints-UserEndpoint.html#method_getUserbyName"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\UserEndpoint\u003A\u003AaddUser\u0028\u0029",
+            "name": "addUser",
+            "summary": "Register\u0020a\u0020given\u0020new\u0020user.",
+            "url": "../classes/Models-Endpoints-UserEndpoint.html#method_addUser"
         },                {
             "fqsen": "\\Models\\Model",
             "name": "Model",
@@ -1300,6 +1315,11 @@ Search.appendIndex(
             "name": "Models",
             "summary": "",
             "url": "../namespaces/models.html"
+        },                {
+            "fqsen": "\\Models\\Endpoints",
+            "name": "Endpoints",
+            "summary": "",
+            "url": "../namespaces/models-endpoints.html"
         },                {
             "fqsen": "\\Templates",
             "name": "Templates",
