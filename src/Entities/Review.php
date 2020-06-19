@@ -12,7 +12,7 @@ class Review extends Entity
     /**
      * @var array [ string $field_name => mixed $filter_definition ]
      */
-    protected $definitions =
+    const definitions =
     [
         'review_id' => [
             'filter' => FILTER_VALIDATE_INT,
@@ -63,6 +63,20 @@ class Review extends Entity
         'message' => [
             'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
         ]
+    ];
+    
+    /**
+     * List of field names required for insertion in database.
+     * 
+     * @var array string[]
+     */
+    const required_fields = [
+        'destination_id',
+        'operator_id',
+        'user_id',
+        'created_at',
+        'rating',
+        'message'
     ];
 
     /**

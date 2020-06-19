@@ -12,7 +12,7 @@ class Location extends Entity
     /**
      * @var array [ string $field_name => mixed $filter_definition ]
      */
-    protected $definitions =
+    const definitions =
     [
         'name' => [
             'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
@@ -28,6 +28,12 @@ class Location extends Entity
         ]
     ];
 
+    /**
+     * List of field names required for insertion in database.
+     * 
+     * @var array string[]
+     */
+    const required_fields = [];
     /**
      * @param  array $data [ string $field_name => mixed $value ]
      */

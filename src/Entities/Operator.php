@@ -12,7 +12,7 @@ class Operator extends Entity
     /**
      * @var array [ string $field_name => mixed $filter_definition ]
      */
-    protected $definitions =
+    const definitions =
     [
         'operator_id' => [
             'filter' => FILTER_VALIDATE_INT,
@@ -42,6 +42,16 @@ class Operator extends Entity
         ]
     ];
 
+    /**
+     * List of field names required for insertion in database.
+     * 
+     * @var array string[]
+     */
+    const required_fields = [
+        'name',
+        'website',
+        'logo'
+    ];
     /**
      * @param  array $data [ string $field_name => mixed $value ]
      */
