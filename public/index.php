@@ -135,6 +135,15 @@ $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
 // echo '<pre>'.var_export($config, true).'</pre><hr />';
 // echo '<pre>'.var_export($pdo, true).'</pre><hr />';
 
+$users = $pdo->getUsers(100, 100);
+foreach($users as $user){
+    echo '<pre>' . var_export($user->data, true) . '</pre><hr />';
+
+    $user_by_name = $pdo->getUserbyName($user->data['name']);
+    echo '<pre>' . var_export($user_by_name[0]->data, true) . '</pre><hr />';
+    $user_by_id = $pdo->getUserbyId($user->data['user_id']);
+    echo '<pre>' . var_export($user_by_id[0]->data, true) . '</pre><hr />';
+}
 
 $locations = $pdo->getLocations();
 foreach ($locations as $location) {
