@@ -9,7 +9,7 @@ use Interfaces\Validatable;
 /**
  * 
  */
-abstract class Entity implements Validatable
+class Generic extends Entity
 {
     /**
      * @var array [ string $field_name => mixed $value ]
@@ -19,29 +19,85 @@ abstract class Entity implements Validatable
     /**
      * @var array [ string $field_name => mixed $filter_definition ]
      */
-    const definitions = [];
+    protected $definitions = [];
 
     /**
      * List of field names required for insertion in database.
      * 
      * @var array string[]
      */
-    const required_fields = [];
+    protected $required_fields = [];
 
     /**
      * @var bool
      */
     protected $is_valid;
 
-
     /**
-     * Create a new Entity instance.
+     * Create a new generic Entity instance from a given associative array.
+     * 
+     * @note
+     *   Use with class inheriting from Entity where the definitions are already
+     *   specified.
      * 
      * @param  array $data [ string $field_name => mixed $value ]
+     * @return Entity
      */
-    public function __construct(array $data)
+    public static function fromData(array $data): self
     {
+        $name =  static::class;
+        return new $name($data);
+    }
+
+    /**
+     * Create a new generic Entity instance from a given associative array.
+     * 
+     * @note
+     *   Use with class inheriting from Entity where the definitions are already
+     *   specified.
+     * 
+     * @param  array $data [ string $field_name => mixed $value ]
+     * @return Entity
+     */
+    public static function fromDataAsProperties(array $data): self
+    {
+        $name =  static::class;
+        $entity = new $name($data);
+        foreach ($data as $key => $value) {
+            $entity->$key = $value;
+        }
+        return $entity;
+    }
+
+    /**
+     * Create a new generic Entity instance.
+     * 
+     * @note
+     *   Default filter only allows a string containing 
+     *   A-Z, a-z, 0-9, space, underscore, dash, period.
+     * 
+     * @see https://www.php.net/manual/en/function.filter-var-array.php
+     * 
+     * @param  array $data [ string $field_name => mixed $value ]
+     * @param  array $definitions [ string $field_name => mixed $filter_definition ]
+     */
+    public function __construct(
+        array $data,
+        array $definitions = [],
+        array $required_fields = []
+    ) {
         $this->data = $data;
+        $this->definitions = $definitions;
+        $this->required_fields = $required_fields;
+
+        foreach (array_keys($data) as $field) {
+            $this->definitions[$field] = isset($definitions[$field])
+                ? $definitions[$field]
+                : [
+                    'filter' => FILTER_VALIDATE_REGEXP,
+                    'options' => ['regexp' => '/^([A-Za-z0-9_\-\s\.]+)$/']
+                ];
+        }
     }
 
     /**
@@ -61,7 +117,7 @@ abstract class Entity implements Validatable
      */
     public function getDefinitions(): array
     {
-        return static::definitions;
+        return $this->definitions;
     }
 
     /**
@@ -85,12 +141,11 @@ abstract class Entity implements Validatable
      */
     public function isValid(): bool
     {
-        $constant = static::class . '::definitions';
         return $this->is_valid ?? !in_array(
             false,
             filter_var_array(
                 $this->getData(),
-                static::definitions
+                $this->definitions
             ),
             true // strict
         );
@@ -120,15 +175,15 @@ abstract class Entity implements Validatable
         $valid = true;
         $filtered = filter_var_array(
             $this->getData(),
-            static::definitions
+            $this->definitions
         );
 
-        foreach (static::required_fields as $field) {
+        foreach ($this->required_fields as $field) {
 
             $valid = $valid
                 && isset($filtered[$field])
                 && (($filtered[$field] !== false)
-                    || (static::definitions[$field]['filter'] === FILTER_VALIDATE_BOOLEAN));
+                    || ($this->definitions[$field]['filter'] === FILTER_VALIDATE_BOOLEAN));
         }
 
         return $valid;
@@ -140,7 +195,7 @@ abstract class Entity implements Validatable
      */
     public function getFiltered(): array
     {
-        return filter_var_array($this->getData(), static::definitions);
+        return filter_var_array($this->getData(), $this->definitions);
     }
 
     /**
@@ -150,13 +205,10 @@ abstract class Entity implements Validatable
      *   Raw data of a field is lost if its filter fails !
      * 
      * @return $this
-     * 
-     * @todo Figure out how to work with self return type and inheritance or
-     *       drop it.
      */
-    public function validate()
+    public function validate(): self
     {
-        $this->data = filter_var_array($this->getData(), static::definitions);
+        $this->data = filter_var_array($this->getData(), $this->definitions);
         $this->is_valid = !in_array(
             false,
             $this->data,

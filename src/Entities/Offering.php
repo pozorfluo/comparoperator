@@ -12,7 +12,7 @@ class Offering extends Entity
     /**
      * @var array [ string $field_name => mixed $filter_definition ]
      */
-    protected $definitions =
+    const definitions =
     [
         'destination_id' => [
             'filter' => FILTER_VALIDATE_INT,
@@ -58,6 +58,18 @@ class Offering extends Entity
         ]
     ];
 
+    /**
+     * List of field names required for insertion in database.
+     * 
+     * @var array string[]
+     */
+    const required_fields = [
+        'operator_id',
+        'created_at',
+        'location',
+        'price',
+        'thumbnail'
+    ];
     /**
      * @param  array $data [ string $field_name => mixed $value ]
      */

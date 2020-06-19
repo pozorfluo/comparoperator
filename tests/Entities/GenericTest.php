@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
-final class EntityTest extends TestCase
+final class GenericTest extends TestCase
 {
     /**
      * @test
      */
-    public function Entity_instanced_with_valid_data_validates_itself(): void
+    public function Generic_instanced_with_valid_data_validates_itself(): void
     {
         /* Given */
-        $entity = \Entities\Entity::fromData(
+        $entity = \Entities\Generic::fromData(
             [
                 'user_id' => 1,
                 'name' => 'El Guapo',
@@ -29,10 +29,10 @@ final class EntityTest extends TestCase
     /**
      * @test
      */
-    public function Entity_instanced_with_invalid_data_invalidates_itself(): void
+    public function Generic_instanced_with_invalid_data_invalidates_itself(): void
     {
         /* Given */
-        $entity = \Entities\Entity::fromData(
+        $entity = \Entities\Generic::fromData(
             [
                 'user_id' => 1,
                 'name' => 'El Guapo',
@@ -50,10 +50,10 @@ final class EntityTest extends TestCase
      * @test
      * @dataProvider required_boolean_null_on_failure_field_data
      */
-    public function Entity_with_a_required_boolean_null_on_failure_field_validates_its_required_fields($data, $expected): void
+    public function Generic_with_a_required_boolean_null_on_failure_field_validates_its_required_fields($data, $expected): void
     {
         /* Given */
-        $entity = new \Entities\Entity(
+        $entity = new \Entities\Generic(
             ['field' => $data],
             ['field' => [
                 'filter' => FILTER_VALIDATE_BOOLEAN,
@@ -113,10 +113,10 @@ final class EntityTest extends TestCase
      * @test
      * @dataProvider required_boolean_field_data
      */
-    public function Entity_with_a_required_boolean_field_validates_its_required_fields($data, $expected): void
+    public function Generic_with_a_required_boolean_field_validates_its_required_fields($data, $expected): void
     {
         /* Given */
-        $entity = new \Entities\Entity(
+        $entity = new \Entities\Generic(
             ['field' => $data],
             ['field' => [
                 'filter' => FILTER_VALIDATE_BOOLEAN,
@@ -164,10 +164,10 @@ final class EntityTest extends TestCase
      * @test
      * @dataProvider required_boolean_as_int_field_data
      */
-    public function Entity_with_a_required_boolean_as_int_field_validates_its_required_fields($data, $expected): void
+    public function Generic_with_a_required_boolean_as_int_field_validates_its_required_fields($data, $expected): void
     {
         /* Given */
-        $entity = new \Entities\Entity(
+        $entity = new \Entities\Generic(
             ['field' => $data],
             ['field' => [
                 'filter' => FILTER_VALIDATE_INT,
@@ -193,10 +193,10 @@ final class EntityTest extends TestCase
      * @test
      * @dataProvider required_boolean_as_int_field_data
      */
-    public function Entity_with_a_required_boolean_as_int_field_defaulting_to_null_validates_its_required_fields($data, $expected): void
+    public function Generic_with_a_required_boolean_as_int_field_defaulting_to_null_validates_its_required_fields($data, $expected): void
     {
         /* Given */
-        $entity = new \Entities\Entity(
+        $entity = new \Entities\Generic(
             ['field' => $data],
             ['field' => [
                 'filter' => FILTER_VALIDATE_INT,
@@ -258,10 +258,10 @@ final class EntityTest extends TestCase
      * @test
      * @dataProvider required_boolean_as_callback
      */
-    public function Entity_with_a_required_boolean_as_callback_validates_its_required_fields($data, $expected): void
+    public function Generic_with_a_required_boolean_as_callback_validates_its_required_fields($data, $expected): void
     {
         /* Given */
-        $entity = new \Entities\Entity(
+        $entity = new \Entities\Generic(
             ['field' => $data],
             ['field' => [
                 'filter' => FILTER_CALLBACK,
@@ -332,10 +332,10 @@ final class EntityTest extends TestCase
      * @test
      * @dataProvider required_boolean_as_stricter_callback
      */
-    public function Entity_with_a_required_boolean__as_stricter_callback_validates_its_required_fields($data, $expected): void
+    public function Generic_with_a_required_boolean__as_stricter_callback_validates_its_required_fields($data, $expected): void
     {
         /* Given */
-        $entity = new \Entities\Entity(
+        $entity = new \Entities\Generic(
             ['field' => $data],
             ['field' => [
                 'filter' => FILTER_CALLBACK,

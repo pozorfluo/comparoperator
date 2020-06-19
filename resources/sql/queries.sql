@@ -250,6 +250,7 @@ VALUES
         600,
         'images/products/destinations/0001.jpg'
     );
+    
 SELECT
     `destination_id`,
     `operator_id`,

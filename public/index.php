@@ -3,14 +3,14 @@
 /**
  * Setup
  * Retrieve configuration
- * Run the app !
- * 
- * @note
- *   This is is the main entry point
- * 
- * @todo
- *   - [x] Redirect to parameterized index.php
- *   - [x] Use Dispatcher to call Controller/Action/Param
+                     * Run the app !
+                     * 
+                     * @note
+                     *   This is is the main entry point
+                     * 
+                     * @todo
+                     *   - [x] Redirect to parameterized index.php
+                     *   - [x] Use Dispatcher to call Controller/Action/Param
  *   - [x] Use Controller to request, filter, hand over Model data
  *   - [x] Use View to compose model data over layout, template
  *     + [x] Inline css, js when rendering layout, templates
@@ -47,6 +47,7 @@ define('DEV_GLOBALS_DUMP', true);
 
 require ROOT . 'src/Helpers/AutoLoader.php';
 
+use Entities\Entity;
 use Helpers\Dispatcher;
 use Helpers\Cache;
 //--------------------------------------------------------------- playground
@@ -115,11 +116,13 @@ date_default_timezone_set('Europe/Paris');
 // include ROOT . 'src/Layouts/Layout.php';
 
 //--------------------------------------------------------------- playground
+
 $t = microtime(true);
 
 echo '' . date('Y-m-d H:i:s');
 
 use Models\ComparOperatorAPI;
+use Entities\Generic;
 use Entities\User;
 use Entities\Location;
 use Entities\Offering;
@@ -146,6 +149,89 @@ $new_user = new User(
     ]
 );
 
+
+$iterations = 1000;
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+
+while ($i < $iterations) {
+
+
+
+    $user =  new \Entities\User(
+        [
+            'user_id' => $i,
+            'name' => 'El Guapo',
+            'created_at' =>  date('Y-m-d H:i:s'),
+            'ip' => inet_pton('127.0.0.1'),
+        ]
+    );
+
+    $is_valid = $user->isValid();
+
+    ++$i;
+}
+echo '<pre>' . var_export($is_valid, true) . '</pre><hr />';
+echo '<pre>' . var_export('isValid: ' . (microtime(true) - $t), true) . '</pre>';
+
+echo '//--------------------------------------------------------------<br />';
+$t = microtime(true);
+$i   = 0;
+
+while ($i < $iterations) {
+
+
+
+    $user =  new \Entities\Generic(
+        [
+            'user_id' => $i,
+            'name' => 'El Guapo',
+            'created_at' =>  date('Y-m-d H:i:s'),
+            'ip' => inet_pton('127.0.0.1'),
+        ],
+        [
+            'user_id' => [
+                'filter' => FILTER_VALIDATE_INT,
+                'options' => [
+                    'min_range' => 1,
+                    'max_range' => 16777215
+                ]
+            ],
+            'name' => [
+                'filter' => FILTER_VALIDATE_REGEXP,
+                'options' => ['regexp' => '/^([A-Za-z0-9_\-\s]+)$/']
+            ],
+            'created_at' => [
+                'filter' => FILTER_VALIDATE_REGEXP,
+                'options' => [
+                    /**
+                         * @note
+                         *   This validates the format but does NOT check for
+                         *   impossible dates.
+                         */
+                    'regexp' => '/^[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]$/'
+                ]
+            ],
+            'ip' => [
+                'filter' => FILTER_CALLBACK,
+                'options' => 'inet_ntop'
+            ]
+        ]
+    );
+
+    $is_valid = $user->isValid();
+
+    ++$i;
+}
+echo '<pre>' . var_export($is_valid, true) . '</pre><hr />';
+echo '<pre>' . var_export('isValid: ' . (microtime(true) - $t), true) . '</pre>';
+
+
+$new_entity = new Generic($new_user->getData());
+
+// echo '<pre>'.var_export($new_entity->getDefinitions(), true).'</pre><hr />';
+echo '<pre>' . var_export($new_user->getDefinitions(), true) . '</pre><hr />';
 // echo '<pre>'.var_export($pdo, true).'</pre><hr />';
 $new_user_result = $pdo->addUser($new_user);
 
