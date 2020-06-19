@@ -26,8 +26,12 @@ use Entities\Review;
  * @todo Consider using traits for endpoints and composing API by using endpoint
  *       traits.
  */
-class ComparOperatorAPI extends DBPDO
+final class ComparOperatorAPI extends DBPDO
 {
+    /**
+     * @var string 
+     */
+    
     /**
      * Create a new ComparOperatorAPI instance from a decoded config json.
      * 

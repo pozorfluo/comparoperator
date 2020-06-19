@@ -15,6 +15,9 @@ use Controllers\Controller;
  */
 class DBPDO extends Model
 {
+    /**
+     * @var \Helpers\DB PDO wrapper.
+     */
     protected $db;
 
     /**

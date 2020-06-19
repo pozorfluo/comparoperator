@@ -30,7 +30,13 @@ abstract class Controller //implements Loadable
         $this->args = $args;
 
         /* Get default associated view, model name */
-        $associated_class = get_class($this);
+        /**
+         * @note 
+         *   Use get_class() if you need evalution at runtime.
+         *   Use ::class if you need evalution at compile time.
+         */
+        // $associated_class = get_class($this);
+        $associated_class = static::class;
         $namespace_end = strrpos($associated_class, '\\');
         $associated_class = substr($associated_class, $namespace_end + 1);
 
