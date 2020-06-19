@@ -3,14 +3,14 @@
 /**
  * Setup
  * Retrieve configuration
-                     * Run the app !
-                     * 
-                     * @note
-                     *   This is is the main entry point
-                     * 
-                     * @todo
-                     *   - [x] Redirect to parameterized index.php
-                     *   - [x] Use Dispatcher to call Controller/Action/Param
+ * Run the app !
+ * 
+ * @note
+ *   This is is the main entry point
+ * 
+ * @todo
+ *   - [x] Redirect to parameterized index.php
+ *   - [x] Use Dispatcher to call Controller/Action/Param
  *   - [x] Use Controller to request, filter, hand over Model data
  *   - [x] Use View to compose model data over layout, template
  *     + [x] Inline css, js when rendering layout, templates
@@ -135,9 +135,15 @@ $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
 // echo '<pre>'.var_export($config, true).'</pre><hr />';
 // echo '<pre>'.var_export($pdo, true).'</pre><hr />';
 
+
 $locations = $pdo->getLocations();
 foreach ($locations as $location) {
     echo '<pre>' . var_export($location->data, true) . '</pre><hr />';
+
+    $offerings = $pdo->getOfferings($location->data['name']);
+    foreach ($offerings as $offering) {
+        echo '<pre>' . var_export($offering->data, true) . '</pre><hr />';
+    }
 }
 
 $new_user = new User(

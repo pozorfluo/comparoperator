@@ -149,7 +149,7 @@ class ComparOperatorAPI extends DBPDO
      */
     public function addUser(User $new_user): array
     {
-        if(!$new_user->hasValidRequiredFields()){
+        if (!$new_user->hasValidRequiredFields()) {
             return [];
         }
 
@@ -226,8 +226,9 @@ class ComparOperatorAPI extends DBPDO
 
         return $locations;
     }
+
     /**
-     * Get most recent products.
+     * Get offerings for a given location.
      * 
      * @api ComparOperatorAPI
      * 
@@ -235,22 +236,17 @@ class ComparOperatorAPI extends DBPDO
      * @param  int $offset How many products to skip   (default = 0)
      *                     Use for pagination.
      * 
-     * @return array <pre><code>[
-     *     [
-     *         'product_id'     => int,
-     *         'name'           => string,
-     *         'created_at'     => string date('Y-m-d H:i:s'),
-     *         'website'        => string,
-     *         'summary'        => string,
-     *         'thumbnail'      => string,
-     *         'votes_count'    => int,
-     *         'comments_count' => int
-     *     ], 
-     *     ...
-     * ] </code></pre>
+     * @return \Entities\Offering[]
      */
-    public function getFreshProducts(int $count = 10, int $offset = 0): array
-    {
+    public function getOfferings(
+        string $location,
+        int $count = 10,
+        int $offset = 0
+    ): array {
+
+        if ($location === '') {
+            return [];
+        }
         if ($count < 0) {
             $count = 10;
         }
@@ -258,34 +254,48 @@ class ComparOperatorAPI extends DBPDO
             $offset = 0;
         }
 
-        return $this->execute(
+        $raw_offerings = $this->execute(
             'comparoperator',
             'SELECT
-                 `products`.`product_id`,
-                 `products`.`created_at`,
-                 `products`.`name`,
-                 `products`.`summary`,
-                 `products`.`website`,
-                 `products`.`thumbnail`,
-                 COUNT(DISTINCT `comments`.`comment_id`) AS `comments_count`,
-                 COUNT(DISTINCT `votes`.`user_id`) AS `votes_count`
-             FROM 
-                 `products`
+                 `destinations`.`destination_id`,
+                 `destinations`.`operator_id`,
+                 `destinations`.`created_at`,
+                 `destinations`.`location`,
+                 `destinations`.`price`,
+                 `destinations`.`thumbnail`,
+                 `operators`.`name` AS `operator`,
+                 `operators`.`website`,
+                 `operators`.`logo`,
+                 `operators`.`is_premium`,
+                 COUNT(DISTINCT `reviews`.`review_id`) AS `review_count`,
+                 IFNULL(AVG(`reviews`.`rating`), 0.0) AS `operator_rating`
+             FROM
+                 `destinations`
              LEFT JOIN
-                 `comments`
+                 `operators`
              ON
-                 `products`.`product_id` = `comments`.`product_id`
+                 `destinations`.`operator_id` = `operators`.`operator_id`
              LEFT JOIN
-                 `votes`
+                 `reviews`
              ON
-                 `products`.`product_id` = `votes`.`product_id`
+                 `operators`.`operator_id` = `reviews`.`operator_id`
+             WHERE
+                 `destinations`.`location` = ?
              GROUP BY
-                 `products`.`product_id`
+                 `operators`.`operator_id`
              ORDER BY
-                 `products`.`created_at` DESC
+                 `destinations`.`created_at` DESC
              LIMIT ? OFFSET ?;',
-            [$count, $offset]
+            [$location, $count, $offset]
         );
+
+
+        $offerings = [];
+        foreach ($raw_offerings as $raw_offering) {
+            $offerings[] = new Offering($raw_offering);
+        }
+
+        return $offerings;
     }
 
     /**
