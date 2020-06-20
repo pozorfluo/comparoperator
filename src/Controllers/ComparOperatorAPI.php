@@ -271,7 +271,8 @@ final class ComparOperatorAPI extends API
         try {
             $product = $this->model->getProduct($product_id);
             $comments = ['comments' => $this->model->getProductComments($product_id)];
-            $results = array_merge($product, $comments);
+            // $results = array_merge($product, $comments);
+            $results = $comments + $product;
 
             if (empty($results)) {
                 /* Not Found */

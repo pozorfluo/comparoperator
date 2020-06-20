@@ -88,7 +88,7 @@ final class UserTest extends TestCase
     public function User_instanced_with_invalid_data_invalidates_itself($invalid_data, $valid_data): void
     {
         /* Given */
-        $data = array_merge($valid_data, $invalid_data);
+        $data = $invalid_data + $valid_data;
         $entity =  new \Entities\User($data);
 
         /* When  */
@@ -119,7 +119,7 @@ final class UserTest extends TestCase
     public function User_instanced_with_valid_required_fields_and_other_invalid_fields_validates_its_required_fields($valid_data): void
     {
         /* Given */
-        $data = array_merge($valid_data, ['user_id' => 0]);
+        $data =  ['user_id' => 0] + $valid_data;
         $entity =  new \Entities\User($data);
 
         /* When  */
@@ -136,7 +136,7 @@ final class UserTest extends TestCase
     public function User_instanced_with_invalid_required_fields_invalidates_its_required_fields($invalid_data, $valid_data): void
     {
         /* Given */
-        $data = array_merge($valid_data, $invalid_data);
+        $data = $invalid_data + $valid_data;
         $entity =  new \Entities\User($data);
 
         /* When  */

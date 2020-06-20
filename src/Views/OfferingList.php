@@ -26,7 +26,7 @@ class OfferingList extends View
             'row_count' => 12,
             'col_count' => 12,
         ];
-        $this->args = array_replace($defaults, $this->args);
+        $this->args = $this->args + $defaults;
     }
     /**
      * todo
@@ -36,7 +36,7 @@ class OfferingList extends View
     {
 
         $this->components['css'] = [
-            new InlinedCss(['resources/css/style.min.css'])
+            new InlinedCss([ROOT.'resources/css/style.min.css'])
         ];
 
         $this->components['nav'] = [

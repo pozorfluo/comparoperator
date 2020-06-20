@@ -26,7 +26,7 @@ class Home extends View
             'row_count' => 12,
             'col_count' => 12,
         ];
-        $this->args = array_replace($defaults, $this->args);
+        $this->args = $this->args + $defaults;
     }
     /**
      * todo
@@ -36,7 +36,8 @@ class Home extends View
     {
 
         $this->components['css'] = [
-            new InlinedCss(['resources/css/style.min.css'])
+            // new InlinedCss([ROOT.'resources/css/style.min.css']),
+            new InlinedCss(['css/style.css'])
         ];
 
         $this->components['nav'] = [
@@ -49,6 +50,12 @@ class Home extends View
         ];
 
         $this->components['content'] = [
+            new Image('public/images/icons/cross.svg', 'a red cross'),
+            new Image('public/images/icons/cross.svg', 'a red cross', 64, 64),
+            new Image('public/images/icons/cross.svg', 'a red cross', 128, 128),
+        ];
+
+        $this->components['ads'] = [
             new Image('public/images/icons/cross.svg', 'a red cross'),
             new Image('public/images/icons/cross.svg', 'a red cross', 64, 64),
             new Image('public/images/icons/cross.svg', 'a red cross', 128, 128),

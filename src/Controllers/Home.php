@@ -30,6 +30,7 @@ class Home extends Controller
     public function runDefault(array $args = []): void
     {
         $this->set($args);
+        $this->layout = 'Home';
         $this->serve();
     }
 
@@ -50,7 +51,7 @@ class Home extends Controller
         /* Dispatcher passed array $args is accessible in $arguments */
         // $this->args['model'] = $associated_class;
         $this->args['view'] = 'Error404';
-        // $this->layout = 'OptionalSpecificLayout';
+        $this->layout = 'Minimal';
         $this->serve();
     }
 

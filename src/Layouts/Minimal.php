@@ -32,7 +32,8 @@ class Minimal implements Templatable
             'footer' => '',
             'js' => ''
         ];
-        $this->data = array_replace($defaults, $rendered_components);
+        // $this->data = array_replace($defaults, $rendered_components);
+        $this->data = $rendered_components + $defaults;
     }
 
     /**

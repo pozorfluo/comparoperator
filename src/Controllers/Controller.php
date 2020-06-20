@@ -55,10 +55,11 @@ abstract class Controller //implements Loadable
      */
     public function set(array $args): self
     {
-        $this->args = array_merge(
-            $this->args,
-            $args
-        );
+        // $this->args = array_merge(
+        //     $this->args,
+        //     $args
+        // );
+        $this->args = $args + $this->args;
         return $this;
     }
 
@@ -179,9 +180,9 @@ abstract class Controller //implements Loadable
      * @return void
      * 
      * @todo Research if that use case for __call is ill-advised.
-     */    
+     */
     abstract public function __call(string $name, array $arguments): void;
-   
+
 
     /**
      * note

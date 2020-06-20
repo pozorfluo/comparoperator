@@ -70,7 +70,8 @@ final class LocationTest extends TestCase
     public function Location_instanced_with_invalid_data_invalidates_itself($invalid_data, $valid_data): void
     {
         /* Given */
-        $data = array_merge($valid_data, $invalid_data);
+        // $data = array_merge($valid_data, $invalid_data);
+        $data = $invalid_data + $valid_data;
         $entity =  new \Entities\Location($data);
 
         /* When  */
