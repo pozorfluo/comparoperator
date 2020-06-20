@@ -104,7 +104,7 @@
      *   impossible dates.
      */
     &#039;regexp&#039; =&gt; &#039;/^[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]$/&#039;,
-]], &#039;location&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_SANITIZE_FULL_SPECIAL_CHARS], &#039;price&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_FLOAT], &#039;thumbnail&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^(?!.*--|.*\\/\\/|.*\\\\\\\\|.*\\.\\.)[\\\\\\/A-Za-z0-9_\\-\\.]+\\.(?:jpg|jpeg|gif|svg|webp|png)$/&#039;]], &#039;operator&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_SANITIZE_FULL_SPECIAL_CHARS], &#039;website&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_URL], &#039;logo&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^(?!.*--|.*\\/\\/|.*\\\\\\\\|.*\\.\\.)[\\\\\\/A-Za-z0-9_\\-\\.]+\\.(?:jpg|jpeg|gif|svg|webp|png)$/&#039;]], &#039;is_premium&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_INT, &#039;options&#039; =&gt; [&#039;min_range&#039; =&gt; 0, &#039;max_range&#039; =&gt; 1]]]</td>
+]], &#039;location&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^([A-Za-z0-9_\\-\\s]+)$/&#039;]], &#039;price&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_FLOAT], &#039;thumbnail&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^(?!.*--|.*\\/\\/|.*\\\\\\\\|.*\\.\\.)[\\\\\\/A-Za-z0-9_\\-\\.]+\\.(?:jpg|jpeg|gif|svg|webp|png)$/&#039;]], &#039;operator&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_SANITIZE_FULL_SPECIAL_CHARS], &#039;website&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_URL], &#039;logo&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^(?!.*--|.*\\/\\/|.*\\\\\\\\|.*\\.\\.)[\\\\\\/A-Za-z0-9_\\-\\.]+\\.(?:jpg|jpeg|gif|svg|webp|png)$/&#039;]], &#039;is_premium&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_INT, &#039;options&#039; =&gt; [&#039;min_range&#039; =&gt; 0, &#039;max_range&#039; =&gt; 1]]]</td>
                 </tr>
                             <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Entities-Offering.html#constant_required_fields">required_fields</a></th>
@@ -119,16 +119,26 @@
                             <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Entities-Entity.html#property_is_valid">$is_valid</a></th>
                     <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell">bool</td>
+                    <td class="phpdocumentor-cell">bool|null</td>
                 </tr>
-                                        <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/Entities-Offering.html#method___construct">__construct()</a></th>
+                                                                <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/Entities-Entity.html#method_createEntities">createEntities()</a></th>
+                    <td class="phpdocumentor-cell">Create entities of given type from given rows of raw data.</td>
+                    <td class="phpdocumentor-cell">\Entities\Entity[]</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/Entities-Entity.html#method___construct">__construct()</a></th>
                     <td class="phpdocumentor-cell">Create a new Entity instance.</td>
                     <td class="phpdocumentor-cell">mixed</td>
                 </tr>
-                                                    <tr>
-                    <th class="phpdocumentor-heading"><a href="../classes/Entities-Entity.html#method___construct">__construct()</a></th>
-                    <td class="phpdocumentor-cell">Create a new Entity instance.</td>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/Entities-Entity.html#method___get">__get()</a></th>
+                    <td class="phpdocumentor-cell">Return property value.</td>
+                    <td class="phpdocumentor-cell">mixed</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/Entities-Entity.html#method___set">__set()</a></th>
+                    <td class="phpdocumentor-cell">Set property and invalidates existing data validation if any.</td>
                     <td class="phpdocumentor-cell">mixed</td>
                 </tr>
                             <tr>
@@ -192,7 +202,7 @@ Entity&#039;s definition.</td>
      *   impossible dates.
      */
     &#039;regexp&#039; =&gt; &#039;/^[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]$/&#039;,
-]], &#039;location&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_SANITIZE_FULL_SPECIAL_CHARS], &#039;price&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_FLOAT], &#039;thumbnail&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^(?!.*--|.*\\/\\/|.*\\\\\\\\|.*\\.\\.)[\\\\\\/A-Za-z0-9_\\-\\.]+\\.(?:jpg|jpeg|gif|svg|webp|png)$/&#039;]], &#039;operator&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_SANITIZE_FULL_SPECIAL_CHARS], &#039;website&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_URL], &#039;logo&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^(?!.*--|.*\\/\\/|.*\\\\\\\\|.*\\.\\.)[\\\\\\/A-Za-z0-9_\\-\\.]+\\.(?:jpg|jpeg|gif|svg|webp|png)$/&#039;]], &#039;is_premium&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_INT, &#039;options&#039; =&gt; [&#039;min_range&#039; =&gt; 0, &#039;max_range&#039; =&gt; 1]]]</span>
+]], &#039;location&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^([A-Za-z0-9_\\-\\s]+)$/&#039;]], &#039;price&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_FLOAT], &#039;thumbnail&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^(?!.*--|.*\\/\\/|.*\\\\\\\\|.*\\.\\.)[\\\\\\/A-Za-z0-9_\\-\\.]+\\.(?:jpg|jpeg|gif|svg|webp|png)$/&#039;]], &#039;operator&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_SANITIZE_FULL_SPECIAL_CHARS], &#039;website&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_URL], &#039;logo&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_REGEXP, &#039;options&#039; =&gt; [&#039;regexp&#039; =&gt; &#039;/^(?!.*--|.*\\/\\/|.*\\\\\\\\|.*\\.\\.)[\\\\\\/A-Za-z0-9_\\-\\.]+\\.(?:jpg|jpeg|gif|svg|webp|png)$/&#039;]], &#039;is_premium&#039; =&gt; [&#039;filter&#039; =&gt; FILTER_VALIDATE_INT, &#039;options&#039; =&gt; [&#039;min_range&#039; =&gt; 0, &#039;max_range&#039; =&gt; 1]]]</span>
     </code>
     </article>
                                     <a id="constant_required_fields"></a>
@@ -207,7 +217,7 @@ Entity&#039;s definition.</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Offering.php"><a href="../files/src-entities-offering.html"><abbr title="src/Entities/Offering.php">Offering.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">80</span>
+        <span class="phpdocumentor-element-found-in__line">81</span>
     </aside>
             <p class="phpdocumentor-summary">List of field names required for insertion in database.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -298,7 +308,7 @@ Entity&#039;s definition.</td>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">protected</span>
-                <span class="phpdocumentor-signature__type">bool</span>
+                <span class="phpdocumentor-signature__type">bool|null</span>
         <span class="phpdocumentor-signature__name">$is_valid</span>
             </code>
     </article>
@@ -306,6 +316,55 @@ Entity&#039;s definition.</td>
         
                     <section>
                 <h3 class="phpdocumentor-methods__header">Methods</h3>
+                                                                    <a id="method_createEntities"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                    phpdocumentor-element--static                    "
+>
+    <h4 class="phpdocumentor-method__name">createEntities()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">44</span>
+    </aside>
+        <p class="phpdocumentor-summary">Create entities of given type from given rows of raw data.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                        <span class="phpdocumentor-signature__static">static</span>        <span class="phpdocumentor-signature__name">createEntities</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$rows</span> :
+                <span class="phpdocumentor-signature__argument__return-type">array</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$entity_name</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">\Entities\Entity[]</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$rows</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">array</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$entity_name</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">\Entities\Entity[]</span>
+            
+</article>
                                     <a id="method___construct"></a>
 <article
         class="
@@ -315,9 +374,9 @@ Entity&#039;s definition.</td>
 >
     <h4 class="phpdocumentor-method__name">__construct()</h4>
     <aside class="phpdocumentor-element-found-in">
-        <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Offering.php"><a href="../files/src-entities-offering.html"><abbr title="src/Entities/Offering.php">Offering.php</abbr></a></abbr>
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">90</span>
+        <span class="phpdocumentor-element-found-in__line">63</span>
     </aside>
         <p class="phpdocumentor-summary">Create a new Entity instance.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -346,26 +405,26 @@ Entity&#039;s definition.</td>
         <span class="phpdocumentor-signature__response_type">mixed</span>
             
 </article>
-                                                                    <a id="method___construct"></a>
+                                    <a id="method___get"></a>
 <article
         class="
             phpdocumentor-method
             phpdocumentor-method--public
                                                         "
 >
-    <h4 class="phpdocumentor-method__name">__construct()</h4>
+    <h4 class="phpdocumentor-method__name">__get()</h4>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">42</span>
+        <span class="phpdocumentor-element-found-in__line">71</span>
     </aside>
-        <p class="phpdocumentor-summary">Create a new Entity instance.</p>
+        <p class="phpdocumentor-summary">Return property value.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
-                                <span class="phpdocumentor-signature__name">__construct</span>(
+                                <span class="phpdocumentor-signature__name">__get</span>(
                     <span class="phpdocumentor-signature__argument">
-                            <span class="phpdocumentor-signature__argument__name">$data</span> :
-                <span class="phpdocumentor-signature__argument__return-type">array</span>
+                            <span class="phpdocumentor-signature__argument__name">$property</span> :
+                <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                             </span>
                 )
         : <span class="phpdocumentor-signature__response_type">mixed</span>
@@ -375,13 +434,70 @@ Entity&#039;s definition.</td>
             <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
         <dl class="phpdocumentor-argument-list">
                             <dt class="phpdocumentor-argument-list__entry">
-                    <span class="phpdocumentor-signature__argument__name">$data</span>
-                    : <span class="phpdocumentor-signature__argument__return-type">array</span>
+                    <span class="phpdocumentor-signature__argument__name">$property</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
                                     </dt>
-                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>[ string $field_name =&gt; mixed $value ]</p></section></dd>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
                     </dl>
     
         
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">mixed</span>
+            
+</article>
+                                    <a id="method___set"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">__set()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">82</span>
+    </aside>
+        <p class="phpdocumentor-summary">Set property and invalidates existing data validation if any.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">__set</span>(
+                    <span class="phpdocumentor-signature__argument">
+                            <span class="phpdocumentor-signature__argument__name">$property</span> :
+                <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$value</span> :
+                <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">mixed</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$property</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$value</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">mixed</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                    </dl>
+    
+                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+        <dl class="phpdocumentor-tag-list">
+                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">note</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>Creates a new key in backing data array if tentatively accessed
+'property' is not an existing key of backing data array.</p></section></dd>
+                                    </dl>
+    
             <h5 class="phpdocumentor-return-value__heading">Return values</h5>
         <span class="phpdocumentor-signature__response_type">mixed</span>
             
@@ -397,7 +513,7 @@ Entity&#039;s definition.</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">52</span>
+        <span class="phpdocumentor-element-found-in__line">93</span>
     </aside>
         <p class="phpdocumentor-summary">Return this Entity&#039;s data.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -426,7 +542,7 @@ Entity&#039;s definition.</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">62</span>
+        <span class="phpdocumentor-element-found-in__line">103</span>
     </aside>
         <p class="phpdocumentor-summary">Return this Entity&#039;s definition.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -455,7 +571,7 @@ Entity&#039;s definition.</td>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">86</span>
+        <span class="phpdocumentor-element-found-in__line">127</span>
     </aside>
         <p class="phpdocumentor-summary">Determine if this Entity&#039;s data is valid according to this Entity&#039;s
 definition.</p>
@@ -507,7 +623,7 @@ or invalidating it in a $this-&gt;data setter and restricted access.</p></sectio
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">118</span>
+        <span class="phpdocumentor-element-found-in__line">159</span>
     </aside>
         <p class="phpdocumentor-summary">Determine if this Entity&#039;s required fields are valid according to this
 Entity&#039;s definition.</p>
@@ -565,7 +681,7 @@ a filtered value, false or NULL for missing keys.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">141</span>
+        <span class="phpdocumentor-element-found-in__line">182</span>
     </aside>
         <p class="phpdocumentor-summary">Return this Entity&#039;s filtered data, do not change internal state.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -594,7 +710,7 @@ a filtered value, false or NULL for missing keys.</p></section></dd>
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Entities/Entity.php"><a href="../files/src-entities-entity.html"><abbr title="src/Entities/Entity.php">Entity.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">157</span>
+        <span class="phpdocumentor-element-found-in__line">198</span>
     </aside>
         <p class="phpdocumentor-summary">Apply filters on this Entity&#039;s data, change internal state.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">

@@ -221,10 +221,25 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/Entities-Entity.html"
         },                {
+            "fqsen": "\\Entities\\Entity\u003A\u003AcreateEntities\u0028\u0029",
+            "name": "createEntities",
+            "summary": "Create\u0020entities\u0020of\u0020given\u0020type\u0020from\u0020given\u0020rows\u0020of\u0020raw\u0020data.",
+            "url": "../classes/Entities-Entity.html#method_createEntities"
+        },                {
             "fqsen": "\\Entities\\Entity\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
             "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
             "url": "../classes/Entities-Entity.html#method___construct"
+        },                {
+            "fqsen": "\\Entities\\Entity\u003A\u003A__get\u0028\u0029",
+            "name": "__get",
+            "summary": "Return\u0020property\u0020value.",
+            "url": "../classes/Entities-Entity.html#method___get"
+        },                {
+            "fqsen": "\\Entities\\Entity\u003A\u003A__set\u0028\u0029",
+            "name": "__set",
+            "summary": "Set\u0020property\u0020and\u0020invalidates\u0020existing\u0020data\u0020validation\u0020if\u0020any.",
+            "url": "../classes/Entities-Entity.html#method___set"
         },                {
             "fqsen": "\\Entities\\Entity\u003A\u003AgetData\u0028\u0029",
             "name": "getData",
@@ -296,11 +311,6 @@ Search.appendIndex(
             "summary": "Create\u0020a\u0020new\u0020generic\u0020Entity\u0020instance.",
             "url": "../classes/Entities-Generic.html#method___construct"
         },                {
-            "fqsen": "\\Entities\\Generic\u003A\u003AgetData\u0028\u0029",
-            "name": "getData",
-            "summary": "Return\u0020this\u0020Entity\u0027s\u0020data.",
-            "url": "../classes/Entities-Generic.html#method_getData"
-        },                {
             "fqsen": "\\Entities\\Generic\u003A\u003AgetDefinitions\u0028\u0029",
             "name": "getDefinitions",
             "summary": "Return\u0020this\u0020Entity\u0027s\u0020definition.",
@@ -326,11 +336,6 @@ Search.appendIndex(
             "summary": "Apply\u0020filters\u0020on\u0020this\u0020Entity\u0027s\u0020data,\u0020change\u0020internal\u0020state.",
             "url": "../classes/Entities-Generic.html#method_validate"
         },                {
-            "fqsen": "\\Entities\\Generic\u003A\u003A\u0024data",
-            "name": "data",
-            "summary": "",
-            "url": "../classes/Entities-Generic.html#property_data"
-        },                {
             "fqsen": "\\Entities\\Generic\u003A\u003A\u0024definitions",
             "name": "definitions",
             "summary": "",
@@ -341,20 +346,10 @@ Search.appendIndex(
             "summary": "List\u0020of\u0020field\u0020names\u0020required\u0020for\u0020insertion\u0020in\u0020database.",
             "url": "../classes/Entities-Generic.html#property_required_fields"
         },                {
-            "fqsen": "\\Entities\\Generic\u003A\u003A\u0024is_valid",
-            "name": "is_valid",
-            "summary": "",
-            "url": "../classes/Entities-Generic.html#property_is_valid"
-        },                {
             "fqsen": "\\Entities\\Location",
             "name": "Location",
             "summary": "",
             "url": "../classes/Entities-Location.html"
-        },                {
-            "fqsen": "\\Entities\\Location\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
-            "url": "../classes/Entities-Location.html#method___construct"
         },                {
             "fqsen": "\\Entities\\Location\u003A\u003Adefinitions",
             "name": "definitions",
@@ -371,11 +366,6 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/Entities-Offering.html"
         },                {
-            "fqsen": "\\Entities\\Offering\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
-            "url": "../classes/Entities-Offering.html#method___construct"
-        },                {
             "fqsen": "\\Entities\\Offering\u003A\u003Adefinitions",
             "name": "definitions",
             "summary": "",
@@ -391,11 +381,6 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/Entities-Operator.html"
         },                {
-            "fqsen": "\\Entities\\Operator\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
-            "url": "../classes/Entities-Operator.html#method___construct"
-        },                {
             "fqsen": "\\Entities\\Operator\u003A\u003Adefinitions",
             "name": "definitions",
             "summary": "",
@@ -410,11 +395,6 @@ Search.appendIndex(
             "name": "Review",
             "summary": "",
             "url": "../classes/Entities-Review.html"
-        },                {
-            "fqsen": "\\Entities\\Review\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "Create\u0020a\u0020new\u0020Entity\u0020instance.",
-            "url": "../classes/Entities-Review.html#method___construct"
         },                {
             "fqsen": "\\Entities\\Review\u003A\u003Adefinitions",
             "name": "definitions",
@@ -766,6 +746,56 @@ Search.appendIndex(
             "summary": "Apply\u0020filters\u0020on\u0020this\u0020Class\u0020data,\u0020change\u0020internal\u0020state.",
             "url": "../classes/Interfaces-Validatable.html#method_validate"
         },                {
+            "fqsen": "\\Layouts\\Dashboard",
+            "name": "Dashboard",
+            "summary": "",
+            "url": "../classes/Layouts-Dashboard.html"
+        },                {
+            "fqsen": "\\Layouts\\Dashboard\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "note\n\u0020\u0020Provide\u0020innocuous\u0020default\u0020value\u0020to\u0020make\u0020the\u0020template\u0020displayable",
+            "url": "../classes/Layouts-Dashboard.html#method___construct"
+        },                {
+            "fqsen": "\\Layouts\\Dashboard\u003A\u003AgetRaw\u0028\u0029",
+            "name": "getRaw",
+            "summary": "",
+            "url": "../classes/Layouts-Dashboard.html#method_getRaw"
+        },                {
+            "fqsen": "\\Layouts\\Dashboard\u003A\u003Arender\u0028\u0029",
+            "name": "render",
+            "summary": "const\u0020img\u0020\u003D\u0020event.currentTarget\u003B\nsetInterval\u0028function\u0020\u0028\u0029\u0020\u007B\n\u0020\u0020\u0020\u0020removeSpinner\u0028img\u0029\u003B\n\u007D,\u00202000\u0029\u003B",
+            "url": "../classes/Layouts-Dashboard.html#method_render"
+        },                {
+            "fqsen": "\\Layouts\\Dashboard\u003A\u003A\u0024data",
+            "name": "data",
+            "summary": "",
+            "url": "../classes/Layouts-Dashboard.html#property_data"
+        },                {
+            "fqsen": "\\Layouts\\Home",
+            "name": "Home",
+            "summary": "",
+            "url": "../classes/Layouts-Home.html"
+        },                {
+            "fqsen": "\\Layouts\\Home\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "note\n\u0020\u0020Provide\u0020innocuous\u0020default\u0020value\u0020to\u0020make\u0020the\u0020template\u0020displayable",
+            "url": "../classes/Layouts-Home.html#method___construct"
+        },                {
+            "fqsen": "\\Layouts\\Home\u003A\u003AgetRaw\u0028\u0029",
+            "name": "getRaw",
+            "summary": "",
+            "url": "../classes/Layouts-Home.html#method_getRaw"
+        },                {
+            "fqsen": "\\Layouts\\Home\u003A\u003Arender\u0028\u0029",
+            "name": "render",
+            "summary": "const\u0020img\u0020\u003D\u0020event.currentTarget\u003B\nsetInterval\u0028function\u0020\u0028\u0029\u0020\u007B\n\u0020\u0020\u0020\u0020removeSpinner\u0028img\u0029\u003B\n\u007D,\u00202000\u0029\u003B",
+            "url": "../classes/Layouts-Home.html#method_render"
+        },                {
+            "fqsen": "\\Layouts\\Home\u003A\u003A\u0024data",
+            "name": "data",
+            "summary": "",
+            "url": "../classes/Layouts-Home.html#property_data"
+        },                {
             "fqsen": "\\Layouts\\Minimal",
             "name": "Minimal",
             "summary": "",
@@ -915,6 +945,11 @@ Search.appendIndex(
             "name": "UserEndpoint",
             "summary": "",
             "url": "../classes/Models-Endpoints-UserEndpoint.html"
+        },                {
+            "fqsen": "\\Models\\Endpoints\\UserEndpoint\u003A\u003AgetUsers\u0028\u0029",
+            "name": "getUsers",
+            "summary": "Get\u0020users.",
+            "url": "../classes/Models-Endpoints-UserEndpoint.html#method_getUsers"
         },                {
             "fqsen": "\\Models\\Endpoints\\UserEndpoint\u003A\u003AgetUserById\u0028\u0029",
             "name": "getUserById",

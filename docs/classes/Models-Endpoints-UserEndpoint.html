@@ -83,7 +83,7 @@
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/UserEndpoint.php"><a href="../files/src-models-endpoints-userendpoint.html"><abbr title="src/Models/Endpoints/UserEndpoint.php">UserEndpoint.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">16</span>
+        <span class="phpdocumentor-element-found-in__line">17</span>
     </aside>
 
     <p class="phpdocumentor-trait__summary"></p>
@@ -92,6 +92,11 @@
     <h3>Table of Contents</h3>
     <table class="phpdocumentor-table_of_contents">
                                             <tr>
+                <th class="phpdocumentor-heading"><a href="../classes/Models-Endpoints-UserEndpoint.html#method_getUsers">getUsers()</a></th>
+                <td class="phpdocumentor-cell">Get users.</td>
+                <td class="phpdocumentor-cell">\Entities\User[]</td>
+            </tr>
+                    <tr>
                 <th class="phpdocumentor-heading"><a href="../classes/Models-Endpoints-UserEndpoint.html#method_getUserById">getUserById()</a></th>
                 <td class="phpdocumentor-cell">Get user info for a given user id.</td>
                 <td class="phpdocumentor-cell">\Entities\User[]</td>
@@ -111,6 +116,63 @@
     
             <section>
             <h3 class="phpdocumentor-methods__header">Methods</h3>
+                            <a id="method_getUsers"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--public
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">getUsers()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/UserEndpoint.php"><a href="../files/src-models-endpoints-userendpoint.html"><abbr title="src/Models/Endpoints/UserEndpoint.php">UserEndpoint.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">30</span>
+    </aside>
+        <p class="phpdocumentor-summary">Get users.</p>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">public</span>
+                                <span class="phpdocumentor-signature__name">getUsers</span>(
+                    <span class="phpdocumentor-signature__argument">
+            [                <span class="phpdocumentor-signature__argument__name">$count</span> :
+                <span class="phpdocumentor-signature__argument__return-type">int</span>
+                 = <span class="phpdocumentor-signature__argument__default-value">10</span> ]            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$offset</span> :
+                <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </span>
+                )
+        : <span class="phpdocumentor-signature__response_type">\Entities\User[]</span>
+    </code>
+
+    
+            <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
+        <dl class="phpdocumentor-argument-list">
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$count</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                     = <span class="phpdocumentor-signature__argument__default-value">10</span>                </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>How many categories to return (default = 10).</p></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$offset</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"><p>How many categories to skip   (default = 0)
+Use for pagination.</p></section></dd>
+                    </dl>
+    
+                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+        <dl class="phpdocumentor-tag-list">
+                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">api</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>ComparOperatorAPI</p></section></dd>
+                                    </dl>
+    
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">\Entities\User[]</span>
+            
+</article>
                             <a id="method_getUserById"></a>
 <article
         class="
@@ -122,7 +184,7 @@
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/UserEndpoint.php"><a href="../files/src-models-endpoints-userendpoint.html"><abbr title="src/Models/Endpoints/UserEndpoint.php">UserEndpoint.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">30</span>
+        <span class="phpdocumentor-element-found-in__line">67</span>
     </aside>
         <p class="phpdocumentor-summary">Get user info for a given user id.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -173,7 +235,7 @@
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/UserEndpoint.php"><a href="../files/src-models-endpoints-userendpoint.html"><abbr title="src/Models/Endpoints/UserEndpoint.php">UserEndpoint.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">65</span>
+        <span class="phpdocumentor-element-found-in__line">102</span>
     </aside>
         <p class="phpdocumentor-summary">Get user info for a given user name.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
@@ -224,7 +286,7 @@
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Models/Endpoints/UserEndpoint.php"><a href="../files/src-models-endpoints-userendpoint.html"><abbr title="src/Models/Endpoints/UserEndpoint.php">UserEndpoint.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">102</span>
+        <span class="phpdocumentor-element-found-in__line">139</span>
     </aside>
         <p class="phpdocumentor-summary">Register a given new user.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
