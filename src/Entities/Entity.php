@@ -29,7 +29,7 @@ abstract class Entity implements Validatable
     const required_fields = [];
 
     /**
-     * @var bool
+     * @var bool|null
      */
     protected $is_valid;
 
@@ -126,7 +126,7 @@ abstract class Entity implements Validatable
      */
     public function isValid(): bool
     {
-        $constant = static::class . '::definitions';
+        // $constant = static::class . '::definitions';
         return $this->is_valid ?? !in_array(
             false,
             filter_var_array(

@@ -11,10 +11,10 @@ use Interfaces\Validatable;
  */
 class Generic extends Entity
 {
-    /**
-     * @var array [ string $field_name => mixed $value ]
-     */
-    public $data;
+    // /**
+    //  * @var array [ string $field_name => mixed $value ]
+    //  */
+    // public $data;
 
     /**
      * @var array [ string $field_name => mixed $filter_definition ]
@@ -28,10 +28,10 @@ class Generic extends Entity
      */
     protected $required_fields = [];
 
-    /**
-     * @var bool
-     */
-    protected $is_valid;
+    // /**
+    //  * @var bool
+    //  */
+    // protected $is_valid;
 
     /**
      * Create a new generic Entity instance from a given associative array.
@@ -100,15 +100,15 @@ class Generic extends Entity
         }
     }
 
-    /**
-     * Return this Entity's data.
-     * 
-     * @return array [ string $field_name => mixed $value ]
-     */
-    public function getData(): array
-    {
-        return $this->data;
-    }
+    // /**
+    //  * Return this Entity's data.
+    //  * 
+    //  * @return array [ string $field_name => mixed $value ]
+    //  */
+    // public function getData(): array
+    // {
+    //     return $this->data;
+    // }
 
     /**
      * Return this Entity's definition.

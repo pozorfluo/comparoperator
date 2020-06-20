@@ -54,25 +54,25 @@ class User extends Entity
         'ip'
     ];
 
-    /**
-     * Create a new User instance.
-     * 
-     * @param  array $data [ string $field_name => mixed $value ]
-     */
-    public function __construct(array $data)
-    {
-        $this->data = $data;
+    // /**
+    //  * Create a new User instance.
+    //  * 
+    //  * @param  array $data [ string $field_name => mixed $value ]
+    //  */
+    // public function __construct(array $data)
+    // {
+    //     $this->data = $data;
 
-        /**
-         * @note This is cute but pollutes 'hydration' with extra steps at
-         *       each instantiation ( and possibly other unforeseen side-effect
-         *       like messing with reference counting ).
-         */
-        // $this->user_id = &$this->data['user_id'];
-        // $this->name = &$this->data['name'];
-        // $this->created_at = &$this->data['created_at'];
-        // $this->ip = &$this->data['ip'];
-    }
+    //     /**
+    //      * @note This is cute but pollutes 'hydration' with extra steps at
+    //      *       each instantiation ( and possibly other unforeseen side-effect
+    //      *       like messing with reference counting ).
+    //      */
+    //     // $this->user_id = &$this->data['user_id'];
+    //     // $this->name = &$this->data['name'];
+    //     // $this->created_at = &$this->data['created_at'];
+    //     // $this->ip = &$this->data['ip'];
+    // }
 
     /**
      * @todo Consider how much boilerplate/ceremony is needed to define access,

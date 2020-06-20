@@ -22,7 +22,8 @@ class Operator extends Entity
             ]
         ],
         'name' => [
-            'filter' => FILTER_SANITIZE_FULL_SPECIAL_CHARS,
+            'filter' => FILTER_VALIDATE_REGEXP,
+            'options' => ['regexp' => '/^([A-Za-z0-9_\-\s]+)$/']
         ],
         'website' => [
             'filter' => FILTER_VALIDATE_URL
@@ -52,11 +53,4 @@ class Operator extends Entity
         'website',
         'logo'
     ];
-    /**
-     * @param  array $data [ string $field_name => mixed $value ]
-     */
-    public function __construct(array $data)
-    {
-        $this->data = $data;
-    }
 }
