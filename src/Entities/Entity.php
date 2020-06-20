@@ -46,13 +46,12 @@ abstract class Entity implements Validatable
         string $entity_name
     ): array {
 
-        $entity_class = '\Entities\\'. $entity_name;
+        $entity_class = '\Entities\\' . $entity_name;
         $entities = [];
-        
+
         foreach ($rows as $row) {
             $entities[] = new $entity_class($row);
         }
-
         return $entities;
     }
 
@@ -64,6 +63,26 @@ abstract class Entity implements Validatable
     public function __construct(array $data)
     {
         $this->data = $data;
+    }
+
+    /**
+     * Return property value.
+     */
+    public function __get($property)
+    {
+        return $this->data[$property];
+    }
+    
+    /**
+     * Set property and invalidates existing data validation if any.
+     * 
+     * @note Creates a new key in backing data array if tentatively accessed
+     *       'property' is not an existing key of backing data array.
+     */
+    public function __set($property, $value)
+    {
+        $this->is_valid = null;
+        $this->data[$property] = $value;
     }
 
     /**

@@ -54,4 +54,53 @@ class User extends Entity
         'ip'
     ];
 
+    /**
+     * Create a new User instance.
+     * 
+     * @param  array $data [ string $field_name => mixed $value ]
+     */
+    public function __construct(array $data)
+    {
+        $this->data = $data;
+
+        /**
+         * @note This is cute but pollutes 'hydration' with extra steps at
+         *       each instantiation ( and possibly other unforeseen side-effect
+         *       like messing with reference counting ).
+         */
+        // $this->user_id = &$this->data['user_id'];
+        // $this->name = &$this->data['name'];
+        // $this->created_at = &$this->data['created_at'];
+        // $this->ip = &$this->data['ip'];
+    }
+
+    /**
+     * @todo Consider how much boilerplate/ceremony is needed to define access,
+     *      mutation on each property of each entity.
+     * @todo Consider how much boilerplate/ceremony is needed to juggle between
+     *       filterable assoc array form and oop form.
+     * @todo Consider rolling with a backing data array and providing convenient
+     *       oop form via magic __set/__get in abstract parent class.
+     */
+    // /**
+    //  * Return this User's user_id.
+    //  * 
+    //  * @return int
+    //  */
+    // public function getUserId(): int
+    // {
+    //     return $this->data['user_id'];
+    // }
+    // /**
+    //  * Sets this User's user_id and invalidates existing data validation if any.
+    //  * 
+    //  * 
+    //  * @param int $user_id
+    //  * @return void
+    //  */
+    // public function setUserId(int $user_id): void
+    // {
+    //     $this->is_valid = null;
+    //     $this->data['user_id'] = $user_id;
+    // }
 }
