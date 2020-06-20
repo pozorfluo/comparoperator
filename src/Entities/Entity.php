@@ -126,15 +126,6 @@ abstract class Entity implements Validatable
      */
     public function isValid(): bool
     {
-        // return $this->is_valid ?? !in_array(
-        //     false,
-        //     filter_var_array(
-        //         $this->getData(),
-        //         static::definitions
-        //     ),
-        //     true // strict
-        // );
-
         if ($this->is_valid === null) {
             $this->is_valid = !in_array(
                 false,
