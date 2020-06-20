@@ -87,6 +87,13 @@ if (session_status() === PHP_SESSION_NONE) {
 //------------------------------------------------------------------- config
 require ROOT . 'src/Helpers/Config.php';
 date_default_timezone_set('Europe/Paris');
+
+//---------------------------------------------------------------------- run
+$t = microtime(true);
+
+$dispatcher = new Dispatcher($config);
+// $dispatcher->route()->cache();
+$dispatcher->route();
 //--------------------------------------------------------------- playground
 // echo is_file($file = 'index.php');
 // echo $file;
@@ -116,171 +123,239 @@ date_default_timezone_set('Europe/Paris');
 // include ROOT . 'src/Layouts/Layout.php';
 
 //--------------------------------------------------------------- playground
+// $defaults = [
+//     'page_title' => 'hello-php',
+//     // 'fonts' => '',
+//     'css' => '',
+//     'nav' => '',
+//     'content' => '',
+//     'ads' => '',
+//     'footer' => '',
+//     'js' => ''
+// ];
 
-$t = microtime(true);
+// $args = [
+//     'page_title' => 'hallo',
+//     'fonts' => 'hallo',
+//     'css' => 'hallo',
+//     // 'nav' => 'hallo',
+//     'content' => 'hallo',
+//     'ads' => 'hallo',
+//     'footer' => 'hallo',
+//     'js' => 'hallo'
+// ];
 
-echo '' . date('Y-m-d H:i:s');
+// $union_a = $defaults + $args;
+// $union_b = $args + $defaults;
 
-use Models\ComparOperatorAPI;
-use Entities\Generic;
-use Entities\User;
-use Entities\Location;
-use Entities\Offering;
-use Entities\Operator;
-use Entities\Review;
-// $controller = new Home(['db_configs' => $config['db_configs']]);
-// $pdo = new DBPDO($controller);
-$pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
+// echo '<pre>'.var_export($union_a, true).'</pre><hr />';
+// echo '<pre>'.var_export($union_b, true).'</pre><hr />';
 
-// echo '<pre>'.var_export($config, true).'</pre><hr />';
-// echo '<pre>'.var_export($pdo, true).'</pre><hr />';
+// $iterations = 10000;
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
 
-$users = $pdo->getUsers(100, 100);
-foreach($users as $user){
-    echo '<pre>' . var_export($user->data, true) . '</pre><hr />';
+// while ($i < $iterations) {
+//     $union_a = $args + $defaults;
+//     ++$i;
+// }
+// echo '<pre>' . var_export('union : ' . (microtime(true) - $t), true) . '</pre>';
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
 
-    $user_by_name = $pdo->getUserbyName($user->data['name']);
-    echo '<pre>' . var_export($user_by_name[0]->data, true) . '</pre><hr />';
-    $user_by_id = $pdo->getUserbyId($user->data['user_id']);
-    echo '<pre>' . var_export($user_by_id[0]->data, true) . '</pre><hr />';
-}
-
-$locations = $pdo->getLocations();
-foreach ($locations as $location) {
-    echo '<pre>' . var_export($location->data, true) . '</pre><hr />';
-
-    $offerings = $pdo->getOfferings($location->data['name']);
-    foreach ($offerings as $offering) {
-        echo '<pre>' . var_export($offering->data, true) . '</pre><hr />';
-    }
-}
-
-$new_user = new User(
-    [
-        'user_id' => null,
-        'name' => 'El_' . uniqid() . uniqid(),
-        'created_at' =>  date('Y-m-d H:i:s'),
-        'ip' => inet_pton('127.0.0.1'),
-    ]
-);
-
-
-$iterations = 1000;
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
-
-while ($i < $iterations) {
+// while ($i < $iterations) {
+//     $union_b = array_replace($defaults, $args);
+//     ++$i;
+// }
 
 
+// echo '<pre>' . var_export('array_replace : ' . (microtime(true) - $t), true) . '</pre>';
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
 
-    $user =  new \Entities\User(
-        [
-            'user_id' => $i,
-            'name' => 'El Guapo',
-            'created_at' =>  date('Y-m-d H:i:s'),
-            'ip' => inet_pton('127.0.0.1'),
-        ]
-    );
-
-    $is_valid = $user->isValid();
-
-    ++$i;
-}
-echo '<pre>' . var_export($is_valid, true) . '</pre><hr />';
-echo '<pre>' . var_export('isValid: ' . (microtime(true) - $t), true) . '</pre>';
-
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
-
-while ($i < $iterations) {
+// while ($i < $iterations) {
+//     $union_c = array_merge($defaults, $args);
+//     ++$i;
+// }
 
 
-
-    $user =  new \Entities\Generic(
-        [
-            'user_id' => $i,
-            'name' => 'El Guapo',
-            'created_at' =>  date('Y-m-d H:i:s'),
-            'ip' => inet_pton('127.0.0.1'),
-        ],
-        [
-            'user_id' => [
-                'filter' => FILTER_VALIDATE_INT,
-                'options' => [
-                    'min_range' => 1,
-                    'max_range' => 16777215
-                ]
-            ],
-            'name' => [
-                'filter' => FILTER_VALIDATE_REGEXP,
-                'options' => ['regexp' => '/^([A-Za-z0-9_\-\s]+)$/']
-            ],
-            'created_at' => [
-                'filter' => FILTER_VALIDATE_REGEXP,
-                'options' => [
-                    /**
-                         * @note
-                         *   This validates the format but does NOT check for
-                         *   impossible dates.
-                         */
-                    'regexp' => '/^[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]$/'
-                ]
-            ],
-            'ip' => [
-                'filter' => FILTER_CALLBACK,
-                'options' => 'inet_ntop'
-            ]
-        ]
-    );
-
-    $is_valid = $user->isValid();
-
-    ++$i;
-}
-echo '<pre>' . var_export($is_valid, true) . '</pre><hr />';
-echo '<pre>' . var_export('isValid: ' . (microtime(true) - $t), true) . '</pre>';
+// echo '<pre>' . var_export('array_replace : ' . (microtime(true) - $t), true) . '</pre>';
+// echo '<pre>'.var_export($union_a, true).'</pre><hr />';
+// echo '<pre>'.var_export($union_b, true).'</pre><hr />';
+// echo '<pre>'.var_export($union_c, true).'</pre><hr />';
+// echo '<pre>'.var_export(($union_b == $union_c), true).'</pre><hr />';
+// echo '<pre>'.var_export(($union_b === $union_c), true).'</pre><hr />';
+// echo '<pre>'.var_export(($union_a == $union_c), true).'</pre><hr />';
+// echo '<pre>'.var_export(($union_a === $union_c), true).'</pre><hr />';
 
 
-$new_entity = new Generic($new_user->getData());
+// $t = microtime(true);
 
-// echo '<pre>'.var_export($new_entity->getDefinitions(), true).'</pre><hr />';
-echo '<pre>' . var_export($new_user->getDefinitions(), true) . '</pre><hr />';
-// echo '<pre>'.var_export($pdo, true).'</pre><hr />';
-$new_user_result = $pdo->addUser($new_user);
+// echo '' . date('Y-m-d H:i:s');
 
-$new_user = new User(
-    [
-        'user_id' => null,
-        'name' => 'El_' . uniqid() . uniqid(),
-        'created_at' =>  'invalid date !',
-        'ip' => inet_pton('127.0.0.1'),
-    ]
-);
-$new_user_result = $pdo->addUser($new_user);
+// use Models\ComparOperatorAPI;
+// use Entities\Generic;
+// use Entities\User;
+// use Entities\Location;
+// use Entities\Offering;
+// use Entities\Operator;
+// use Entities\Review;
+// // $controller = new Home(['db_configs' => $config['db_configs']]);
+// // $pdo = new DBPDO($controller);
+// $pdo = ComparOperatorAPI::fromConfig($config['db_configs']);
 
-// echo '<pre>'.var_export($new_user->data['name'], true).'</pre><hr />';
-// echo '<pre>'.var_export($new_user->data['created_at'], true).'</pre><hr />';
-// echo '<pre>'.var_export($new_user->data['ip'], true).'</pre><hr />';
-// echo '<pre>'.var_export($new_user->getData(), true).'</pre><hr />';
-// echo '<pre>'.var_export($new_user->validate(), true).'</pre><hr />';
+// // echo '<pre>'.var_export($config, true).'</pre><hr />';
+// // echo '<pre>'.var_export($pdo, true).'</pre><hr />';
+
+// $users = $pdo->getUsers(100, 100);
+// foreach($users as $user){
+//     echo '<pre>' . var_export($user->data, true) . '</pre><hr />';
+
+//     $user_by_name = $pdo->getUserbyName($user->data['name']);
+//     echo '<pre>' . var_export($user_by_name[0]->data, true) . '</pre><hr />';
+//     $user_by_id = $pdo->getUserbyId($user->data['user_id']);
+//     echo '<pre>' . var_export($user_by_id[0]->data, true) . '</pre><hr />';
+// }
+
+// $locations = $pdo->getLocations();
+// foreach ($locations as $location) {
+//     echo '<pre>' . var_export($location->data, true) . '</pre><hr />';
+
+//     $offerings = $pdo->getOfferings($location->data['name']);
+//     foreach ($offerings as $offering) {
+//         echo '<pre>' . var_export($offering->data, true) . '</pre><hr />';
+//     }
+// }
+
+// $new_user = new User(
+//     [
+//         'user_id' => null,
+//         'name' => 'El_' . uniqid() . uniqid(),
+//         'created_at' =>  date('Y-m-d H:i:s'),
+//         'ip' => inet_pton('127.0.0.1'),
+//     ]
+// );
 
 
-// echo '<pre>'.var_export($new_user_result[0]->data, true).'</pre><hr />';
-// echo '<pre>'.var_export($new_user_result[0]->getData(), true).'</pre><hr />';
+// $iterations = 1000;
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
 
-$user = $pdo->getUserById(4);
-echo '<pre>' . var_export($user[0]->validate()->getData(), true) . '</pre><hr />';
+// while ($i < $iterations) {
 
-$user = $pdo->getUserById(0);
-echo '<pre>' . var_export($user, true) . '</pre><hr />';
 
-$user = $pdo->getUserByName('Hamza');
-echo '<pre>' . var_export($user[0]->validate()->getData(), true) . '</pre><hr />';
 
-$user = $pdo->getUserByName('');
-echo '<pre>' . var_export($user, true) . '</pre><hr />';
+//     $user =  new \Entities\User(
+//         [
+//             'user_id' => $i,
+//             'name' => 'El Guapo',
+//             'created_at' =>  date('Y-m-d H:i:s'),
+//             'ip' => inet_pton('127.0.0.1'),
+//         ]
+//     );
+
+//     $is_valid = $user->isValid();
+
+//     ++$i;
+// }
+// echo '<pre>' . var_export($is_valid, true) . '</pre><hr />';
+// echo '<pre>' . var_export('isValid: ' . (microtime(true) - $t), true) . '</pre>';
+
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
+
+// while ($i < $iterations) {
+
+
+
+//     $user =  new \Entities\Generic(
+//         [
+//             'user_id' => $i,
+//             'name' => 'El Guapo',
+//             'created_at' =>  date('Y-m-d H:i:s'),
+//             'ip' => inet_pton('127.0.0.1'),
+//         ],
+//         [
+//             'user_id' => [
+//                 'filter' => FILTER_VALIDATE_INT,
+//                 'options' => [
+//                     'min_range' => 1,
+//                     'max_range' => 16777215
+//                 ]
+//             ],
+//             'name' => [
+//                 'filter' => FILTER_VALIDATE_REGEXP,
+//                 'options' => ['regexp' => '/^([A-Za-z0-9_\-\s]+)$/']
+//             ],
+//             'created_at' => [
+//                 'filter' => FILTER_VALIDATE_REGEXP,
+//                 'options' => [
+//                     /**
+//                          * @note
+//                          *   This validates the format but does NOT check for
+//                          *   impossible dates.
+//                          */
+//                     'regexp' => '/^[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]$/'
+//                 ]
+//             ],
+//             'ip' => [
+//                 'filter' => FILTER_CALLBACK,
+//                 'options' => 'inet_ntop'
+//             ]
+//         ]
+//     );
+
+//     $is_valid = $user->isValid();
+
+//     ++$i;
+// }
+// echo '<pre>' . var_export($is_valid, true) . '</pre><hr />';
+// echo '<pre>' . var_export('isValid: ' . (microtime(true) - $t), true) . '</pre>';
+
+
+// $new_entity = new Generic($new_user->getData());
+
+// // echo '<pre>'.var_export($new_entity->getDefinitions(), true).'</pre><hr />';
+// echo '<pre>' . var_export($new_user->getDefinitions(), true) . '</pre><hr />';
+// // echo '<pre>'.var_export($pdo, true).'</pre><hr />';
+// $new_user_result = $pdo->addUser($new_user);
+
+// $new_user = new User(
+//     [
+//         'user_id' => null,
+//         'name' => 'El_' . uniqid() . uniqid(),
+//         'created_at' =>  'invalid date !',
+//         'ip' => inet_pton('127.0.0.1'),
+//     ]
+// );
+// $new_user_result = $pdo->addUser($new_user);
+
+// // echo '<pre>'.var_export($new_user->data['name'], true).'</pre><hr />';
+// // echo '<pre>'.var_export($new_user->data['created_at'], true).'</pre><hr />';
+// // echo '<pre>'.var_export($new_user->data['ip'], true).'</pre><hr />';
+// // echo '<pre>'.var_export($new_user->getData(), true).'</pre><hr />';
+// // echo '<pre>'.var_export($new_user->validate(), true).'</pre><hr />';
+
+
+// // echo '<pre>'.var_export($new_user_result[0]->data, true).'</pre><hr />';
+// // echo '<pre>'.var_export($new_user_result[0]->getData(), true).'</pre><hr />';
+
+// $user = $pdo->getUserById(4);
+// echo '<pre>' . var_export($user[0]->validate()->getData(), true) . '</pre><hr />';
+
+// $user = $pdo->getUserById(0);
+// echo '<pre>' . var_export($user, true) . '</pre><hr />';
+
+// $user = $pdo->getUserByName('Hamza');
+// echo '<pre>' . var_export($user[0]->validate()->getData(), true) . '</pre><hr />';
+
+// $user = $pdo->getUserByName('');
+// echo '<pre>' . var_export($user, true) . '</pre><hr />';
 
 // $iterations = 10;
 // echo '//--------------------------------------------------------------<br />';
@@ -521,13 +596,6 @@ echo '<pre>' . var_export($user, true) . '</pre><hr />';
 // // echo '<pre>' . var_export($users[0], true) . '</pre><hr />';
 // echo '<pre>' . var_export($data_array, true) . '</pre><hr />';
 // echo '<pre>' . var_export($filtered, true) . '</pre><hr />';
-
-//---------------------------------------------------------------------- run
-// $t = microtime(true);
-
-// $dispatcher = new Dispatcher($config);
-// $dispatcher->route()->cache();
-// $dispatcher->route();
 
 $time_spent['serving_page'] = (microtime(true) - $t);
 
