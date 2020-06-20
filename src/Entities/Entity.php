@@ -72,7 +72,7 @@ abstract class Entity implements Validatable
     {
         return $this->data[$property];
     }
-    
+
     /**
      * Set property and invalidates existing data validation if any.
      * 
@@ -126,15 +126,26 @@ abstract class Entity implements Validatable
      */
     public function isValid(): bool
     {
-        // $constant = static::class . '::definitions';
-        return $this->is_valid ?? !in_array(
-            false,
-            filter_var_array(
-                $this->getData(),
-                static::definitions
-            ),
-            true // strict
-        );
+        // return $this->is_valid ?? !in_array(
+        //     false,
+        //     filter_var_array(
+        //         $this->getData(),
+        //         static::definitions
+        //     ),
+        //     true // strict
+        // );
+
+        if ($this->is_valid === null) {
+            $this->is_valid = !in_array(
+                false,
+                filter_var_array(
+                    $this->getData(),
+                    static::definitions
+                ),
+                true // strict
+            );
+        }
+        return $this->is_valid;
     }
 
     /**
