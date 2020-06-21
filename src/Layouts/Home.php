@@ -63,7 +63,7 @@ class Home implements Templatable
             <title>{$this->data['page_title']}></title>
             {$this->data['fonts']}
             <style>
-            .loading {filter: opacity(50%);background : transparent url('public/images/icons/spinner.svg')  no-repeat scroll center center; background-blend-mode: multiply;}
+            .loading {filter: opacity(50%);background : transparent url('images/icons/spinner.svg')  no-repeat scroll center center; background-blend-mode: multiply;}
             </style>
             {$this->data['css']}
         </head>

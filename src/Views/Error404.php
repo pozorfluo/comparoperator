@@ -49,9 +49,9 @@ class Error404 extends View
         ];
 
         $this->components['content'] = [
-            new Image('public/images/icons/cross.svg', 'a red cross'),
-            new Image('public/images/icons/cross.svg', 'a red cross', 64, 64),
-            new Image('public/images/icons/cross.svg', 'a red cross', 128, 128),
+            new Image('images/icons/cross.svg', 'a red cross'),
+            new Image('images/icons/cross.svg', 'a red cross', 64, 64),
+            new Image('images/icons/cross.svg', 'a red cross', 128, 128),
         ];
 
 

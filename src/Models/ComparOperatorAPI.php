@@ -408,7 +408,7 @@ class ComparOperatorAPI extends DBPDO
                 'created_at'     => '2020-05-10 07:01:00',
                 'website'        => 'https://rewind.netlify.app/?ref=producthunt',
                 'summary'        => 'Your bookmarks, by date, with thumbnails and instant search',
-                'thumbnail'      => 'public/images/products/thumbnails/1_Rewind.webp',
+                'thumbnail'      => 'images/products/thumbnails/1_Rewind.webp',
                 'votes_count'    => 0,
                 'comments_count' => 0
             ], [
@@ -417,7 +417,7 @@ class ComparOperatorAPI extends DBPDO
                 'created_at'     => '2020-05-10 07:01:00',
                 'website'        => 'https://rewind.netlify.app/?ref=producthunt',
                 'summary'        => 'Your bookmarks, by date, with thumbnails and instant search',
-                'thumbnail'      => 'public/images/products/thumbnails/1_Rewind.webp',
+                'thumbnail'      => 'images/products/thumbnails/1_Rewind.webp',
                 'votes_count'    => 0,
                 'comments_count' => 0
             ]

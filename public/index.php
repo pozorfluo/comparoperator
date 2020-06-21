@@ -95,48 +95,48 @@ $dispatcher = new Dispatcher($config);
 // $dispatcher->route()->cache();
 $dispatcher->route();
 //--------------------------------------------------------------- playground
-$valid_user = new \Entities\User(
-    [
-        'user_id' => 1,
-        'name' => 'El_' . uniqid() . uniqid(),
-        'created_at' =>  date('Y-m-d H:i:s'),
-        'ip' => inet_pton('127.0.0.1'),
-    ]
-);
+// $valid_user = new \Entities\User(
+//     [
+//         'user_id' => 1,
+//         'name' => 'El_' . uniqid() . uniqid(),
+//         'created_at' =>  date('Y-m-d H:i:s'),
+//         'ip' => inet_pton('127.0.0.1'),
+//     ]
+// );
 
-$invalid_user = new \Entities\User(
-    [
-        'user_id' => 1,
-        'name' => 'El_' . uniqid() . uniqid(),
-        'created_at' =>  null,
-        'ip' => inet_pton('127.0.0.1'),
-    ]
-);
-$iterations = 1000000;
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
+// $invalid_user = new \Entities\User(
+//     [
+//         'user_id' => 1,
+//         'name' => 'El_' . uniqid() . uniqid(),
+//         'created_at' =>  null,
+//         'ip' => inet_pton('127.0.0.1'),
+//     ]
+// );
+// $iterations = 1000000;
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
 
-while ($i < $iterations) {
-    $valid = $valid_user->isValid();
-    $invalid = $invalid_user->isValid();
-    ++$i;
-}
-echo '<pre>' . var_export('filter_var_array : ' . (microtime(true) - $t), true) . '</pre>';
-echo '<pre>' . var_export('valid   : ' . $valid, true) . '</pre>';
-echo '<pre>' . var_export('invalid : ' . $invalid, true) . '</pre>';
-echo '//--------------------------------------------------------------<br />';
-$t = microtime(true);
-$i   = 0;
+// while ($i < $iterations) {
+//     $valid = $valid_user->isValid();
+//     $invalid = $invalid_user->isValid();
+//     ++$i;
+// }
+// echo '<pre>' . var_export('filter_var_array : ' . (microtime(true) - $t), true) . '</pre>';
+// echo '<pre>' . var_export('valid   : ' . $valid, true) . '</pre>';
+// echo '<pre>' . var_export('invalid : ' . $invalid, true) . '</pre>';
+// echo '//--------------------------------------------------------------<br />';
+// $t = microtime(true);
+// $i   = 0;
 
-while ($i < $iterations) {
-    $valid = $valid_user->isValid2();
-    $invalid = $invalid_user->isValid2();
-    ++$i;
-}
-echo '<pre>' . var_export('custom  : ' . (microtime(true) - $t), true) . '</pre>';
-echo '<pre>' . var_export('valid   : ' . $valid, true) . '</pre>';
-echo '<pre>' . var_export('invalid : ' . $invalid, true) . '</pre>';
+// while ($i < $iterations) {
+//     $valid = $valid_user->isValid2();
+//     $invalid = $invalid_user->isValid2();
+//     ++$i;
+// }
+// echo '<pre>' . var_export('custom  : ' . (microtime(true) - $t), true) . '</pre>';
+// echo '<pre>' . var_export('valid   : ' . $valid, true) . '</pre>';
+// echo '<pre>' . var_export('invalid : ' . $invalid, true) . '</pre>';
 //--------------------------------------------------------------- playground
 // echo is_file($file = 'index.php');
 // echo $file;

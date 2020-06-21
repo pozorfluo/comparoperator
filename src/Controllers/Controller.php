@@ -124,7 +124,7 @@ abstract class Controller //implements Loadable
 
         // for ($i = 0; $i < 3; $i++) {
         //     echo '<h2>DEFERRED COMPONENT PLACEHOLDER</h2>';
-        //     echo '<img src="public/images/icons/spinner.svg" alt="loading !">';
+        //     echo '<img src="images/icons/spinner.svg" alt="loading !">';
         //     /**
         //      * note
         //      *   Some padding may be necessary to force the webserver and

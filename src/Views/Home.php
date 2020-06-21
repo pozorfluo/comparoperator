@@ -41,24 +41,34 @@ class Home extends View
         ];
 
         $this->components['nav'] = [
-            new Nav([
-                'Home' => 'index.php?controller=Home',
-                'List Patient' => '?controller=Patient&action=List',
-                'Add Patient' => '?controller=Patient&action=Add',
-                'Minichat' => '?controller=Minichat',
-            ])
+            new Nav(
+                new Image('images/icons/logo.png', 'ComparOperator', 30, 30),
+                [
+                    'Home' => 'index.php?controller=Home',
+                    'Admin' => '?controller=Dashboard&action=Admin',
+                    'Operator' => '?controller=Dashboard&action=Admin',
+                ],
+                0,
+                /**
+                 * @todo Check how stacking a query like that with a GET form
+                 *       works.
+                 */
+                'index.php',
+                'Sign up',
+                'index.php?controller=Home&action=Signup',
+            )
         ];
 
         $this->components['content'] = [
-            new Image('public/images/icons/cross.svg', 'a red cross'),
-            new Image('public/images/icons/cross.svg', 'a red cross', 64, 64),
-            new Image('public/images/icons/cross.svg', 'a red cross', 128, 128),
+            new Image('images/icons/cross.svg', 'a red cross'),
+            new Image('images/icons/cross.svg', 'a red cross', 64, 64),
+            new Image('images/icons/cross.svg', 'a red cross', 128, 128),
         ];
 
         $this->components['ads'] = [
-            new Image('public/images/icons/cross.svg', 'a red cross'),
-            new Image('public/images/icons/cross.svg', 'a red cross', 64, 64),
-            new Image('public/images/icons/cross.svg', 'a red cross', 128, 128),
+            new Image('images/icons/cross.svg', 'a red cross'),
+            new Image('images/icons/cross.svg', 'a red cross', 64, 64),
+            new Image('images/icons/cross.svg', 'a red cross', 128, 128),
         ];
 
 

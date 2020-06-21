@@ -54,26 +54,26 @@ class User extends Entity
         'ip'
     ];
 
-    public function isValid2(): bool
-    {
-        if ($this->is_valid === null) {
-            // $user_id = $this->data['user_id'];
-            $this->is_valid = true
-                && isset(
-                    $this->data['user_id'],
-                    $this->data['name'],
-                    $this->data['created_at'],
-                    $this->data['ip'],
-                    )
-                && ((int) $this->data['user_id'] === $this->data['user_id'])
-                && ($this->data['user_id'] >= 1) 
-                && ($this->data['user_id'] <= 16777215)
-                && preg_match('/^([A-Za-z0-9_\-\s]+)$/', $this->data['name'])
-                && preg_match('/^[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]$/', $this->data['created_at'])
-                && inet_ntop($this->data['ip']);
-        }
-        return $this->is_valid;
-    }
+    // public function isValid2(): bool
+    // {
+    //     if ($this->is_valid === null) {
+    //         // $user_id = $this->data['user_id'];
+    //         $this->is_valid = true
+    //             && isset(
+    //                 $this->data['user_id'],
+    //                 $this->data['name'],
+    //                 $this->data['created_at'],
+    //                 $this->data['ip'],
+    //                 )
+    //             && ((int) $this->data['user_id'] === $this->data['user_id'])
+    //             && ($this->data['user_id'] >= 1) 
+    //             && ($this->data['user_id'] <= 16777215)
+    //             && preg_match('/^([A-Za-z0-9_\-\s]+)$/', $this->data['name'])
+    //             && preg_match('/^[0-9]{4}-[0-1][0-9]-[0-3][0-9] [0-2][0-9]:[0-5][0-9]:[0-5][0-9]$/', $this->data['created_at'])
+    //             && inet_ntop($this->data['ip']);
+    //     }
+    //     return $this->is_valid;
+    // }
     // /**
     //  * Create a new User instance.
     //  * 

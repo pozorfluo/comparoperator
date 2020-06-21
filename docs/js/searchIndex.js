@@ -1146,31 +1146,6 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/Templates-InlinedJs.html#property_data"
         },                {
-            "fqsen": "\\Templates\\Nav",
-            "name": "Nav",
-            "summary": "",
-            "url": "../classes/Templates-Nav.html"
-        },                {
-            "fqsen": "\\Templates\\Nav\u003A\u003A__construct\u0028\u0029",
-            "name": "__construct",
-            "summary": "",
-            "url": "../classes/Templates-Nav.html#method___construct"
-        },                {
-            "fqsen": "\\Templates\\Nav\u003A\u003AgetRaw\u0028\u0029",
-            "name": "getRaw",
-            "summary": "",
-            "url": "../classes/Templates-Nav.html#method_getRaw"
-        },                {
-            "fqsen": "\\Templates\\Nav\u003A\u003Arender\u0028\u0029",
-            "name": "render",
-            "summary": "",
-            "url": "../classes/Templates-Nav.html#method_render"
-        },                {
-            "fqsen": "\\Templates\\Nav\u003A\u003A\u0024data",
-            "name": "data",
-            "summary": "",
-            "url": "../classes/Templates-Nav.html#property_data"
-        },                {
             "fqsen": "\\Templates\\Table",
             "name": "Table",
             "summary": "",
