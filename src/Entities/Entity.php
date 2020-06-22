@@ -12,12 +12,12 @@ use Interfaces\Validatable;
 abstract class Entity implements Validatable
 {
     /**
-     * @var array [ string $field_name => mixed $value ]
+     * @var array <string, mixed>[] [$field_name => $value]
      */
     public $data;
 
     /**
-     * @var array [ string $field_name => mixed $filter_definition ]
+     * @var array <string, mixed>[] [$field_name => $filter_definition]
      */
     const definitions = [];
 

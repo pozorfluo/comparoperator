@@ -11,13 +11,8 @@ use Interfaces\Validatable;
  */
 class Generic extends Entity
 {
-    // /**
-    //  * @var array [ string $field_name => mixed $value ]
-    //  */
-    // public $data;
-
     /**
-     * @var array [ string $field_name => mixed $filter_definition ]
+     * @var array <string, mixed>[] [$field_name => $filter_definition]
      */
     protected $definitions = [];
 

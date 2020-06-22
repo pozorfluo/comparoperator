@@ -10,7 +10,7 @@ namespace Entities;
 class Location extends Entity
 {
     /**
-     * @var array [ string $field_name => mixed $filter_definition ]
+     * @var array <string, mixed>[] [$field_name => $filter_definition]
      */
     const definitions =
     [

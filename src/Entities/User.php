@@ -5,15 +5,14 @@ declare(strict_types=1);
 namespace Entities;
 
 /**
-                 * 
-                 */
+ * 
+ */
 class User extends Entity
 {
     /**
-                 * @var array [ string $field_name => mixed $filter_definition ]
+     * @var array <string, mixed>[] [$field_name => $filter_definition]
      */
     const definitions =
-    // protected $definitions =
     [
         'user_id' => [
             'filter' => FILTER_VALIDATE_INT,

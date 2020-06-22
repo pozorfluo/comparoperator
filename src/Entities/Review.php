@@ -10,7 +10,7 @@ namespace Entities;
 class Review extends Entity
 {
     /**
-     * @var array [ string $field_name => mixed $filter_definition ]
+     * @var array <string, mixed>[] [$field_name => $filter_definition]
      */
     const definitions =
     [
@@ -59,13 +59,13 @@ class Review extends Entity
                 'min_range' => 0,
                 'max_range' => 5
             ]
-            ],
+        ],
         'message' => [
             'filter' => FILTER_VALIDATE_REGEXP,
             'options' => ['regexp' => '/^([A-Za-z0-9_\-\s]+)$/']
         ]
     ];
-    
+
     /**
      * List of field names required for insertion in database.
      * 
