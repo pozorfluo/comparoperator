@@ -836,56 +836,6 @@ Search.appendIndex(
             "summary": "Create\u0020a\u0020new\u0020ComparOperatorAPI\u0020instance.",
             "url": "../classes/Models-ComparOperatorAPI.html#method___construct"
         },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetPopularProducts\u0028\u0029",
-            "name": "getPopularProducts",
-            "summary": "Get\u0020most\u0020popular\u0020products.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getPopularProducts"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetCategory\u0028\u0029",
-            "name": "getCategory",
-            "summary": "Get\u0020category\u0020info\u0020for\u0020a\u0020given\u0020category\u0020id.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getCategory"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetProduct\u0028\u0029",
-            "name": "getProduct",
-            "summary": "Get\u0020product\u0020content\u0020associated\u0020with\u0020a\u0020given\u0020product\u0020id.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getProduct"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetProductsCollection\u0028\u0029",
-            "name": "getProductsCollection",
-            "summary": "Get\u0020products\u0020associated\u0020with\u0020a\u0020given\u0020category.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getProductsCollection"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AfindProductsByName\u0028\u0029",
-            "name": "findProductsByName",
-            "summary": "Find\u0020products\u0020whose\u0020name\u0020match\u0020given\u0020search\u0020string.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_findProductsByName"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AfindProductsByContent\u0028\u0029",
-            "name": "findProductsByContent",
-            "summary": "Find\u0020products\u0020whose\u0020content\u0020match\u0020given\u0020search\u0020string.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_findProductsByContent"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetUserVotes\u0028\u0029",
-            "name": "getUserVotes",
-            "summary": "Get\u0020products\u0020id\u0020a\u0020given\u0020user\u0020voted\u0020for.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getUserVotes"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003AgetProductComments\u0028\u0029",
-            "name": "getProductComments",
-            "summary": "Get\u0020comments\u0020for\u0020a\u0020given\u0020product.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_getProductComments"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003Avote\u0028\u0029",
-            "name": "vote",
-            "summary": "Register\u0020a\u0020vote\u0020for\u0020given\u0020user\u0020on\u0020given\u0020product.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_vote"
-        },                {
-            "fqsen": "\\Models\\ComparOperatorAPI\u003A\u003Acomment\u0028\u0029",
-            "name": "comment",
-            "summary": "Register\u0020a\u0020comment\u0020for\u0020given\u0020user\u0020on\u0020given\u0020product.",
-            "url": "../classes/Models-ComparOperatorAPI.html#method_comment"
-        },                {
             "fqsen": "\\Models\\DBPDO",
             "name": "DBPDO",
             "summary": "note\n\u0020\u0020Base\u0020class\u0020Model\u0020describes\u0020how\u0020it\u0020is\u0020initialized,\u0020should\u0020be\u0020talked\u0020to,\n\u0020\u0020what\u0020it\u0020gives\u0020back,\u0020forwards\u0020messages\u0020and\u0020its\u0020ability\u0020to\u0020invalidate\u0020cached\n\u0020\u0020pages",
@@ -1146,6 +1096,31 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/Templates-InlinedJs.html#property_data"
         },                {
+            "fqsen": "\\Templates\\LocationCard",
+            "name": "LocationCard",
+            "summary": "",
+            "url": "../classes/Templates-LocationCard.html"
+        },                {
+            "fqsen": "\\Templates\\LocationCard\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Create\u0020a\u0020new\u0020LocationCard\u0020instance.",
+            "url": "../classes/Templates-LocationCard.html#method___construct"
+        },                {
+            "fqsen": "\\Templates\\LocationCard\u003A\u003AgetRaw\u0028\u0029",
+            "name": "getRaw",
+            "summary": "",
+            "url": "../classes/Templates-LocationCard.html#method_getRaw"
+        },                {
+            "fqsen": "\\Templates\\LocationCard\u003A\u003Arender\u0028\u0029",
+            "name": "render",
+            "summary": "",
+            "url": "../classes/Templates-LocationCard.html#method_render"
+        },                {
+            "fqsen": "\\Templates\\LocationCard\u003A\u003A\u0024data",
+            "name": "data",
+            "summary": "",
+            "url": "../classes/Templates-LocationCard.html#property_data"
+        },                {
             "fqsen": "\\Templates\\Table",
             "name": "Table",
             "summary": "",
@@ -1208,13 +1183,18 @@ Search.appendIndex(
         },                {
             "fqsen": "\\Views\\Home\u003A\u003A__construct\u0028\u0029",
             "name": "__construct",
-            "summary": "",
+            "summary": "Define\u0020defaults,\u0020take\u0020arguments",
             "url": "../classes/Views-Home.html#method___construct"
         },                {
             "fqsen": "\\Views\\Home\u003A\u003Acompose\u0028\u0029",
             "name": "compose",
             "summary": "todo\n\u0020\u0020\u002D\u0020\u005B\u0020\u005D\u0020Build\u0020from\u0020data",
             "url": "../classes/Views-Home.html#method_compose"
+        },                {
+            "fqsen": "\\Views\\Home\u003A\u003A\u0024locations",
+            "name": "locations",
+            "summary": "",
+            "url": "../classes/Views-Home.html#property_locations"
         },                {
             "fqsen": "\\Views\\OfferingList",
             "name": "OfferingList",

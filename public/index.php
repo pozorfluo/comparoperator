@@ -112,7 +112,7 @@ $dispatcher->route();
 //     [
 //         rand(1, 6),
 //         date('Y-m-d H:i:s'),
-//         'z'.uniqid() . uniqid(),
+//         'z'.uniqid(),
 //         rand(100, 5000),
 //         'images/destinations/000' . rand(1, 9) . '.jpg'
 //     ]
