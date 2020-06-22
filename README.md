@@ -91,7 +91,7 @@
     npm test
     ```
 
-## docs
+## [docs](https://pozorfluo.github.io/comparoperator/)
 
 ## app flowchart
 ![flowchart](resources/images/flowchart.svg)
