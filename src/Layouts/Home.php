@@ -69,16 +69,37 @@ class Home implements Templatable
         </head>
         
         <body>
-          <div class="container bg-info">
+          <div class="container-fluid">
             {$this->data['nav']}
         
-            <main class="row bg-warning">
-              <div class="col-md-10 bg-info">
-                {$this->data['content']}
+            <main class="row mt-5">
+              <div class="col-md-10">
+                <div class="row">
+                    {$this->data['content']}
+                </div>
               </div>
               
-              <div class="col-md-2 bg-success">
-                {$this->data['ads']}
+              <div class="col-md-2 mt-4">
+                    <img 
+                        class="card-img-top img-fluid rounded mb-3" 
+                        src="images/destinations/0005.jpg" 
+                        alt="Prenium TO" />
+                    <h5 class="card-title font-weight-bold text-center">
+                        <u>Dubaï ♔</u>
+                    </h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item text-center">
+                            Description brève
+                        </li>
+                        <li class="list-group-item text-center">
+                            Pourquoi prenium ?
+                        </li>
+                        <li class="list-group-item text-center">
+                            <a href="#" class="card-link text-primary">
+                                Redirection
+                            </a>
+                        </li>
+                    </ul>
               </div>
             </main>
         

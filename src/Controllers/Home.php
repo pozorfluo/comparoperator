@@ -8,10 +8,6 @@ declare(strict_types=1);
 
 namespace Controllers;
 
-use Models\Model;
-use Views\View;
-
-
 /**
  * 
  */
@@ -31,6 +27,10 @@ class Home extends Controller
     {
         $this->set($args);
         $this->layout = 'Home';
+        $this->args['model'] = 'ComparOperatorAPI';
+        $this->loadModel();
+        $this->args['data']['locations'] = $this->model->getLocations(50, 0);
+        // echo '<pre>'.var_export($this->args['data'], true).'</pre><hr />';
         $this->serve();
     }
 

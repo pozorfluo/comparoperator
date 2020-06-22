@@ -95,6 +95,30 @@ $dispatcher = new Dispatcher($config);
 // $dispatcher->route()->cache();
 $dispatcher->route();
 //--------------------------------------------------------------- playground
+// $pdo = \Models\ComparOperatorAPI::fromConfig($config['db_configs']);
+
+// $pdo->execute(
+//     'comparoperator',
+//     "INSERT INTO
+//          `destinations` (
+//              `operator_id`,
+//              `created_at`,
+//              `location`,
+//              `price`,
+//              `thumbnail`
+//          )
+//      VALUES
+//          (?,?,?,?,?);",
+//     [
+//         rand(1, 6),
+//         date('Y-m-d H:i:s'),
+//         'z'.uniqid() . uniqid(),
+//         rand(100, 5000),
+//         'images/destinations/000' . rand(1, 9) . '.jpg'
+//     ]
+// );
+
+//--------------------------------------------------------------- playground
 // $valid_user = new \Entities\User(
 //     [
 //         'user_id' => 1,

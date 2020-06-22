@@ -113,6 +113,7 @@ class Image implements Templatable
     public function render(): string
     {
         $this->data['lazy'] ? $lazy = 'loading="lazy"' : $lazy = '';
+        
         return <<<TEMPLATE
 <img
     src="{$this->data['path']}"

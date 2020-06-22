@@ -24,7 +24,7 @@ class Nav implements Templatable
      *   Uses bootstrap navbar component.
      *
      * @param \Template\Image $logo
-     * @param <string, string>[] $links Link content to display => href
+     * @param <string, string>[] $links content to display => href
      * @param int $active_link
      * @param string $search_action
      * @param string $button_text
@@ -69,11 +69,13 @@ class Nav implements Templatable
         $rendered_links = '';
         foreach ($this->data['links'] as $link => $href) {
             $rendered_links .= ($i === $this->data['active_link']) ?
+
                 <<<ACTIVE_LINK
 <a class="nav-item nav-link active" href="{$href}">
 {$link} <span class="sr-only">(current)</span>
 </a>
 ACTIVE_LINK
+
                 : <<<LINK
 <a class="nav-item nav-link" href="{$href}">{$link}</a>
 LINK;
@@ -89,9 +91,9 @@ LINK;
     {
         return <<<TEMPLATE
 <nav
-    class="navbar row fixed-top navbar-expand-lg justify-content-between navbar-light link-primary bg-white"
+    class="navbar fixed-top navbar-expand-sm navbar-light bg-white"
 >
-    <a class="navbar-brand  ml-2" href="/">
+    <a class="navbar-brand" href="/">
         {$this->data['logo']->render()}
     </a>
     <button
@@ -111,13 +113,13 @@ LINK;
         </div>
 
         <form
-            class="form-inline input-group col-3"
+            class="form-inline input-group"
             id="search"
             method="GET"
             action="{$this->data['search_action']}"
         >
             <input
-                class="form-control"
+                class="form-control col-3"
                 type="text"
                 name="search"
                 placeholder="..."
@@ -128,7 +130,11 @@ LINK;
             </div>
         </form>
 
-        <a class="btn btn-secondary col-1 ml-auto mr-2" href="{$this->data['button_href']}" role="button">
+        <a 
+            class="btn btn-secondary ml-auto w-25" 
+            href="{$this->data['button_href']}" 
+            role="button"
+        >
             {$this->data['button_text']}
         </a>
     </div>
