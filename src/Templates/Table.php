@@ -28,7 +28,6 @@ class Table implements Templatable
     ) {
         $this->data['entries'] = $entries;
         $this->data['class'] = $class;
-
     }
 
     /**
@@ -46,19 +45,20 @@ class Table implements Templatable
     {
         $class = $this->data['class'];
 
-        $rendered_template = <<<TEMPLATE
-<table class="{$class}">
-<thead class="{$class}">
-<tr class="{$class}">
-TEMPLATE;
+        $rendered_template =
+            <<<TEMPLATE
+                <table class="{$class}">
+                <thead class="{$class}">
+                <tr class="{$class}">
+                TEMPLATE;
 
         /* table header */
         foreach (array_keys($this->data['entries'][0]) as $header) {
 
-            $rendered_template .= 
-<<<TEMPLATE
-<th class="{$class}">{$header}</th>
-TEMPLATE;
+            $rendered_template .=
+                <<<TEMPLATE
+                    <th class="{$class}">{$header}</th>
+                    TEMPLATE;
         }
 
 
@@ -67,16 +67,16 @@ TEMPLATE;
         /* table header */
         foreach ($this->data['entries'] as $entry) {
 
-            $rendered_template .= 
-<<<TEMPLATE
-<tr class="{$class}">
-TEMPLATE;
+            $rendered_template .=
+                <<<TEMPLATE
+                    <tr class="{$class}">
+                    TEMPLATE;
 
             foreach ($entry as $col => $value) {
-                $rendered_template .= 
-<<<TEMPLATE
-<td class="{$class}">{$value}</a></td>
-TEMPLATE;
+                $rendered_template .=
+                    <<<TEMPLATE
+                        <td class="{$class}">{$value}</a></td>
+                        TEMPLATE;
             }
 
             $rendered_template .=  '</tr>';

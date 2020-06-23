@@ -71,14 +71,14 @@ class Nav implements Templatable
             $rendered_links .= ($i === $this->data['active_link']) ?
 
                 <<<ACTIVE_LINK
-<a class="nav-item nav-link active" href="{$href}">
-{$link} <span class="sr-only">(current)</span>
-</a>
-ACTIVE_LINK
+                    <a class="nav-item nav-link active" href="{$href}">
+                    {$link} <span class="sr-only">(current)</span>
+                    </a>
+                    ACTIVE_LINK
 
                 : <<<LINK
-<a class="nav-item nav-link" href="{$href}">{$link}</a>
-LINK;
+                    <a class="nav-item nav-link" href="{$href}">{$link}</a>
+                    LINK;
 
             $i++;
         }
