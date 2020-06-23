@@ -47,8 +47,8 @@ define('DEV_GLOBALS_DUMP', true);
 
 require ROOT . 'src/Helpers/AutoLoader.php';
 
-use Entities\Entity;
 use Helpers\Dispatcher;
+use Helpers\Config;
 use Helpers\Cache;
 //--------------------------------------------------------------- playground
 
@@ -85,18 +85,23 @@ if (session_status() === PHP_SESSION_NONE) {
      */
 }
 //------------------------------------------------------------------- config
-require ROOT . 'src/Helpers/Config.php';
+require ROOT . 'src/Helpers/AutoConfig.php';
 date_default_timezone_set('Europe/Paris');
 
 //---------------------------------------------------------------------- run
 $t = microtime(true);
 
-$dispatcher = new Dispatcher($config);
+$dispatcher = new Dispatcher([
+    'components' => Config::components,
+    'db_configs' => Config::db,
+    
+]);
 // $dispatcher->route()->cache();
 $dispatcher->route();
 //--------------------------------------------------------------- playground
 // $pdo = \Models\ComparOperatorAPI::fromConfig($config['db_configs']);
-
+// echo '<pre>'.var_export($config, true).'</pre><hr />';
+// echo '<pre>'.ReflectionClass::export('\Helpers\Config', true).'</pre><hr />';
 // $pdo->execute(
 //     'comparoperator',
 //     "INSERT INTO
