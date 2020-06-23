@@ -6,9 +6,9 @@ declare(strict_types=1);
 namespace Models;
 
 use Controllers\Controller;
-use Models\Endpoints\UserEndpoint;
-use Models\Endpoints\DestinationEndpoint;
-use Models\Endpoints\OperatorEndpoint;
+use Models\Repos\UserRepo;
+use Models\Repos\DestinationRepo;
+use Models\Repos\OperatorRepo;
 
 /**
  * ComparOperatorAPI
@@ -25,9 +25,9 @@ use Models\Endpoints\OperatorEndpoint;
  */
 class ComparOperatorAPI extends DBPDO
 {
-    use UserEndpoint;
-    use OperatorEndpoint;
-    use DestinationEndpoint;
+    use UserRepo;
+    use OperatorRepo;
+    use DestinationRepo;
     /**
      * Create a new ComparOperatorAPI instance from a decoded config json.
      * 

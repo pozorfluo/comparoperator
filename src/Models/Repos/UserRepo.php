@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-namespace Models\Endpoints;
+namespace Models\Repos;
 
 use PDOException;
 use Entities\Entity;
@@ -14,7 +14,7 @@ use Entities\User;
  * @todo Consider using traits for endpoints and composing API by using endpoint
  *       traits.
  */
-trait UserEndpoint
+trait UserRepo
 {
     /**
      * Get users.

@@ -53,7 +53,7 @@
                             </ul>
                     <h3 class="phpdocumentor-sidebar__root-namespace"><a href="../namespaces/models.html"><abbr title="\Models">Models</abbr></a></h3>
             <ul class="phpdocumentor-list">
-                                    <li><a href="../namespaces/models-endpoints.html"><abbr title="\Models\Endpoints">Endpoints</abbr></a></li>
+                                    <li><a href="../namespaces/models-repos.html"><abbr title="\Models\Repos">Repos</abbr></a></li>
                             </ul>
                     <h3 class="phpdocumentor-sidebar__root-namespace"><a href="../namespaces/templates.html"><abbr title="\Templates">Templates</abbr></a></h3>
             <ul class="phpdocumentor-list">
@@ -101,13 +101,18 @@
                 </tr>
                                                                 <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Templates-Nav.html#method___construct">__construct()</a></th>
-                    <td class="phpdocumentor-cell"></td>
-                    <td class="phpdocumentor-cell">mixed</td>
+                    <td class="phpdocumentor-cell">Create a new Nav instance.</td>
+                    <td class="phpdocumentor-cell">void</td>
                 </tr>
                             <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Templates-Nav.html#method_getRaw">getRaw()</a></th>
                     <td class="phpdocumentor-cell"></td>
                     <td class="phpdocumentor-cell">array</td>
+                </tr>
+                            <tr>
+                    <th class="phpdocumentor-heading"><a href="../classes/Templates-Nav.html#method_renderLinks">renderLinks()</a></th>
+                    <td class="phpdocumentor-cell"></td>
+                    <td class="phpdocumentor-cell">string</td>
                 </tr>
                             <tr>
                     <th class="phpdocumentor-heading"><a href="../classes/Templates-Nav.html#method_render">render()</a></th>
@@ -153,33 +158,84 @@
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Templates/Nav.php"><a href="../files/src-templates-nav.html"><abbr title="src/Templates/Nav.php">Nav.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">23</span>
+        <span class="phpdocumentor-element-found-in__line">35</span>
     </aside>
+        <p class="phpdocumentor-summary">Create a new Nav instance.</p>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
                                 <span class="phpdocumentor-signature__name">__construct</span>(
                     <span class="phpdocumentor-signature__argument">
-            [                <span class="phpdocumentor-signature__argument__name">$links</span> :
+                            <span class="phpdocumentor-signature__argument__name">$logo</span> :
+                <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Template\Image">Image</abbr></span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            [,                 <span class="phpdocumentor-signature__argument__name">$links</span> :
                 <span class="phpdocumentor-signature__argument__return-type">array</span>
                  = <span class="phpdocumentor-signature__argument__default-value">[&#039;Project Name&#039; =&gt; &#039;index.php?controller=Home&#039;]</span> ]            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$active_link</span> :
+                <span class="phpdocumentor-signature__argument__return-type">int</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$search_action</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$button_text</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
+                    <span class="phpdocumentor-signature__argument">
+            ,                 <span class="phpdocumentor-signature__argument__name">$button_href</span> :
+                <span class="phpdocumentor-signature__argument__return-type">string</span>
+                            </span>
                 )
-        : <span class="phpdocumentor-signature__response_type">mixed</span>
+        : <span class="phpdocumentor-signature__response_type">void</span>
     </code>
 
     
             <h5 class="phpdocumentor-argument-list__heading">Parameters</h5>
         <dl class="phpdocumentor-argument-list">
                             <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$logo</span>
+                    : <span class="phpdocumentor-signature__argument__return-type"><abbr title="\Template\Image">Image</abbr></span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
                     <span class="phpdocumentor-signature__argument__name">$links</span>
                     : <span class="phpdocumentor-signature__argument__return-type">array</span>
                      = <span class="phpdocumentor-signature__argument__default-value">[&#039;Project Name&#039; =&gt; &#039;index.php?controller=Home&#039;]</span>                </dt>
                 <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$active_link</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">int</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$search_action</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$button_text</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
+                            <dt class="phpdocumentor-argument-list__entry">
+                    <span class="phpdocumentor-signature__argument__name">$button_href</span>
+                    : <span class="phpdocumentor-signature__argument__return-type">string</span>
+                                    </dt>
+                <dd class="phpdocumentor-argument-list__definition"><section class="phpdocumentor-description"></section></dd>
                     </dl>
     
-        
-            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
-        <span class="phpdocumentor-signature__response_type">mixed</span>
-            
+                <h5 class="phpdocumentor-tag-list__heading">Tags</h5>
+        <dl class="phpdocumentor-tag-list">
+                                                <dt class="phpdocumentor-tag-list__entry">
+                        <span class="phpdocumentor-tag__name">note</span>
+                    </dt>
+                    <dd class="phpdocumentor-tag-list__definition"><section class="phpdocumentor-description"><p>Uses bootstrap navbar component.</p></section></dd>
+                                    </dl>
+    
+    
 </article>
                                     <a id="method_getRaw"></a>
 <article
@@ -192,7 +248,7 @@
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Templates/Nav.php"><a href="../files/src-templates-nav.html"><abbr title="src/Templates/Nav.php">Nav.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">32</span>
+        <span class="phpdocumentor-element-found-in__line">58</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>
@@ -208,6 +264,33 @@
         <span class="phpdocumentor-signature__response_type">array</span>
             
 </article>
+                                    <a id="method_renderLinks"></a>
+<article
+        class="
+            phpdocumentor-method
+            phpdocumentor-method--private
+                                                        "
+>
+    <h4 class="phpdocumentor-method__name">renderLinks()</h4>
+    <aside class="phpdocumentor-element-found-in">
+        <abbr class="phpdocumentor-element-found-in__file" title="src/Templates/Nav.php"><a href="../files/src-templates-nav.html"><abbr title="src/Templates/Nav.php">Nav.php</abbr></a></abbr>
+        :
+        <span class="phpdocumentor-element-found-in__line">66</span>
+    </aside>
+        <code class="phpdocumentor-signature phpdocumentor-code ">
+        <span class="phpdocumentor-signature__visibility">private</span>
+                                <span class="phpdocumentor-signature__name">renderLinks</span>(
+                )
+        : <span class="phpdocumentor-signature__response_type">string</span>
+    </code>
+
+    
+    
+        
+            <h5 class="phpdocumentor-return-value__heading">Return values</h5>
+        <span class="phpdocumentor-signature__response_type">string</span>
+            
+</article>
                                     <a id="method_render"></a>
 <article
         class="
@@ -219,7 +302,7 @@
     <aside class="phpdocumentor-element-found-in">
         <abbr class="phpdocumentor-element-found-in__file" title="src/Templates/Nav.php"><a href="../files/src-templates-nav.html"><abbr title="src/Templates/Nav.php">Nav.php</abbr></a></abbr>
         :
-        <span class="phpdocumentor-element-found-in__line">40</span>
+        <span class="phpdocumentor-element-found-in__line">90</span>
     </aside>
         <code class="phpdocumentor-signature phpdocumentor-code ">
         <span class="phpdocumentor-signature__visibility">public</span>

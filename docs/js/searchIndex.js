@@ -866,56 +866,6 @@ Search.appendIndex(
             "summary": "",
             "url": "../classes/Models-DBPDO.html#property_db"
         },                {
-            "fqsen": "\\Models\\Endpoints\\DestinationEndpoint",
-            "name": "DestinationEndpoint",
-            "summary": "",
-            "url": "../classes/Models-Endpoints-DestinationEndpoint.html"
-        },                {
-            "fqsen": "\\Models\\Endpoints\\DestinationEndpoint\u003A\u003AgetLocations\u0028\u0029",
-            "name": "getLocations",
-            "summary": "Get\u0020locations.",
-            "url": "../classes/Models-Endpoints-DestinationEndpoint.html#method_getLocations"
-        },                {
-            "fqsen": "\\Models\\Endpoints\\DestinationEndpoint\u003A\u003AgetOfferings\u0028\u0029",
-            "name": "getOfferings",
-            "summary": "Get\u0020offerings\u0020for\u0020a\u0020given\u0020location.",
-            "url": "../classes/Models-Endpoints-DestinationEndpoint.html#method_getOfferings"
-        },                {
-            "fqsen": "\\Models\\Endpoints\\OperatorEndpoint",
-            "name": "OperatorEndpoint",
-            "summary": "",
-            "url": "../classes/Models-Endpoints-OperatorEndpoint.html"
-        },                {
-            "fqsen": "\\Models\\Endpoints\\OperatorEndpoint\u003A\u003AgetOperators\u0028\u0029",
-            "name": "getOperators",
-            "summary": "Get\u0020operators.",
-            "url": "../classes/Models-Endpoints-OperatorEndpoint.html#method_getOperators"
-        },                {
-            "fqsen": "\\Models\\Endpoints\\UserEndpoint",
-            "name": "UserEndpoint",
-            "summary": "",
-            "url": "../classes/Models-Endpoints-UserEndpoint.html"
-        },                {
-            "fqsen": "\\Models\\Endpoints\\UserEndpoint\u003A\u003AgetUsers\u0028\u0029",
-            "name": "getUsers",
-            "summary": "Get\u0020users.",
-            "url": "../classes/Models-Endpoints-UserEndpoint.html#method_getUsers"
-        },                {
-            "fqsen": "\\Models\\Endpoints\\UserEndpoint\u003A\u003AgetUserById\u0028\u0029",
-            "name": "getUserById",
-            "summary": "Get\u0020user\u0020info\u0020for\u0020a\u0020given\u0020user\u0020id.",
-            "url": "../classes/Models-Endpoints-UserEndpoint.html#method_getUserById"
-        },                {
-            "fqsen": "\\Models\\Endpoints\\UserEndpoint\u003A\u003AgetUserbyName\u0028\u0029",
-            "name": "getUserbyName",
-            "summary": "Get\u0020user\u0020info\u0020for\u0020a\u0020given\u0020user\u0020name.",
-            "url": "../classes/Models-Endpoints-UserEndpoint.html#method_getUserbyName"
-        },                {
-            "fqsen": "\\Models\\Endpoints\\UserEndpoint\u003A\u003AaddUser\u0028\u0029",
-            "name": "addUser",
-            "summary": "Register\u0020a\u0020given\u0020new\u0020user.",
-            "url": "../classes/Models-Endpoints-UserEndpoint.html#method_addUser"
-        },                {
             "fqsen": "\\Models\\Model",
             "name": "Model",
             "summary": "note\n\u0020\u0020Base\u0020class\u0020Model\u0020describes\u0020how\u0020it\u0020is\u0020initialized,\u0020should\u0020be\u0020talked\u0020to,\n\u0020\u0020what\u0020it\u0020gives\u0020back,\u0020forwards\u0020messages\u0020and\u0020its\u0020ability\u0020to\u0020invalidate\u0020cached\n\u0020\u0020pages",
@@ -940,6 +890,56 @@ Search.appendIndex(
             "name": "controller",
             "summary": "",
             "url": "../classes/Models-Model.html#property_controller"
+        },                {
+            "fqsen": "\\Models\\Repos\\DestinationRepo",
+            "name": "DestinationRepo",
+            "summary": "",
+            "url": "../classes/Models-Repos-DestinationRepo.html"
+        },                {
+            "fqsen": "\\Models\\Repos\\DestinationRepo\u003A\u003AgetLocations\u0028\u0029",
+            "name": "getLocations",
+            "summary": "Get\u0020locations.",
+            "url": "../classes/Models-Repos-DestinationRepo.html#method_getLocations"
+        },                {
+            "fqsen": "\\Models\\Repos\\DestinationRepo\u003A\u003AgetOfferings\u0028\u0029",
+            "name": "getOfferings",
+            "summary": "Get\u0020offerings\u0020for\u0020a\u0020given\u0020location.",
+            "url": "../classes/Models-Repos-DestinationRepo.html#method_getOfferings"
+        },                {
+            "fqsen": "\\Models\\Repos\\OperatorRepo",
+            "name": "OperatorRepo",
+            "summary": "",
+            "url": "../classes/Models-Repos-OperatorRepo.html"
+        },                {
+            "fqsen": "\\Models\\Repos\\OperatorRepo\u003A\u003AgetOperators\u0028\u0029",
+            "name": "getOperators",
+            "summary": "Get\u0020operators.",
+            "url": "../classes/Models-Repos-OperatorRepo.html#method_getOperators"
+        },                {
+            "fqsen": "\\Models\\Repos\\UserRepo",
+            "name": "UserRepo",
+            "summary": "",
+            "url": "../classes/Models-Repos-UserRepo.html"
+        },                {
+            "fqsen": "\\Models\\Repos\\UserRepo\u003A\u003AgetUsers\u0028\u0029",
+            "name": "getUsers",
+            "summary": "Get\u0020users.",
+            "url": "../classes/Models-Repos-UserRepo.html#method_getUsers"
+        },                {
+            "fqsen": "\\Models\\Repos\\UserRepo\u003A\u003AgetUserById\u0028\u0029",
+            "name": "getUserById",
+            "summary": "Get\u0020user\u0020info\u0020for\u0020a\u0020given\u0020user\u0020id.",
+            "url": "../classes/Models-Repos-UserRepo.html#method_getUserById"
+        },                {
+            "fqsen": "\\Models\\Repos\\UserRepo\u003A\u003AgetUserbyName\u0028\u0029",
+            "name": "getUserbyName",
+            "summary": "Get\u0020user\u0020info\u0020for\u0020a\u0020given\u0020user\u0020name.",
+            "url": "../classes/Models-Repos-UserRepo.html#method_getUserbyName"
+        },                {
+            "fqsen": "\\Models\\Repos\\UserRepo\u003A\u003AaddUser\u0028\u0029",
+            "name": "addUser",
+            "summary": "Register\u0020a\u0020given\u0020new\u0020user.",
+            "url": "../classes/Models-Repos-UserRepo.html#method_addUser"
         },                {
             "fqsen": "\\Templates\\Console",
             "name": "Console",
@@ -1120,6 +1120,36 @@ Search.appendIndex(
             "name": "data",
             "summary": "",
             "url": "../classes/Templates-LocationCard.html#property_data"
+        },                {
+            "fqsen": "\\Templates\\Nav",
+            "name": "Nav",
+            "summary": "",
+            "url": "../classes/Templates-Nav.html"
+        },                {
+            "fqsen": "\\Templates\\Nav\u003A\u003A__construct\u0028\u0029",
+            "name": "__construct",
+            "summary": "Create\u0020a\u0020new\u0020Nav\u0020instance.",
+            "url": "../classes/Templates-Nav.html#method___construct"
+        },                {
+            "fqsen": "\\Templates\\Nav\u003A\u003AgetRaw\u0028\u0029",
+            "name": "getRaw",
+            "summary": "",
+            "url": "../classes/Templates-Nav.html#method_getRaw"
+        },                {
+            "fqsen": "\\Templates\\Nav\u003A\u003ArenderLinks\u0028\u0029",
+            "name": "renderLinks",
+            "summary": "",
+            "url": "../classes/Templates-Nav.html#method_renderLinks"
+        },                {
+            "fqsen": "\\Templates\\Nav\u003A\u003Arender\u0028\u0029",
+            "name": "render",
+            "summary": "",
+            "url": "../classes/Templates-Nav.html#method_render"
+        },                {
+            "fqsen": "\\Templates\\Nav\u003A\u003A\u0024data",
+            "name": "data",
+            "summary": "",
+            "url": "../classes/Templates-Nav.html#property_data"
         },                {
             "fqsen": "\\Templates\\Table",
             "name": "Table",
@@ -1306,10 +1336,10 @@ Search.appendIndex(
             "summary": "",
             "url": "../namespaces/models.html"
         },                {
-            "fqsen": "\\Models\\Endpoints",
-            "name": "Endpoints",
+            "fqsen": "\\Models\\Repos",
+            "name": "Repos",
             "summary": "",
-            "url": "../namespaces/models-endpoints.html"
+            "url": "../namespaces/models-repos.html"
         },                {
             "fqsen": "\\Templates",
             "name": "Templates",

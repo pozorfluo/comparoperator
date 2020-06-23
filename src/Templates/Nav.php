@@ -24,7 +24,7 @@ class Nav implements Templatable
      *   Uses bootstrap navbar component.
      *
      * @param \Template\Image $logo
-     * @param <string, string>[] $links content to display => href
+     * @param array[]  <string, string>[] $links content to display => href
      * @param int $active_link
      * @param string $search_action
      * @param string $button_text

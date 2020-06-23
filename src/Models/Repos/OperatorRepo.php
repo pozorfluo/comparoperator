@@ -3,7 +3,7 @@
 
 declare(strict_types=1);
 
-namespace Models\Endpoints;
+namespace Models\Repos;
 
 use Entities\Entity;
 
@@ -12,7 +12,7 @@ use Entities\Entity;
  * @todo Consider using traits for endpoints and composing API by using endpoint
  *       traits.
  */
-trait OperatorEndpoint
+trait OperatorRepo
 {
     /**
      * Get operators.
