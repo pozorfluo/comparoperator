@@ -8,9 +8,10 @@ namespace Models\Repos;
 use Entities\Entity;
 
 /**
- * @todo Break-up API into multiple files by endpoints.
- * @todo Consider using traits for endpoints and composing API by using endpoint
- *       traits.
+ * @todo Rethink Repos as SoA when relevant.
+ * @todo Consider using Entities as pure const definitions, never holding datas.
+ * @todo Compare SoA vs AoS approaches for Repos.
+ * @todo Consider that Repos need to mesh well with future write-through Cache.
  */
 trait DestinationRepo
 {
