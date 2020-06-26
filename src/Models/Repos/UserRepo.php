@@ -14,6 +14,10 @@ use Entities\User;
  * @todo Consider using Entities as pure const definitions, never holding datas.
  * @todo Compare SoA vs AoS approaches for Repos.
  * @todo Consider that Repos need to mesh well with future write-through Cache.
+ * @todo Consider mapping Entities network style in sparse arrays with id as 
+ *       key. Each foreign key id used as a 'pointer' to another sparse array of
+ *       entities. Foreign keys getters/setters would take care of resolving
+ *       the indirection.
  */
 trait UserRepo
 {
