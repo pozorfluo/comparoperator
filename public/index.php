@@ -33,10 +33,17 @@
  *         hooks and placeholders after all regular components are fist pushed 
  *         and painted.
  *   - [x] Consider Deferred components via Js/Ajax
- *   - [ ] Test run Templates using and rendering other Templates
+ *   - [x] Test run Templates using and rendering other Templates
  *   - [ ] Add a project specific QueryString builder to simplify link creation
  *   - [ ] Write the test suite Entity->isValid(), validate() deserves
  *   - [ ] Investigate CORS issue with font preloading
+ * 
+ * @todo
+ *   - [ ] Keep the skeleton svelte !
+ *     + [ ] Add pretty url route option
+ *     + [ ] Bundle a version with libs filling missing essentials slots
+ *     + [ ] Tweak/Replace/Extend libs where interesting and useful
+ *     + [ ] Move on
  */
 
 declare(strict_types=1);
