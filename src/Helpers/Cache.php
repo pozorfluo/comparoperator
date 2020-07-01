@@ -20,7 +20,7 @@ class Cache
      *
      * @var string
      */
-    const CACHE_PATH = ROOT . 'cache/';
+    public const CACHE_PATH = ROOT . 'cache/';
 
     /**
      * 'Set' of currently instanced caches.
@@ -94,7 +94,7 @@ class Cache
      * Caller must check and get the actual Cache name used and must NOT assume 
      * the one it requested was free.
      * 
-     * @param integer $ttl
+     * @param int $ttl
      * @param string $name
 
      * @return void
@@ -174,7 +174,7 @@ class Cache
     /**
      * Determine if a valid cached version exists for given key.
      *
-     * @return boolean
+     * @return bool
      */
     public function isCached($key): bool
     {

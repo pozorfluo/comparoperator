@@ -27,7 +27,7 @@ function flattenArray(array $nested_arrays): void
 {
     foreach ($nested_arrays as $key => $value) {
         if (gettype($value) !== 'array') {
-            echo ('<pre>' . var_export($key, true) . ' => '
+            echo('<pre>' . var_export($key, true) . ' => '
                 . var_export($value, true) . '</pre>');
         } else {
             flattenArray($value);
@@ -40,12 +40,12 @@ function prettyArray(array $nested_arrays): void
 {
     foreach ($nested_arrays as $key => $value) {
         if (gettype($value) !== 'array') {
-            echo ('<li class="dump">' . $key . ' : '
+            echo('<li class="dump">' . $key . ' : '
                 . $value . '</li>');
         } else {
-            echo ('<ul class="dump">' . $key);
+            echo('<ul class="dump">' . $key);
             prettyArray($value);
-            echo ('</ul>');
+            echo('</ul>');
         }
     }
 }
@@ -81,7 +81,7 @@ function prettyDump(array $nested_arrays): void
             case 'array':
                 /* ignore same level recursion */
                 if ($nested_arrays !== $value) {
-                    echo ('<details><summary style="color : tomato;'
+                    echo('<details><summary style="color : tomato;'
                         . 'font-weight : bold;">'
                         . $key . '<span style="color : steelblue;'
                         . 'font-weight : 100;"> ('
@@ -89,11 +89,11 @@ function prettyDump(array $nested_arrays): void
                         . '</summary><ul style="font-size: 0.75rem;'
                         . 'background-color: ghostwhite">');
                     prettyDump($value);
-                    echo ('</ul></details>');
+                    echo('</ul></details>');
                 }
                 break;
             case 'object':
-                echo ('<details><summary style="color : tomato;'
+                echo('<details><summary style="color : tomato;'
                     . 'font-weight : bold;">'
                     . $key . '<span style="color : steelblue;'
                     . 'font-weight : 100;"> ('
@@ -114,7 +114,7 @@ function prettyDump(array $nested_arrays): void
                 break;
             default:
                 /* scalar and NULL */
-                echo ('<li style="margin-left: 2rem;color: teal;'
+                echo('<li style="margin-left: 2rem;color: teal;'
                     . 'background-color: white">'
                     . '<span style="color : steelblue;font-weight : bold;">'
                     . $key . '</span> : '

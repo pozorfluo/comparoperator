@@ -88,7 +88,7 @@ class CacheItem
      * 
      * @param string $filename
      * @param array $tags
-     * @param integer $popularity
+     * @param int $popularity
      * @param float $render_time
      * 
      * @return void

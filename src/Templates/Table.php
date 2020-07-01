@@ -23,8 +23,7 @@ class Table implements Templatable
      */
     public function __construct(
         array $entries = [['a' => '-', 'b' => '-', 'c' => '-', 'd' => '-']],
-        string $class = 'query',
-        bool $deferred = false
+        string $class = 'query'
     ) {
         $this->data['entries'] = $entries;
         $this->data['class'] = $class;

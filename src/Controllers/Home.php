@@ -13,13 +13,6 @@ namespace Controllers;
  */
 class Home extends Controller
 {
-
-    // public function __construct()
-    // {
-    //     parent::__construct();
-    //     echo '<pre>Home()</pre>';
-    // }
-
     /**
      * 
      */
@@ -50,7 +43,7 @@ class Home extends Controller
     {
         /* Dispatcher passed array $args is accessible in $arguments */
         // $this->args['model'] = $associated_class;
-        $this->args['view'] = 'Error404';
+        $this->args['view'] = 'Error404 : ';
         $this->layout = 'Minimal';
         $this->serve();
     }

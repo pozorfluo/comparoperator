@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Helpers;
 
 use Controllers\Controller;
-// use Interfaces\Loadable;
 
 /**
  * Translate and dispatch a QUERY_STRING to the appropriate Controller or serve
@@ -37,8 +36,8 @@ class Dispatcher
      */
     // protected $routes;
 
-    const CACHE_TTL = 30; /* seconds */
-    const CACHE_PATH = ROOT . 'cache/';
+    public const CACHE_TTL = 30; /* seconds */
+    public const CACHE_PATH = ROOT . 'cache/';
 
     /**
      * Create a new Dispatcher instance.
@@ -61,7 +60,7 @@ class Dispatcher
              * note
              *   If you need to remember this redirection happened :
              *     Compare QUERY_STRING and REQUEST_URI :wink:
-             **/
+             */
             $this->request['controller'] = 'Home';
             $_SERVER['QUERY_STRING'] = 'controller=Home';
         }

@@ -79,7 +79,7 @@ abstract class Entity implements Validatable
      * @note Creates a new key in backing data array if tentatively accessed
      *       'property' is not an existing key of backing data array.
      */
-    public function __set($property, $value)
+    public function __set($property, $value) : void
     {
         $this->is_valid = null;
         $this->data[$property] = $value;

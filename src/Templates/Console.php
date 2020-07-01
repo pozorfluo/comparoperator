@@ -28,8 +28,8 @@ class Console implements Templatable
         int $max_length = 2000,
         string $id = 'hook-console',
         bool $readonly = true,
-        string $placeholder = '...',
-        bool $deferred = false
+        string $placeholder = '...'
+        // bool $deferred = false
     ) {
         $this->data = [
             'content' => implode('&#13;&#10;', $content),
@@ -56,20 +56,17 @@ class Console implements Templatable
      */
     public function render(): string
     {
-        $rendered_template =
-            <<<TEMPLATE
+        return <<<TEMPLATE
 <textarea id="{$this->data['id']}"  
-          class="{$this->data['class']}"  
-          cols="{$this->data['col_count']}"
-          rows="{$this->data['row_count']}" 
-          maxlength="{$this->data['max_length']}"
-          style="white-space: pre-line;"
-          placeholder="{$this->data['placeholder']}"
-          {$this->data['readonly']}>
-          {$this->data['content']}
+            class="{$this->data['class']}"  
+            cols="{$this->data['col_count']}"
+            rows="{$this->data['row_count']}" 
+            maxlength="{$this->data['max_length']}"
+            style="white-space: pre-line;"
+            placeholder="{$this->data['placeholder']}"
+            {$this->data['readonly']}>
+            {$this->data['content']}
 </textarea> 
 TEMPLATE;
-
-        return $rendered_template;
     }
 }
