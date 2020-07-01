@@ -41,6 +41,9 @@
  * @todo
  *   - [ ] Keep the skeleton svelte !
  *     + [ ] Add pretty url route option
+ *     + [ ] Add a redirect method to Controller base class to reroute ( e.g., 
+ *           after some processing or to alias route ) without issuing header
+ *           location.
  *     + [ ] Bundle a version with libs filling missing essentials slots
  *     + [ ] Tweak/Replace/Extend libs where interesting and useful
  *     + [ ] Move on
